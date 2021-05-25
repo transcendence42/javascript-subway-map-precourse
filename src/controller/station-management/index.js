@@ -8,6 +8,12 @@ function toggleDisplayStationManagement() {
     elementIds.mapPrintManagement.hidden = true;
   }
 }
+{/* <tr>
+<td>John</td>
+<td>Doe</td>
+</tr> */}
+{/* <button class="station-delete-button">삭제</button>         */}
+
 export const controlStationManagement = () => {
   addButtonEvent(elementIds.stationManagerButton, toggleDisplayStationManagement);
 };

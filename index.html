@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <title>지하철 노선도 관리</title>
+    <style>
+        table {
+          border: 1px solid #444444;
+        }
+        th, td {
+          border: 1px solid #444444;
+        }
+      </style>
   </head>
   <body>
     <div id="app">
@@ -14,10 +22,23 @@
         <button id="map-print-manager-button">4. 지하철 노선도 출력</button>
       </div>
       <div id="station-management" hidden>
-        역 이름
-        <input id="station-name-input"></input>
-        <button id="station-add-button">역 추가</button>
-        <button class="station-delete-button">노선에서 제거</button>        
+        <h2>
+          역 이름
+          <br>
+          <input 
+            id="station-name-input" 
+            placeholder="역 이름을 입력해주세요."
+          >
+          </input>
+          <button id="station-add-button">역 추가</button>
+        </h2>
+        <h2>🚉 지하철 역 목록</h2>
+        <table>
+          <tr>
+            <th>역 이름</th>
+            <th>설정</th>
+          </tr>
+        </table>
       </div>
       <div id="line-management" hidden>
         노선 이름
