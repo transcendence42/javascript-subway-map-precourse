@@ -7,6 +7,38 @@
   <body>
     <div id="app">
       <h1>🚇 지하철 노선도 관리 </h1>
+      <div>
+        <button id="station-manager-button">1. 역 관리</button>
+        <button id="line-manager-button">2. 노선 관리</button>
+        <button id="section-manager-button">3. 구간 관리</button>
+        <button id="map-print-manager-button">4. 지하철 노선도 출력</button>
+      </div>
+      <div hidden>
+        역 이름
+        <input id="station-name-input"></input>
+        <button id="station-add-button">역 추가</button>
+        <button class="station-delete-button">노선에서 제거</button>        
+      </div>
+      <div hidden>
+        노선 이름
+        <input id="line-name-input"></input>
+        <span>상행 종점</span>
+        <select id="line-start-station-selector"></select>
+        <br>
+        <span>하행 종점</span>
+        <select id="line-end-station-selector"></select>
+        <button id="line-add-button">노선 추가</button>
+        <button class="line-delete-button">삭제</button>
+      </div>
+      <div hidden>
+        <h4>구간을 수정할 노선을 선택해주세요.</h2>
+        <button class="section-line-menu-button">호선</button>
+        <p>구간 등록</p>
+        <select id="section-station-selector"></select>
+        <input id="section-order-input"></input>
+        <button id="section-add-button">등록</button>
+        <button class="section-delete-button">노선에서 제거</button>
+      </div>
     </div>
     <script type="module" src="src/index.js"></script>
   </body>
