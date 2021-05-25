@@ -1,11 +1,13 @@
-import { elementIds } from "./utils.js";
+import { elementIds, addButtonEvent } from '../utils.js';
 
-function displayStationManagement() {
-  elementIds.stationManagement.hidden = false;
+function toggleDisplayStationManagement() {
+  elementIds.stationManagement.hidden = !(elementIds.stationManagement.hidden);
+  elementIds.lineManagement.hidden = false;
+  elementIds.sectionManagement.hidden = false;
+  if (elementIds.mapPrintManagement) {
+    elementIds.mapPrintManagement.hidden = false;
+  }
 }
-
-function stationManagementRender() {
-  displayStationManagement();
-}
-
-export { stationManagementRender };
+export const controlStationManagement = () => {
+  addButtonEvent(elementIds.stationManagerButton, toggleDisplayStationManagement);
+};

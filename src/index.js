@@ -1,3 +1,9 @@
-import { render } from "./view/index.js";
+import { render } from './view/index.js';
+import { controller } from './controller/index.js';
 
-render();
+const subwayStationManagement = () => {
+  render();
+  controller();
+};
+
+subwayStationManagement();
