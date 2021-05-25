@@ -2,16 +2,16 @@
 
 ### 🗂 공통 메뉴
 
-- [ ] 역 관리 button 태그는 `#station-manager-button` id값을 가진다.
-- [ ] 노선 관리 button 태그는 `#line-manager-button` id값을 가진다.
-- [ ] 구간 관리 button 태그는 `#section-manager-button` id값을 가진다.
-- [ ] 지하철 노선도 출력 관리 button 태그는 `#map-print-manager-button` id값을 가진다.
+- [x] 역 관리 button 태그는 `#station-manager-button` id값을 가진다.
+- [x] 노선 관리 button 태그는 `#line-manager-button` id값을 가진다.
+- [x] 구간 관리 button 태그는 `#section-manager-button` id값을 가진다.
+- [x] 지하철 노선도 출력 관리 button 태그는 `#map-print-manager-button` id값을 가진다.
 
 ### 🚋 지하철 역 관리
 
-- [ ] 지하철 역을 입력하는 input 태그는 `#station-name-input` id값을 가진다.
-- [ ] 지하철 역을 추가하는 button 태그는 `#station-add-button` id값을 가진다.
-- [ ] 지하철 역을 삭제하는 button 태그는 `.station-delete-button` class값을 가진다.
+- [x] 지하철 역을 입력하는 input 태그는 `#station-name-input` id값을 가진다.
+- [x] 지하철 역을 추가하는 button 태그는 `#station-add-button` id값을 가진다.
+- [x] 지하철 역을 삭제하는 button 태그는 `.station-delete-button` class값을 가진다.
 
 - [ ] 지하철 역을 등록하고 삭제할 수 있다. (단, 노선에 등록된 역은 삭제할 수 없다)
 - [ ] 중복된 지하철 역 이름이 등록될 수 없다.
@@ -20,11 +20,11 @@
 
 ### 🛤 지하철 노선 관리
 
-- [ ] 지하철 노선의 이름을 입력하는 input 태그는 `#line-name-input` id값을 가진다.
-- [ ] 지하철 노선의 상행 종점을 선택하는 select 태그는 `#line-start-station-selector` id값을 가진다.
-- [ ] 지하철 노선의 하행 종점을 선택하는 select 태그는 `#line-end-station-selector` id값을 가진다.
-- [ ] 지하철 노선을 추가하는 button 태그는 `#line-add-button` id값을 가진다.
-- [ ] 지하철 노선을 삭제하는 button 태그는 `.line-delete-button` class값을 가진다.
+- [x] 지하철 노선의 이름을 입력하는 input 태그는 `#line-name-input` id값을 가진다.
+- [x] 지하철 노선의 상행 종점을 선택하는 select 태그는 `#line-start-station-selector` id값을 가진다.
+- [x] 지하철 노선의 하행 종점을 선택하는 select 태그는 `#line-end-station-selector` id값을 가진다.
+- [x] 지하철 노선을 추가하는 button 태그는 `#line-add-button` id값을 가진다.
+- [x] 지하철 노선을 삭제하는 button 태그는 `.line-delete-button` class값을 가진다.
 
 - [ ] 지하철 노선을 등록하고 삭제할 수 있다.
 - [ ] 중복된 지하철 노선 이름이 등록될 수 없다.
@@ -43,11 +43,11 @@
 
 #### 추가
 
-- [ ] 지하철 노선을 선택하는 button 태그는 `.section-line-menu-button` class값을 가진다.
-- [ ] 지하철 구간을 설정할 역 select 태그는 `#section-station-selector` id값을 가진다.
-- [ ] 지하철 구간의 순서를 입력하는 input 태그는 `#section-order-input` id값을 가진다.
-- [ ] 지하철 구간을 등록하는 button 태그는 `#section-add-button` id값을 가진다.
-- [ ] 지하철 구간을 제거하는 button 태그는 `.section-delete-button` class값을 가진다.
+- [x] 지하철 노선을 선택하는 button 태그는 `.section-line-menu-button` class값을 가진다.
+- [x] 지하철 구간을 설정할 역 select 태그는 `#section-station-selector` id값을 가진다.
+- [x] 지하철 구간의 순서를 입력하는 input 태그는 `#section-order-input` id값을 가진다.
+- [x] 지하철 구간을 등록하는 button 태그는 `#section-add-button` id값을 가진다.
+- [x] 지하철 구간을 제거하는 button 태그는 `.section-delete-button` class값을 가진다.
 
 - [ ] 노선에 등록된 역을 제거할 수 있다.
 - [ ] 종점을 제거할 경우 다음 역이 종점이 된다.
