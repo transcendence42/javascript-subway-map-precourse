@@ -37,6 +37,17 @@ const checkValidLineSelector = (lineStartStationSelectorValue, lineEndStationSel
   return true;
 }
 
+const addLineTable = ({lineName, lineStartStationSelectorValue, lineEndStationSelectorValue}) => {
+  return `<tr data-station=\'${lineName}\'><td>${lineName}</td><td>${lineStartStationSelectorValue}</td><td>${lineEndStationSelectorValue}</td><td><button class='station-delete-button' data-station=\'${lineName}-button\'>삭제</button></td></tr>`;
+};
+
+const renderLine = ({lineName, lineStartStationSelectorValue, lineEndStationSelectorValue}) => {
+  let result = '';
+  result += addLineTable({ lineName, lineStartStationSelectorValue,  lineEndStationSelectorValue});
+  elementIds.lineTableTbody.insertAdjacentHTML('beforeend', result);
+};
+
+
 const addLine = () => {
   const lineStartStationSelectorValue = elementIds.lineStartStationSelector.value;
   const lineEndStationSelectorValue = elementIds.lineEndStationSelector.value;
@@ -46,6 +57,7 @@ const addLine = () => {
   if (!addLineLocalStorage(lineStartStationSelectorValue, lineEndStationSelectorValue)) {
     return ;
   }
+  renderLine({lineName: elementIds.lineNameInput.value, lineStartStationSelectorValue, lineEndStationSelectorValue})
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
