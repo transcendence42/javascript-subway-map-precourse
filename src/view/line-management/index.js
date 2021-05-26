@@ -18,7 +18,7 @@ const renderSelect = () => {
 };
 
 const addLineTable = ({ lineName, value }) => {
-  return `<tr data-line=\'${lineName}\'><td>${lineName}</td><td>${value.lineEndStationSelectorValue}</td><td>${value.lineEndStationSelectorValue}</td><td><button class='line-delete-button' data-line=\'${lineName}-button\'>삭제</button></td></tr>`;
+  return `<tr data-line=\'${lineName}\'><td>${lineName}</td><td>${value.lineStartStationSelectorValue}</td><td>${value.lineEndStationSelectorValue}</td><td><button class='line-delete-button' data-line=\'${lineName}-button\'>삭제</button></td></tr>`;
 };
 
 const renderLine = () => {
