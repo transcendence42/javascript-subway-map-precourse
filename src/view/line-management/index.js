@@ -17,7 +17,7 @@ const renderSelect = () => {
   }
 };
 
-const makeLineTable = ({lineName, value}) => {
+const makeLineTable = ({ lineName, value }) => {
   return `<tr data-station=\'${lineName}\'><td>${lineName}</td><td>${value.lineEndStationSelectorValue}</td><td>${value.lineEndStationSelectorValue}</td><td><button class='station-delete-button' data-station=\'${lineName}-button\'>삭제</button></td></tr>`;
 };
 
@@ -25,7 +25,7 @@ const renderLine = () => {
   const subwayLine = storage.getLocalStorageMap('subway-line');
   let result = '';
   for (let [lineName, value] of [...subwayLine]) {
-    result += makeLineTable({lineName, value});
+    result += makeLineTable({ lineName, value });
   }
   elementIds.lineTableTbody.insertAdjacentHTML('afterbegin', result);
 };
