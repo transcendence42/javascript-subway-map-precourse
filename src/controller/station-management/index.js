@@ -59,7 +59,7 @@ const addStationButtonEvent = (stationNameInput) => {
   }
 }
 
-const addStation = (e) => {
+const addStation = () => {
   const stationNameInput = elementIds.stationNameInput.value;
   if (!addStationLocalStorage(stationNameInput)) {
     return ;
@@ -86,7 +86,7 @@ const deleteStation = (e) => {
   deleteSelectOption(datasetStation);
   for (let item of document.querySelectorAll(`tbody tr`)) {
     if (item.dataset.station === datasetStation) {
-      storage.removeLocalStorageStation(item.dataset.station);
+      storage.removeLocalStorage('subway-station', item.dataset.station);
       item.remove();
     }
   }

@@ -11,11 +11,11 @@ export const storage = {
   setLocalStorageMap: (key, value) => {
     localStorage.setItem(key, JSON.stringify([...value]));
   },
-  removeLocalStorageStation: (value) => {
+  removeLocalStorage: (key, value) => {
     const subwayStation = new Map(
-      JSON.parse(localStorage.getItem('subway-station')),
+      JSON.parse(localStorage.getItem(key)),
     );
     subwayStation.delete(value);
-    localStorage.setItem('subway-station', JSON.stringify([...subwayStation]));
+    localStorage.setItem(key, JSON.stringify([...subwayStation]));
   },
 };
