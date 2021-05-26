@@ -89,6 +89,8 @@ const addLine = () => {
     lineStartStationSelectorValue,
     lineEndStationSelectorValue,
   });
+  elementIds.lineNameInput.value = '';
+  elementIds.lineNameInput.focus();
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
