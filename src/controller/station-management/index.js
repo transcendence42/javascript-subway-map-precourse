@@ -1,4 +1,5 @@
 import { elementIds, addButtonEvent } from '../utils.js';
+import { errorMessage } from '../error-message.js'
 
 const toggleDisplayStationManagement = () => {
   elementIds.stationManagement.hidden = !(elementIds.stationManagement.hidden);
@@ -10,14 +11,17 @@ const toggleDisplayStationManagement = () => {
 }
 
 const addStationLocalStorage = () => {
+  const stationNameInput = elementIds.stationNameInput.value;
   if (!localStorage.getItem('subway-station')) {
     localStorage.setItem('subway-station', JSON.stringify([...new Map()]));
   }
   const subwayStation = new Map(JSON.parse(localStorage.getItem('subway-station')));
-  if (subwayStation.get(elementIds.stationNameInput.value)) {
-    alert('중복');
+  if (subwayStation.get(stationNameInput)) {
+    alert(errorMessage.stationDuplicate);
+  } else if (stationNameInput.length < 2) {
+    alert(errorMessage.stationLength);
   } else {
-    subwayStation.set(elementIds.stationNameInput.value, [])
+    subwayStation.set(stationNameInput, [])
   }
   localStorage.setItem('subway-station', JSON.stringify([...subwayStation]));
   console.log(localStorage.getItem('subway-station'));
