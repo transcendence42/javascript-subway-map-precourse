@@ -1,8 +1,8 @@
-const getElementId = id => {
+const getElementId = (id) => {
   return document.getElementById(id);
 };
 
-const getElementClass = className => {
+const getElementClass = (className) => {
   return document.getElementsByClassName(className);
 };
 

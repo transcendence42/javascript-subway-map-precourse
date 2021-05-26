@@ -23,7 +23,7 @@ const checkValidStationName = (subwayStation, stationNameInput) => {
   return true;
 };
 
-const addStationLocalStorage = stationNameInput => {
+const addStationLocalStorage = (stationNameInput) => {
   if (!storage.getLocalStorage('subway-station')) {
     storage.setLocalStorageMap(new Map());
   }
@@ -37,7 +37,7 @@ const addStationLocalStorage = stationNameInput => {
   return true;
 };
 
-const renderAddStation = stationNameInput => {
+const renderAddStation = (stationNameInput) => {
   elementIds.stationTableTbody.insertAdjacentHTML(
     'beforeend',
     `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button class='station-delete-button' data-station=\'${stationNameInput}-button\'>삭제</button></td></tr>`,
@@ -50,12 +50,12 @@ const addStation = () => {
   renderAddStation(stationNameInput);
 };
 
-const deleteStation = e => {
+const deleteStation = (e) => {
   console.log(e.currentTarget.dataset.station.slice(0, -7));
   for (let item of document.querySelectorAll(`tbody tr`)) {
     if (item.dataset.station === e.currentTarget.dataset.station.slice(0, -7)) {
       storage.removeLocalStorageStation(item.dataset.station);
-      item.remove()
+      item.remove();
     }
   }
   removeButtonEvent(e.currentTarget, deleteStation);

@@ -1,7 +1,7 @@
 import { storage } from '../../model/index.js';
-import {elementIds} from '../../utils.js';
+import { elementIds } from '../../utils.js';
 
-const makeStationTable = station => {
+const makeStationTable = (station) => {
   return `<tr data-station=\'${station}\'><td>${station}</td><td><button class='station-delete-button' data-station=\'${station}-button\'>삭제</button></td></tr>`;
 };
 
