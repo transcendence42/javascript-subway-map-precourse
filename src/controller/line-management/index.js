@@ -35,7 +35,6 @@ const checkValidLineSelector = (lineStartStationSelectorValue, lineEndStationSel
     return false;
   } else if (storage.getLocalStorageMap('subway-line'))
   return true;
-  // TODO storage compare
 }
 
 const addLine = () => {

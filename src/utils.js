@@ -21,6 +21,7 @@ export const elementIds = {
   lineEndStationSelector: getElementId('line-end-station-selector'),
   lineAddButton: getElementId('line-add-button'),
   lineDeleteButton: getElementClass('lineDeleteButton'),
+  lineTableTbody: document.querySelectorAll('tbody')[1],
   sectionManagerButton: getElementId('section-manager-button'),
   sectionManagement: getElementId('section-management'),
   sectionLineMenuButton: getElementId('section-line-menu-button'),
