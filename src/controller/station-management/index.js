@@ -1,5 +1,5 @@
 import { storage } from '../../model/index.js';
-import { addButtonEvent } from '../utils.js';
+import { addButtonEvent, removeButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
 
@@ -42,7 +42,7 @@ const renderAddStation = stationNameInput => {
     .querySelector('tbody')
     .insertAdjacentHTML(
       'beforeend',
-      `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button id='stationDeleteButton'>삭제</button></td></tr>`,
+      `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button id='stationDeleteButton' data-station=\'${stationNameInput}-button\'>삭제</button></td></tr>`,
     );
 };
 
@@ -52,9 +52,10 @@ const addStation = () => {
   renderAddStation(stationNameInput);
 };
 
-const deleteStation = () => {
-  
-}
+// const deleteStation = () => {
+//   const stationName
+//   // removeButtonEvent
+// }
 
 export const controlStationManagement = () => {
   addButtonEvent(
