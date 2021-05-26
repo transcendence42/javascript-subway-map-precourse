@@ -42,7 +42,7 @@ const renderAddStation = stationNameInput => {
     .querySelector('tbody')
     .insertAdjacentHTML(
       'beforeend',
-      `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button id='stationDeleteButton' data-station=\'${stationNameInput}-button\'>삭제</button></td></tr>`,
+      `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button class='station-delete-button' data-station=\'${stationNameInput}-button\'>삭제</button></td></tr>`,
     );
 };
 
