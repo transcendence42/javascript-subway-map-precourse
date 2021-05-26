@@ -12,11 +12,28 @@ const toggleDisplayLineManagement = () => {
   }
 };
 
+const addLineLocalStorage = (lineStartStationSelectorValue, lineEndStationSelectorValue) => {
+  if (!storage.getLocalStorage('subway-line')) {
+    storage.setLocalStorageMap(new Map());
+  }
+  const subwayLine = storage.getLocalStorageMap('subway-line');
+  if (subwayLine.get(elementIds.lineNameInput.value)) {
+    alert(errorMessage.lineDuplicate);
+    return false;
+  }
+  subwayLine.set(elementIds.lineNameInput.value , {
+    lineStartStationSelectorValue,
+    lineEndStationSelectorValue,
+  })
+  storage.setLocalStorageMap('subway-line', subwayLine);
+  return true;
+}
+
 const checkValidLineSelector = (lineStartStationSelectorValue, lineEndStationSelectorValue) => {
   if (lineStartStationSelectorValue === lineEndStationSelectorValue) {
     alert(errorMessage.stationDuplicate);
     return false;
-  } 
+  } else if (storage.getLocalStorageMap('subway-line'))
   return true;
   // TODO storage compare
 }
@@ -27,14 +44,8 @@ const addLine = () => {
   if (!checkValidLineSelector(lineStartStationSelectorValue, lineEndStationSelectorValue)) {
     return ;
   }
-
-  let line = new Map();
-  line.set(elementIds.lineNameInput.value , {
-    lineStartStationSelectorValue,
-    lineEndStationSelectorValue,
-  })
-  console.log(line)
-  storage.setLocalStorageMap('subway-line', line);
+  addLineLocalStorage(lineStartStationSelectorValue, lineEndStationSelectorValue);
+  console.log(storage.getLocalStorageMap('subway-line'));
 };
 
 export const controlLineManagement = () => {
