@@ -1,4 +1,5 @@
-import { elementIds, addButtonEvent } from '../utils.js';
+import { addButtonEvent } from '../utils.js';
+import { elementIds } from '../../utils.js';
 
 function toggleSectionManagement() {
   elementIds.stationManagement.hidden = true;

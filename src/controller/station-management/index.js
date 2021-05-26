@@ -1,5 +1,6 @@
 import { storage } from '../../model/index.js';
-import { elementIds, addButtonEvent } from '../utils.js';
+import { addButtonEvent } from '../utils.js';
+import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
 
 const toggleDisplayStationManagement = () => {
