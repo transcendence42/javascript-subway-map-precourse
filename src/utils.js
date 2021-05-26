@@ -13,6 +13,7 @@ export const elementIds = {
   stationAddButton: getElementId('station-add-button'),
   stationDeleteButton: getElementClass('station-delete-button'),
   stationTableTbody: document.querySelector('tbody'),
+  stationTableTbodyTr: document.querySelectorAll(`tbody tr`),
   lineManagement: getElementId('line-management'),
   lineManagerButton: getElementId('line-manager-button'),
   lineNameInput: getElementId('line-name-input'),

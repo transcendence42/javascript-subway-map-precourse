@@ -38,12 +38,10 @@ const addStationLocalStorage = stationNameInput => {
 };
 
 const renderAddStation = stationNameInput => {
-  document
-    .querySelector('tbody')
-    .insertAdjacentHTML(
-      'beforeend',
-      `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button class='station-delete-button' data-station=\'${stationNameInput}-button\'>삭제</button></td></tr>`,
-    );
+  elementIds.stationTableTbody.insertAdjacentHTML(
+    'beforeend',
+    `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button class='station-delete-button' data-station=\'${stationNameInput}-button\'>삭제</button></td></tr>`,
+  );
 };
 
 const addStation = () => {
@@ -52,10 +50,15 @@ const addStation = () => {
   renderAddStation(stationNameInput);
 };
 
-// const deleteStation = () => {
-//   const stationName
-//   // removeButtonEvent
-// }
+const deleteStation = e => {
+  console.log(e.currentTarget.dataset.station.slice(0, -7));
+  for (let item of document.querySelectorAll(`tbody tr`)) {
+    if (item.dataset.station === e.currentTarget.dataset.station.slice(0, -7)) {
+      item.remove()
+    }
+  }
+  removeButtonEvent(e.currentTarget, deleteStation);
+};
 
 export const controlStationManagement = () => {
   addButtonEvent(
@@ -63,5 +66,7 @@ export const controlStationManagement = () => {
     toggleDisplayStationManagement,
   );
   addButtonEvent(elementIds.stationAddButton, addStation);
-  // addButtonEvent(elementIds.stationDeleteButton, deleteStation);
+  for (let button of elementIds.stationDeleteButton) {
+    addButtonEvent(button, deleteStation);
+  }
 };
