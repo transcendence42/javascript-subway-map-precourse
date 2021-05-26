@@ -9,8 +9,12 @@ const addSelectOption = (element, value) => {
 }
 
 const renderSelect = () => {
-    console.log(storage.getLocalStorageMap())
-    addSelectOption(elementIds.lineStartStationSelector, 'dog');
+    for (let item of storage.getLocalStorageMap('subway-station')) {
+        addSelectOption(elementIds.lineStartStationSelector, item[0]);
+    }
+    for (let item of storage.getLocalStorageMap('subway-station')) {
+        addSelectOption(elementIds.lineEndStationSelector, item[0]);
+    }
 }
 
 export const renderLineManagement = () => {
