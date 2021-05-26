@@ -51,6 +51,14 @@ const addSelectOption = (element, value) => {
   element.appendChild(option)    
 }
 
+const addStationButtonEvent = (stationNameInput) => {
+  for (let item of document.querySelectorAll(`tbody tr button`)) {
+    if (item.dataset.station === `${stationNameInput}-button`) {
+      addButtonEvent(item, deleteStation);
+    }
+  }
+}
+
 const addStation = (e) => {
   const stationNameInput = elementIds.stationNameInput.value;
   addStationLocalStorage(stationNameInput);
@@ -59,12 +67,24 @@ const addStation = (e) => {
   addSelectOption(elementIds.lineEndStationSelector, stationNameInput);
   elementIds.stationNameInput.value = '';
   elementIds.stationNameInput.focus();
+  addStationButtonEvent(stationNameInput);
 };
 
+const deleteSelectOption = (datasetStation) => {
+  const selectOption = document.querySelectorAll('option');
+  for (let item of selectOption) {
+    console.log(item.value)
+    if (item.value == datasetStation) {
+      item.remove();
+    }
+  }
+}
+
 const deleteStation = (e) => {
-  console.log(e.currentTarget.dataset.station.slice(0, -7));
+  const datasetStation = e.currentTarget.dataset.station.slice(0, -7);
+  deleteSelectOption(datasetStation);
   for (let item of document.querySelectorAll(`tbody tr`)) {
-    if (item.dataset.station === e.currentTarget.dataset.station.slice(0, -7)) {
+    if (item.dataset.station === datasetStation) {
       storage.removeLocalStorageStation(item.dataset.station);
       item.remove();
     }
