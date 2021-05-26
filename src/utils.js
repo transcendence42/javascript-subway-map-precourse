@@ -19,7 +19,7 @@ export const elementIds = {
   lineNameInput: getElementId('line-name-input'),
   lineStartStationSelector: getElementId('line-start-station-selector'),
   lineEndStationSelector: getElementId('line-end-station-selector'),
-  lineAddButton: getElementId('lineAddButton'),
+  lineAddButton: getElementId('line-add-button'),
   lineDeleteButton: getElementClass('lineDeleteButton'),
   sectionManagerButton: getElementId('section-manager-button'),
   sectionManagement: getElementId('section-management'),
