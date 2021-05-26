@@ -61,7 +61,9 @@ const addStationButtonEvent = (stationNameInput) => {
 
 const addStation = (e) => {
   const stationNameInput = elementIds.stationNameInput.value;
-  addStationLocalStorage(stationNameInput);
+  if (!addStationLocalStorage(stationNameInput)) {
+    return ;
+  }
   renderAddStation(stationNameInput);
   addSelectOption(elementIds.lineStartStationSelector, stationNameInput);
   addSelectOption(elementIds.lineEndStationSelector, stationNameInput);
@@ -73,7 +75,6 @@ const addStation = (e) => {
 const deleteSelectOption = (datasetStation) => {
   const selectOption = document.querySelectorAll('option');
   for (let item of selectOption) {
-    console.log(item.value)
     if (item.value == datasetStation) {
       item.remove();
     }
