@@ -36,7 +36,7 @@ const addStationLocalStorage = stationNameInput => {
   return true;
 };
 
-const renderStation = stationNameInput => {
+const renderAddStation = stationNameInput => {
   document
     .querySelector('tbody')
     .insertAdjacentHTML(
@@ -48,18 +48,8 @@ const renderStation = stationNameInput => {
 const addStation = () => {
   const stationNameInput = elementIds.stationNameInput.value;
   addStationLocalStorage(stationNameInput);
-  renderStation(stationNameInput);
+  renderAddStation(stationNameInput);
 };
-
-{
-  /* <tr>
-<td>John</td>
-<td>Doe</td>
-</tr> */
-}
-{
-  /* <button class="station-delete-button">삭제</button>         */
-}
 
 export const controlStationManagement = () => {
   addButtonEvent(
