@@ -43,7 +43,9 @@ const addLine = () => {
   if (!checkValidLineSelector(lineStartStationSelectorValue, lineEndStationSelectorValue)) {
     return ;
   }
-  addLineLocalStorage(lineStartStationSelectorValue, lineEndStationSelectorValue);
+  if (!addLineLocalStorage(lineStartStationSelectorValue, lineEndStationSelectorValue)) {
+    return ;
+  }
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
