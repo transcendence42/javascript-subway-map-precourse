@@ -44,10 +44,19 @@ const renderAddStation = (stationNameInput) => {
   );
 };
 
+const addSelectOption = (element, value) => {
+  let option = document.createElement('option');
+  option.value = value;
+  option.innerHTML = value;
+  element.appendChild(option)    
+}
+
 const addStation = (e) => {
   const stationNameInput = elementIds.stationNameInput.value;
   addStationLocalStorage(stationNameInput);
   renderAddStation(stationNameInput);
+  addSelectOption(elementIds.lineStartStationSelector, stationNameInput);
+  addSelectOption(elementIds.lineEndStationSelector, stationNameInput);
   elementIds.stationNameInput.value = '';
   elementIds.stationNameInput.focus();
 };
