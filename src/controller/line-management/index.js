@@ -47,7 +47,7 @@ const addLineTable = ({
   lineStartStationSelectorValue,
   lineEndStationSelectorValue,
 }) => {
-  return `<tr data-station=\'${lineName}\'><td>${lineName}</td><td>${lineStartStationSelectorValue}</td><td>${lineEndStationSelectorValue}</td><td><button class='station-delete-button' data-station=\'${lineName}-button\'>삭제</button></td></tr>`;
+  return `<tr data-line=\'${lineName}\'><td>${lineName}</td><td>${lineStartStationSelectorValue}</td><td>${lineEndStationSelectorValue}</td><td><button class='line-delete-button' data-line=\'${lineName}-button\'>삭제</button></td></tr>`;
 };
 
 const renderLine = ({
@@ -92,7 +92,21 @@ const addLine = () => {
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
+const addRemoveButton = (e) => {
+  const dataLine = e.currentTarget.dataset.line.slice(0,-7);
+  for (let item of document.querySelectorAll(`table[id=line-table] tbody tr`)) {
+    if (item.dataset.line === dataLine) {
+      storage.removeLocalStorage('subway-line', item.dataset.line);
+      item.remove();
+    }
+  }
+  removeEventListener(e.currentTarget, addRemoveButton);
+}
+
 export const controlLineManagement = () => {
   addButtonEvent(elementIds.lineManagerButton, toggleDisplayLineManagement);
   addButtonEvent(elementIds.lineAddButton, addLine);
+  for (let item of document.querySelectorAll(`table[id=line-table] tbody tr button`)) {
+    addButtonEvent(item, addRemoveButton);
+  }
 };
