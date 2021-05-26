@@ -44,10 +44,12 @@ const renderAddStation = (stationNameInput) => {
   );
 };
 
-const addStation = () => {
+const addStation = (e) => {
   const stationNameInput = elementIds.stationNameInput.value;
   addStationLocalStorage(stationNameInput);
   renderAddStation(stationNameInput);
+  elementIds.stationNameInput.value = '';
+  elementIds.stationNameInput.focus();
 };
 
 const deleteStation = (e) => {
