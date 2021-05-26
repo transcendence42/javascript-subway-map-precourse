@@ -2,7 +2,7 @@ import { storage } from '../../model/index.js';
 import {elementIds} from '../../utils.js';
 
 const makeStationTable = station => {
-  return `<tr><td>${station}</td><td><button id='stationDeleteButton'>삭제</button></td></tr>`;
+  return `<tr data-station=\'${station}\'><td>${station}</td><td><button id='stationDeleteButton'>삭제</button></td></tr>`;
 };
 
 const renderStation = () => {

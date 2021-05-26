@@ -42,7 +42,7 @@ const renderAddStation = stationNameInput => {
     .querySelector('tbody')
     .insertAdjacentHTML(
       'beforeend',
-      `<tr><td>${stationNameInput}</td><td><button id='stationDeleteButton'>삭제</button></td></tr>`,
+      `<tr data-station=\'${stationNameInput}\'><td>${stationNameInput}</td><td><button id='stationDeleteButton'>삭제</button></td></tr>`,
     );
 };
 
@@ -52,10 +52,15 @@ const addStation = () => {
   renderAddStation(stationNameInput);
 };
 
+const deleteStation = () => {
+  
+}
+
 export const controlStationManagement = () => {
   addButtonEvent(
     elementIds.stationManagerButton,
     toggleDisplayStationManagement,
   );
   addButtonEvent(elementIds.stationAddButton, addStation);
+  // addButtonEvent(elementIds.stationDeleteButton, deleteStation);
 };
