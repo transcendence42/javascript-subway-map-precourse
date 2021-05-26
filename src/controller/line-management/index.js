@@ -1,7 +1,7 @@
 import { addButtonEvent } from '../utils.js';
 import { storage } from '../../model/index.js';
 import { elementIds } from '../../utils.js';
-import {errorMessage} from '../error-message.js';
+import { errorMessage } from '../error-message.js';
 
 const toggleDisplayLineManagement = () => {
   elementIds.stationManagement.hidden = true;
@@ -12,7 +12,10 @@ const toggleDisplayLineManagement = () => {
   }
 };
 
-const addLineLocalStorage = (lineStartStationSelectorValue, lineEndStationSelectorValue) => {
+const addLineLocalStorage = (
+  lineStartStationSelectorValue,
+  lineEndStationSelectorValue,
+) => {
   if (!storage.getLocalStorage('subway-line')) {
     storage.setLocalStorageMap(new Map());
   }
@@ -21,43 +24,71 @@ const addLineLocalStorage = (lineStartStationSelectorValue, lineEndStationSelect
     alert(errorMessage.lineDuplicate);
     return false;
   }
-  subwayLine.set(elementIds.lineNameInput.value , {
+  subwayLine.set(elementIds.lineNameInput.value, {
     lineStartStationSelectorValue,
     lineEndStationSelectorValue,
-  })
+  });
   storage.setLocalStorageMap('subway-line', subwayLine);
   return true;
-}
+};
 
-const checkValidLineSelector = (lineStartStationSelectorValue, lineEndStationSelectorValue) => {
+const checkValidLineSelector = (
+  lineStartStationSelectorValue,
+  lineEndStationSelectorValue,
+) => {
   if (lineStartStationSelectorValue === lineEndStationSelectorValue) {
     alert(errorMessage.stationDuplicate);
     return false;
-  } else if (storage.getLocalStorageMap('subway-line'))
-  return true;
-}
+  } else if (storage.getLocalStorageMap('subway-line')) return true;
+};
 
-const addLineTable = ({lineName, lineStartStationSelectorValue, lineEndStationSelectorValue}) => {
+const addLineTable = ({
+  lineName,
+  lineStartStationSelectorValue,
+  lineEndStationSelectorValue,
+}) => {
   return `<tr data-station=\'${lineName}\'><td>${lineName}</td><td>${lineStartStationSelectorValue}</td><td>${lineEndStationSelectorValue}</td><td><button class='station-delete-button' data-station=\'${lineName}-button\'>삭제</button></td></tr>`;
 };
 
-const renderLine = ({lineName, lineStartStationSelectorValue, lineEndStationSelectorValue}) => {
+const renderLine = ({
+  lineName,
+  lineStartStationSelectorValue,
+  lineEndStationSelectorValue,
+}) => {
   let result = '';
-  result += addLineTable({ lineName, lineStartStationSelectorValue,  lineEndStationSelectorValue});
+  result += addLineTable({
+    lineName,
+    lineStartStationSelectorValue,
+    lineEndStationSelectorValue,
+  });
   elementIds.lineTableTbody.insertAdjacentHTML('beforeend', result);
 };
 
-
 const addLine = () => {
-  const lineStartStationSelectorValue = elementIds.lineStartStationSelector.value;
+  const lineStartStationSelectorValue =
+    elementIds.lineStartStationSelector.value;
   const lineEndStationSelectorValue = elementIds.lineEndStationSelector.value;
-  if (!checkValidLineSelector(lineStartStationSelectorValue, lineEndStationSelectorValue)) {
-    return ;
+  if (
+    !checkValidLineSelector(
+      lineStartStationSelectorValue,
+      lineEndStationSelectorValue,
+    )
+  ) {
+    return;
   }
-  if (!addLineLocalStorage(lineStartStationSelectorValue, lineEndStationSelectorValue)) {
-    return ;
+  if (
+    !addLineLocalStorage(
+      lineStartStationSelectorValue,
+      lineEndStationSelectorValue,
+    )
+  ) {
+    return;
   }
-  renderLine({lineName: elementIds.lineNameInput.value, lineStartStationSelectorValue, lineEndStationSelectorValue})
+  renderLine({
+    lineName: elementIds.lineNameInput.value,
+    lineStartStationSelectorValue,
+    lineEndStationSelectorValue,
+  });
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
