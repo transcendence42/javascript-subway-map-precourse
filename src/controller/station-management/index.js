@@ -54,6 +54,7 @@ const deleteStation = e => {
   console.log(e.currentTarget.dataset.station.slice(0, -7));
   for (let item of document.querySelectorAll(`tbody tr`)) {
     if (item.dataset.station === e.currentTarget.dataset.station.slice(0, -7)) {
+      storage.removeLocalStorageStation(item.dataset.station);
       item.remove()
     }
   }
