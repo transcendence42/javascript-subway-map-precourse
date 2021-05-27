@@ -46,11 +46,10 @@ const renderAddLineStation = ({index, value}) => {
 };
 
 const renderSectionTable = (lineStation) => {
-  console.log(lineStation)
+  elementIds.sectionTableTbody.innerHTML = ''
   lineStation.forEach((value, index) => {
     renderAddLineStation({index, value})
   });
-  
 }
 
 const renderSelect = (lineName) => {

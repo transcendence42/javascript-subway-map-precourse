@@ -33,7 +33,7 @@ export const elementIds = {
   sectionButtons: getElementId('section-buttons'),
   sectionRegister: getElementId('section-register'),
   sectionManageText: getElementId('section-manage-text'),
-  sectionTableTbody: document.querySelectorAll('tbody')[2],
+  sectionTableTbody: document.getElementsByTagName('tbody')[2],
   mapPrintManagement: getElementId('map-print-management'),
   mapPrintManagerButton: getElementId('map-print-manager-button'),
 };
