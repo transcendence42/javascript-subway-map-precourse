@@ -6,7 +6,6 @@ import { renderLine } from '../../view/line-management/index.js';
 import { renderSectionManagement } from '../../view/section-management/index.js';
 
 export const rerenderSectionButtons = () => {
-  console.log(elementIds.sectionButtons);
   removeChildAllElements(elementIds.sectionButtons);
   renderSectionManagement();
   for (let item of elementIds.sectionLineMenuButton) {
