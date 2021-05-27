@@ -77,7 +77,23 @@ const addLineList = (
   storage.setLocalStorageArray('subway-line-list', lineList);
 };
 
+const addLineButtonEvent = (lineName) => {
+  for (let item of document.querySelectorAll(
+    `table[id=line-table] tbody tr td button`,
+  )) {
+    if (item.dataset.line === `${lineName}-button`) {
+      addButtonEvent(item, addRemoveButton);
+    }
+  }
+};
+
+const initLineInput = () => {
+  elementIds.lineNameInput.value = '';
+  elementIds.lineNameInput.focus();
+};
+
 const addLine = () => {
+  const lineName = elementIds.lineNameInput.value;
   const lineStartStationSelectorValue =
     elementIds.lineStartStationSelector.value;
   const lineEndStationSelectorValue = elementIds.lineEndStationSelector.value;
@@ -98,13 +114,13 @@ const addLine = () => {
     return;
   }
   renderLine({
-    lineName: elementIds.lineNameInput.value,
+    lineName,
     lineStartStationSelectorValue,
     lineEndStationSelectorValue,
   });
-  elementIds.lineNameInput.value = '';
-  elementIds.lineNameInput.focus();
+  initLineInput();
   addLineList(lineStartStationSelectorValue, lineEndStationSelectorValue);
+  addLineButtonEvent(lineName);
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
