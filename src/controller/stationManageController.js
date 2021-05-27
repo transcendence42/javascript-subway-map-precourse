@@ -2,7 +2,7 @@ import StationManageView from "../view/stationManageView.js";
 import Storage from "../model/storage.js";
 
 export default class StationManageController {
-  show() {
+  showAllStations() {
     let stationManageView = new StationManageView();
     let storage = new Storage();
     document.querySelector("#show").innerHTML += stationManageView.makeHtml(
