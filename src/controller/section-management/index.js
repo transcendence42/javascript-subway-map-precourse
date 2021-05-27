@@ -115,7 +115,6 @@ const storeLineStation = ({ subwayLines, lineStation }) => {
 };
 
 const addLineStation = ({
-  subwayLine,
   sectionOrderInputValue,
   sectionStationOption,
 }) => {
@@ -143,7 +142,7 @@ const addSectionLineStation = () => {
   ) {
     return;
   }
-  addLineStation({ subwayLine, sectionOrderInputValue, sectionStationOption });
+  addLineStation({ sectionOrderInputValue, sectionStationOption });
   // console.log(subwayLine.values())
   // if (subwayLine.values)
 };
