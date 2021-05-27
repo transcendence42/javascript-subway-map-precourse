@@ -87,10 +87,26 @@ const checkValidOption = (lineStation, sectionStationOption) => {
   return !lineStation.includes(sectionStationOption)
 }
 
+const checkValidValue = ({lineStation, sectionOrderInputValue, sectionStationOption}) => {
+  if (!checkValidInput(lineStation.length, Number(sectionOrderInputValue))) {
+    initSectionInput(errorMessage.sectionInvalidRangeInput)
+    return false;
+  }
+  if (!checkValidOption(lineStation, sectionStationOption)) {
+    initSectionInput(errorMessage.sectionInvalidOption)
+    return false;
+  }
+  return true;
+}
+
 const initSectionInput = (message) => {
   alert(message);
   elementIds.sectionOrderInput.value = ''
   elementIds.sectionOrderInput.focus()
+}
+
+const addLineStation = () => {
+
 }
 
 const addSectionLineStation = () => {
@@ -99,12 +115,7 @@ const addSectionLineStation = () => {
   const sectionStationOption = elementIds.sectionStationSelector.value
 
   subwayLine = findSubwayLineTag();
-  if (!checkValidInput(subwayLine[1].length, Number(sectionOrderInputValue))) {
-    initSectionInput(errorMessage.sectionInvalidRangeInput)
-    return ;
-  }
-  if (!checkValidOption(subwayLine[1], sectionStationOption)) {
-    initSectionInput(errorMessage.sectionInvalidOption)
+  if (!checkValidValue({lineStation: subwayLine[1], sectionOrderInputValue, sectionStationOption})) {
     return ;
   }
   // console.log(subwayLine.values())
