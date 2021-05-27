@@ -1,3 +1,3 @@
-export const mapController = () => {
+export const mapPrintManager = () => {
 
 }

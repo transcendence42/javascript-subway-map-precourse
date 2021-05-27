@@ -15,4 +15,12 @@ export const ID = {
   STATION_NAME_INPUT: 'station-name-input',
   STATION_ADD_BUTTON: 'station-add-button',
   STATION_LIST_TABLE: 'station-list-table',
+
+  LINE_MANAGER: 'line-manager',
+  LINE_TABLE: 'line-table',
+  LINE_NAME_INPUT: 'line-name-input',
+  LINE_START_STATION_SELECTOR: 'line-start-station-selector',
+  LINE_END_STATION_SELECTOR: 'line-end-station-selector',
+  LINE_ADD_BUTTON: 'line-add-button',
+
 };
