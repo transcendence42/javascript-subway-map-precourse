@@ -149,8 +149,6 @@ const addSectionLineStation = () => {
     return;
   }
   addLineStation({ sectionOrderInputValue, sectionStationOption });
-  // console.log(subwayLine.values())
-  // if (subwayLine.values)
 };
 
 export const controlSectionManagement = () => {
