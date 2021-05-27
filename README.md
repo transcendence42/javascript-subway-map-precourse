@@ -18,12 +18,19 @@
     - [ ] showSection: 구간 관리 화면 만들기 
     - [ ] showMap: 지하철 노선도 화면 만들기
 - [ ] Controller
-    - [ ] controlStation: 역 관리 이벤트
-    - [ ] controlLine: 구간관리  
+    - [ ] catchStationAddition: 역추가 이벤트를 확인
+    - [ ] catchStationDeletion: 역삭제 이벤트를 확인
+    - [ ] catchLineAdditino: 노선 추가 이벤트를 확인
+    - [ ] catchLineDeletion: 노선 삭제 이벤트를 확인
+    - [ ] catchSectionAddition: 구간 추가 이벤트를 확인
+    - [ ] catchSectionDeletion: 구간 삭제 이벤트를 확인
 - [ ] Model
-    - [ ] manageStation: 역 관리 함수
-    - [ ] manageLine: 구간관리 함수
-    - [ ] manage
+    - [ ] addStation: 역추가
+    - [ ] deleteStation: 역삭제 
+    - [ ] addLine: 노선 추가
+    - [ ] deleteLine: 노선 삭제
+    - [ ] addSection: 구간 추가
+    - [ ] deleteSection: 구간 삭제
 
 ## 🚀 기능 요구사항
 ### 기존 요구사항
