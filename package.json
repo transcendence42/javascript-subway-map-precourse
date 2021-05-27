@@ -1,0 +1,17 @@
+{
+  "name": "javascript-subway-map-precourse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/transcendence42/javascript-subway-map-precourse.git",
+  "author": "Yeji Choi <yechoi@student.42seoul.kr>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.0"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  }
+}
