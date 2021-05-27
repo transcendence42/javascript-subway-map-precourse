@@ -7,12 +7,23 @@
 > 3. 컨트롤러는 모델로부터 데이터를 요구하고, 그 결과를 뷰로 전달합니다.
 > 4. 뷰는 데이터를 사용자에게 보여줍니다.
 - [자바스크립트 MVC 구현](https://antaehyeon.github.io/devlog/2018/07/14/%EC%BD%94%EB%93%9C%EC%8A%A4%EC%BF%BC%EB%93%9C-MV%EC%97%AD%ED%95%A0%EB%82%98%EB%88%84%EA%B8%B0/)
+- [이벤트 위임](https://ko.javascript.info/event-delegation)
+
 
 ### to do
-- [ ] View
+- [ ] View  
+    - [ ] constructor : 4개의 버튼 만들기
+    - [ ] showStation: 역관리 화면 만들기
+    - [ ] showLine: 노선 관리 화면 만들기
+    - [ ] showSection: 구간 관리 화면 만들기 
+    - [ ] showMap: 지하철 노선도 화면 만들기
 - [ ] Controller
+    - [ ] controlStation: 역 관리 이벤트
+    - [ ] controlLine: 구간관리  
 - [ ] Model
-
+    - [ ] manageStation: 역 관리 함수
+    - [ ] manageLine: 구간관리 함수
+    - [ ] manage
 
 ## 🚀 기능 요구사항
 ### 기존 요구사항
