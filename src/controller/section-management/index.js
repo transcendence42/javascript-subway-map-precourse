@@ -3,6 +3,16 @@ import { elementIds, removeChildAllElements } from '../../utils.js';
 import { storage } from '../../model/index.js';
 import { errorMessage } from '../error-message.js';
 import { renderLine } from '../../view/line-management/index.js';
+import {renderSectionManagement} from '../../view/section-management/index.js';
+
+export const rerenderSectionButtons = () => {
+  console.log(elementIds.sectionButtons)
+  removeChildAllElements(elementIds.sectionButtons)
+  renderSectionManagement();
+  for (let item of elementIds.sectionLineMenuButton) {
+    addButtonEvent(item, selectSectionLineButton);
+  }
+}
 
 const toggleSectionManagement = () => {
   elementIds.stationManagement.hidden = true;

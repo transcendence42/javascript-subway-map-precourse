@@ -1,11 +1,5 @@
 import { storage } from '../../model/index.js';
-import { elementIds, removeChildAllElements } from '../../utils.js';
-
-export const rerenderSectionButtons = () => {
-  console.log(elementIds.sectionButtons)
-  removeChildAllElements(elementIds.sectionButtons)
-  renderLineButtons();
-}
+import { elementIds } from '../../utils.js';
 
 const renderLineButtons = () => {
   let result = '';

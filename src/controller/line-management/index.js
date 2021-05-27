@@ -2,7 +2,7 @@ import { addButtonEvent } from '../utils.js';
 import { storage } from '../../model/index.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
-import {rerenderSectionButtons} from '../../view/section-management/index.js';
+import { rerenderSectionButtons } from '../section-management/index.js';
 
 const toggleDisplayLineManagement = () => {
   elementIds.stationManagement.hidden = true;
@@ -122,6 +122,7 @@ const addLine = () => {
   initLineInput();
   addLineList(lineStartStationSelectorValue, lineEndStationSelectorValue);
   addLineButtonEvent(lineName);
+  rerenderSectionButtons();
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
