@@ -17,17 +17,17 @@ const addLineLocalStorage = (
   lineEndStationSelectorValue,
 ) => {
   if (!storage.getLocalStorage('subway-line')) {
-    storage.setLocalStorageMap(new Map());
+    storage.setLocalStorageMap('subway-line', new Map());
   }
   const subwayLine = storage.getLocalStorageMap('subway-line');
   if (subwayLine.get(elementIds.lineNameInput.value)) {
     alert(errorMessage.lineDuplicate);
     return false;
   }
-  subwayLine.set(elementIds.lineNameInput.value, {
+  subwayLine.set(elementIds.lineNameInput.value, [
     lineStartStationSelectorValue,
     lineEndStationSelectorValue,
-  });
+  ]);
   storage.setLocalStorageMap('subway-line', subwayLine);
   return true;
 };
@@ -39,7 +39,8 @@ const checkValidLineSelector = (
   if (lineStartStationSelectorValue === lineEndStationSelectorValue) {
     alert(errorMessage.stationDuplicate);
     return false;
-  } else if (storage.getLocalStorageMap('subway-line')) return true;
+  }
+  return true;
 };
 
 const addLineTable = ({
@@ -64,17 +65,17 @@ const renderLine = ({
   elementIds.lineTableTbody.insertAdjacentHTML('beforeend', result);
 };
 
-const addLineList = (
-  lineStartStationSelectorValue,
-  lineEndStationSelectorValue,
-) => {
-  if (!storage.getLocalStorage('subway-line-list')) {
-    storage.setLocalStorageArray('subway-line-list', []);
-  }
-  let lineList = storage.getLocalStorageArray('subway-line-list');
-  lineList.push(lineStartStationSelectorValue, lineEndStationSelectorValue);
-  storage.setLocalStorageArray('subway-line-list', lineList);
-};
+// const addLineList = (
+//   lineStartStationSelectorValue,
+//   lineEndStationSelectorValue,
+// ) => {
+//   if (!storage.getLocalStorage('subway-line-list')) {
+//     storage.setLocalStorageArray('subway-line-list', []);
+//   }
+//   let lineList = storage.getLocalStorageArray('subway-line-list');
+//   lineList.push(lineStartStationSelectorValue, lineEndStationSelectorValue);
+//   storage.setLocalStorageArray('subway-line-list', lineList);
+// };
 
 const addLine = () => {
   const lineStartStationSelectorValue =
@@ -101,29 +102,29 @@ const addLine = () => {
     lineStartStationSelectorValue,
     lineEndStationSelectorValue,
   });
-  elementIds.lineNameInput.value = '';
-  elementIds.lineNameInput.focus();
-  addLineList(lineStartStationSelectorValue, lineEndStationSelectorValue);
-  console.log(storage.getLocalStorageMap('subway-line'));
+  // elementIds.lineNameInput.value = '';
+  // elementIds.lineNameInput.focus();
+  // addLineList(lineStartStationSelectorValue, lineEndStationSelectorValue);
+  // console.log(storage.getLocalStorageMap('subway-line'));
 };
 
-const addRemoveButton = (e) => {
-  const dataLine = e.currentTarget.dataset.line.slice(0, -7);
-  for (let item of document.querySelectorAll(`table[id=line-table] tbody tr`)) {
-    if (item.dataset.line === dataLine) {
-      storage.removeLocalStorage('subway-line', item.dataset.line);
-      item.remove();
-    }
-  }
-  removeEventListener(e.currentTarget, addRemoveButton);
-};
+// const addRemoveButton = (e) => {
+//   const dataLine = e.currentTarget.dataset.line.slice(0, -7);
+//   for (let item of document.querySelectorAll(`table[id=line-table] tbody tr`)) {
+//     if (item.dataset.line === dataLine) {
+//       storage.removeLocalStorage('subway-line', item.dataset.line);
+//       item.remove();
+//     }
+//   }
+//   removeEventListener(e.currentTarget, addRemoveButton);
+// };
 
 export const controlLineManagement = () => {
   addButtonEvent(elementIds.lineManagerButton, toggleDisplayLineManagement);
   addButtonEvent(elementIds.lineAddButton, addLine);
-  for (let item of document.querySelectorAll(
-    `table[id=line-table] tbody tr button`,
-  )) {
-    addButtonEvent(item, addRemoveButton);
-  }
+  // for (let item of document.querySelectorAll(
+  //   `table[id=line-table] tbody tr button`,
+  // )) {
+  //   addButtonEvent(item, addRemoveButton);
+  // }
 };
