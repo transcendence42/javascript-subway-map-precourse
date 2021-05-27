@@ -21,7 +21,7 @@ const renderSelectionRegister = (lineName) => {
 };
 
 const addSelectOption = (element, stations) => {
-  stations.forEach(station => {
+  stations.forEach((station) => {
     let option = document.createElement('option');
     option.value = station;
     option.innerHTML = station;
