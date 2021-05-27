@@ -37,3 +37,9 @@ export const elementIds = {
   mapPrintManagement: getElementId('map-print-management'),
   mapPrintManagerButton: getElementId('map-print-manager-button'),
 };
+
+export const removeChildAllElements = (element) => {
+  while (element.hasChildNodes()) {
+    element.removeChild(element.firstChild);
+  }
+};

@@ -2,6 +2,7 @@ import { addButtonEvent } from '../utils.js';
 import { storage } from '../../model/index.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
+import {rerenderSectionButtons} from '../../view/section-management/index.js';
 
 const toggleDisplayLineManagement = () => {
   elementIds.stationManagement.hidden = true;
@@ -133,6 +134,7 @@ const addRemoveButton = (e) => {
     }
   }
   removeEventListener(e.currentTarget, addRemoveButton);
+  rerenderSectionButtons();
 };
 
 export const controlLineManagement = () => {

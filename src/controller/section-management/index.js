@@ -1,5 +1,5 @@
 import { addButtonEvent } from '../utils.js';
-import { elementIds } from '../../utils.js';
+import { elementIds, removeChildAllElements } from '../../utils.js';
 import { storage } from '../../model/index.js';
 import { errorMessage } from '../error-message.js';
 import { renderLine } from '../../view/line-management/index.js';
@@ -51,12 +51,6 @@ const deleteLineStation = (e) => {
 const addDeleteEvent = () => {
   for (let button of elementIds.sectionDeleteButton) {
     addButtonEvent(button, deleteLineStation);
-  }
-};
-
-const removeChildAllElements = (element) => {
-  while (element.hasChildNodes()) {
-    element.removeChild(element.firstChild);
   }
 };
 
