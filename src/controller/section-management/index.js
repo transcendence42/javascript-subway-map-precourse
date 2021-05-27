@@ -45,6 +45,7 @@ const deleteLineStation = (e) => {
     alert('역은 2개 이하로 삭제할 수 없습니다.');
   }
   renderSectionTable(storage.getLocalStorageMap('subway-line').get(lineName));
+  renderLineManagementTable();
 };
 
 const addDeleteEvent = () => {
@@ -70,7 +71,6 @@ const renderSectionTable = (lineStation) => {
     renderAddLineStation({ index, value });
   });
   addDeleteEvent();
-  renderLineManagementTable();
 };
 
 const renderSelect = (lineName) => {
@@ -164,6 +164,7 @@ const addSectionLineStation = () => {
     return;
   }
   addLineStation({ sectionOrderInputValue, sectionStationOption });
+  renderLineManagementTable();
 };
 
 export const controlSectionManagement = () => {
