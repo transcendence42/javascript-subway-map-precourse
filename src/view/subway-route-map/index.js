@@ -1,33 +1,44 @@
-import {storage} from '../../model/index.js';
-import {elementIds} from '../../utils.js';
+import { storage } from '../../model/index.js';
+import { elementIds } from '../../utils.js';
 
 const renderMapFrame = () => {
-    elementIds.sectionManagement.insertAdjacentHTML('afterend', `<div class="map"></div>`)
-    // elementIds.sectionManagement.hidden = false
-}
+  elementIds.sectionManagement.insertAdjacentHTML(
+    'afterend',
+    `<div class="map"></div>`,
+  );
+};
 
 const addStationName = (stationNames) => {
-    let ulTag = document.createElement('ul');
-    for (let stationName of stationNames) {
-        ulTag.innerHTML += `<li>${stationName}</li>`
-    }
-    return ulTag
-}
+  let ulTag = document.createElement('ul');
+  for (let stationName of stationNames) {
+    ulTag.innerHTML += `<li>${stationName}</li>`;
+  }
+  return ulTag;
+};
 
 const addLineName = (lineName, stationNames) => {
-    let h2Tag = document.createElement('h2')
-    h2Tag.innerHTML = lineName
-    return h2Tag
-}
+  let h2Tag = document.createElement('h2');
+  h2Tag.innerHTML = lineName;
+  return h2Tag;
+};
 
 const renderMap = () => {
-    renderMapFrame();
-    for (let [lineName, stationNames] of storage.getLocalStorageArray('subway-line')) {
-        document.getElementsByClassName('map')[0].insertAdjacentElement('beforeend', addLineName(lineName, stationNames));
-        document.querySelectorAll(`.map h2`)[document.querySelectorAll(`.map h2`).length - 1].insertAdjacentElement('afterend' ,addStationName(stationNames))
-    }
-}
+  renderMapFrame();
+  for (let [lineName, stationNames] of storage.getLocalStorageArray(
+    'subway-line',
+  )) {
+    document
+      .getElementsByClassName('map')[0]
+      .insertAdjacentElement('beforeend', addLineName(lineName, stationNames));
+    document
+      .querySelectorAll(`.map h2`)
+      [document.querySelectorAll(`.map h2`).length - 1].insertAdjacentElement(
+        'afterend',
+        addStationName(stationNames),
+      );
+  }
+};
 
 export const renderSubwayRouteMap = () => {
-    renderMap();
-}
+  renderMap();
+};
