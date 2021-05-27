@@ -52,12 +52,21 @@ const renderSectionTable = (lineStation) => {
   });
 };
 
+const removeChildAllElements = (element) => {
+  while (element.hasChildNodes()) {
+    element.removeChild(element.firstChild);
+  }
+};
+
 const renderSelect = (lineName) => {
   let lineStation;
+  removeChildAllElements(elementIds.sectionStationSelector)
+  addSelectOption(elementIds.sectionStationSelector, [
+    ...storage.getLocalStorageMap('subway-station').keys(),
+  ]);
   for (let item of storage.getLocalStorageMap('subway-line')) {
     if (lineName === item[0]) {
       lineStation = item[1];
-      addSelectOption(elementIds.sectionStationSelector, lineStation);
     }
   }
   renderSectionTable(lineStation);
@@ -114,10 +123,7 @@ const storeLineStation = ({ subwayLines, lineStation }) => {
   storage.setLocalStorageMap('subway-line', subwayLines);
 };
 
-const addLineStation = ({
-  sectionOrderInputValue,
-  sectionStationOption,
-}) => {
+const addLineStation = ({ sectionOrderInputValue, sectionStationOption }) => {
   const subwayLines = storage.getLocalStorageMap('subway-line');
   const lineName = document.getElementsByTagName('h3')[1].innerHTML;
   let lineStation = subwayLines.get(lineName);
