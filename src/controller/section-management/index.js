@@ -30,14 +30,6 @@ const addSelectOption = (element, stations) => {
   });
 };
 
-// const addSectionRemoveButtonEvent = (stationNameInput) => {
-//   for (let item of document.querySelectorAll(`tbody tr button`)) {
-//     if (item.dataset.station === `${stationNameInput}-button`) {
-//       addButtonEvent(item, deleteStation);
-//     }
-//   }
-// };
-
 const renderAddLineStation = ({ index, value }) => {
   elementIds.sectionTableTbody.insertAdjacentHTML(
     'beforeend',
@@ -45,11 +37,23 @@ const renderAddLineStation = ({ index, value }) => {
   );
 };
 
+const deleteLineStation = (e) => {
+  console.log(e.currentTarget)
+  
+};
+
+const addDeleteEvent = () => {
+  for (let button of elementIds.sectionDeleteButton) {
+    addButtonEvent(button, deleteLineStation);
+  }
+}
+
 const renderSectionTable = (lineStation) => {
   elementIds.sectionTableTbody.innerHTML = '';
   lineStation.forEach((value, index) => {
     renderAddLineStation({ index, value });
   });
+  addDeleteEvent();
 };
 
 const removeChildAllElements = (element) => {
