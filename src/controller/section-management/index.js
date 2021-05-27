@@ -17,7 +17,7 @@ const renderSelectionRegister = (lineName) => {
   elementIds.sectionManageText.innerHTML = '';
   elementIds.sectionManageText.insertAdjacentHTML(
     'afterbegin',
-    `<h3>${lineName}</h3>`,
+    `<h3>${lineName} 관리</h3>`,
   );
   elementIds.sectionRegister.hidden = false;
 };
