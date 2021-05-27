@@ -29,13 +29,39 @@ const addSelectOption = (element, stations) => {
   });
 };
 
+
+// const addSectionRemoveButtonEvent = (stationNameInput) => {
+//   for (let item of document.querySelectorAll(`tbody tr button`)) {
+//     if (item.dataset.station === `${stationNameInput}-button`) {
+//       addButtonEvent(item, deleteStation);
+//     }
+//   }
+// };
+
+const renderAddLineStation = ({index, value}) => {
+  elementIds.sectionTableTbody.insertAdjacentHTML(
+    'beforeend',
+    `<tr data-line-station=\'${index}\'><td>${index}</td><td>${value}</td><td><button class='section-delete-button' data-line-station=\'${value}-button\'>노선에서 제거</button></td></tr>`,
+  );
+};
+
+const renderSectionTable = (lineStation) => {
+  console.log(lineStation)
+  lineStation.forEach((value, index) => {
+    renderAddLineStation({index, value})
+  });
+  
+}
+
 const renderSelect = (lineName) => {
-  console.log(storage.getLocalStorageMap('subway-line'));
+  let lineStation;
   for (let item of storage.getLocalStorageMap('subway-line')) {
     if (lineName === item[0]) {
-      addSelectOption(elementIds.sectionStationSelector, item[1]);
+      lineStation = item[1];
+      addSelectOption(elementIds.sectionStationSelector, lineStation);
     }
   }
+  renderSectionTable(lineStation);
 };
 
 const selectSectionLineButton = (e) => {
