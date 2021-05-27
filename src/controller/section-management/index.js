@@ -44,6 +44,8 @@ const selectSectionLineButton = (e) => {
   renderSelect(lineName);
 };
 
+{/* <button class="section-delete-button">노선에서 제거</button> */}
+
 export const controlSectionManagement = () => {
   addButtonEvent(elementIds.sectionManagerButton, toggleSectionManagement);
   for (let item of elementIds.sectionLineMenuButton) {
