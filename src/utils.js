@@ -34,8 +34,6 @@ export const elementIds = {
   sectionRegister: getElementId('section-register'),
   sectionManageText: getElementId('section-manage-text'),
   sectionTableTbody: document.getElementsByTagName('tbody')[2],
-  mapPrintManagement: getElementId('map-print-management'),
-  mapPrintManagerButton: getElementId('map-print-manager-button'),
 };
 
 export const removeChildAllElements = (element) => {
