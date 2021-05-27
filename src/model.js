@@ -1,3 +1,1 @@
-export default function model() {
-    
-}
+export default function model() {}

@@ -6,7 +6,7 @@ function getBtns() {
 }
 
 function getStationPart() {
-  return `<div class="stationPart" style="display:none;">
+  return `<div id="#stationPart" style="display:none;">
   <h3>역 이름</h3>
   <input type="text" id="#station-name-input" placeholder="역 이름을 입력해주세요"/>
   <button id="#station-add-button">역 추가</button>
@@ -15,7 +15,7 @@ function getStationPart() {
 }
 
 function getLinePart() {
-  return `<div class="linePart" style="display:none;">
+  return `<div id="#linePart" style="display:none;">
   <h3>노선 이름</h3>
   <input type="text" id="#line-name-input" placeholder="노선 이름을 입력해주세요"/>
   <br><br>
@@ -37,15 +37,15 @@ function getLinePart() {
 }
 
 function getSectionPart() {
-  return `<div class="sectionPart" style="display:none;">
+  return `<div id="#sectionPart" style="display:none;">
   <h3>구간을 수정할 노선을 선택해주세요</h3>
   </div>
   `;
 }
 
 function getMapPart() {
-  return `<div class="mapPart" style="display:none;">
-  </div>`
+  return `<div id="#mapPart" style="display:none;">
+  </div>`;
 }
 
 function constructor() {
