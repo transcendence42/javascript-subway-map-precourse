@@ -31,7 +31,8 @@ export const elementIds = {
   sectionAddButton: getElementId('section-add-button'),
   sectionDeleteButton: getElementClass('section-delete-button'),
   sectionButtons: getElementId('section-buttons'),
-  sectionContent: getElementId('section-register'),
+  sectionRegister: getElementId('section-register'),
+  sectionManageText: getElementId('section-manage-text'),
   mapPrintManagement: getElementId('map-print-management'),
   mapPrintManagerButton: getElementId('map-print-manager-button'),
 };

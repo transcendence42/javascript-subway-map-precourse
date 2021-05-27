@@ -10,10 +10,15 @@ const toggleSectionManagement = () => {
   }
 }
 
+const renderSelectionRegister = (lineName) => {
+  elementIds.sectionManageText.innerHTML = "";
+  elementIds.sectionManageText.insertAdjacentHTML('afterbegin', `<h3>${lineName}</h3>`);
+  elementIds.sectionRegister.hidden = false;
+}
+
 const selectSectionLineButton = (e) => {
   const lineName = e.currentTarget.dataset.line;
-  
-  console.log(lineName)
+  renderSelectionRegister(lineName);
 }
 
 export const controlSectionManagement = () => {
