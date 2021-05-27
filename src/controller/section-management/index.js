@@ -2,6 +2,7 @@ import { addButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 import { storage } from '../../model/index.js';
 import { errorMessage } from '../error-message.js';
+import { renderLine } from '../../view/line-management/index.js';
 
 const toggleSectionManagement = () => {
   elementIds.stationManagement.hidden = true;
@@ -50,7 +51,18 @@ const addDeleteEvent = () => {
   for (let button of elementIds.sectionDeleteButton) {
     addButtonEvent(button, deleteLineStation);
   }
-}
+};
+
+const removeChildAllElements = (element) => {
+  while (element.hasChildNodes()) {
+    element.removeChild(element.firstChild);
+  }
+};
+
+const renderLineManagementTable = () => {
+  removeChildAllElements(elementIds.lineTableTbody);
+  renderLine();
+};
 
 const renderSectionTable = (lineStation) => {
   elementIds.sectionTableTbody.innerHTML = '';
@@ -58,12 +70,7 @@ const renderSectionTable = (lineStation) => {
     renderAddLineStation({ index, value });
   });
   addDeleteEvent();
-};
-
-const removeChildAllElements = (element) => {
-  while (element.hasChildNodes()) {
-    element.removeChild(element.firstChild);
-  }
+  renderLineManagementTable();
 };
 
 const renderSelect = (lineName) => {
