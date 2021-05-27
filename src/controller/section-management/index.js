@@ -33,7 +33,7 @@ const addSelectOption = (element, stations) => {
 const renderAddLineStation = ({ index, value }) => {
   elementIds.sectionTableTbody.insertAdjacentHTML(
     'beforeend',
-    `<tr data-line-station=\'${index}\'><td>${index}</td><td>${value}</td><td><button class='section-delete-button' data-line-station=\'${value}-button\'>노선에서 제거</button></td></tr>`,
+    `<tr data-line-station=\'${value}\'><td>${index}</td><td>${value}</td><td><button class='section-delete-button' data-line-station=\'${value}-button\'>노선에서 제거</button></td></tr>`,
   );
 };
 
@@ -43,6 +43,7 @@ const deleteLineStation = (e) => {
   if (!storage.removeSectionStation(lineName, lineStation)) {
     alert('역은 2개 이하로 삭제할 수 없습니다.');
   }
+  renderSectionTable(storage.getLocalStorageMap('subway-line').get(lineName));
 };
 
 const addDeleteEvent = () => {
