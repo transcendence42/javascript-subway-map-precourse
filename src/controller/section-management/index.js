@@ -38,8 +38,11 @@ const renderAddLineStation = ({ index, value }) => {
 };
 
 const deleteLineStation = (e) => {
-  console.log(e.currentTarget)
-  
+  const lineName = document.getElementsByTagName('h3')[1].innerHTML;
+  const lineStation = e.currentTarget.dataset.lineStation.slice(0, -7);
+  if (!storage.removeSectionStation(lineName, lineStation)) {
+    alert('역은 2개 이하로 삭제할 수 없습니다.');
+  }
 };
 
 const addDeleteEvent = () => {
