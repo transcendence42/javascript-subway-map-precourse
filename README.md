@@ -12,12 +12,13 @@
 
 ### to do
 - [ ] View  
-    - [ ] constructor : 4개의 버튼 만들기
-    - [ ] showStation: 역관리 화면 만들기
+    - [x] constructor : 4개의 버튼 만들기
+    - [x] showStation: 역관리 화면 만들기
     - [ ] showLine: 노선 관리 화면 만들기
     - [ ] showSection: 구간 관리 화면 만들기 
     - [ ] showMap: 지하철 노선도 화면 만들기
 - [ ] Controller
+    - [ ] constructor: 4개의 버튼에 대한 이벤트를 확인
     - [ ] catchStationAddition: 역추가 이벤트를 확인, 유효성(2글자 이상, 중복 여부)을 검증
     - [ ] catchStationDeletion: 역삭제 이벤트를 확인, 유효성(노선 등록 여부) 검증
     - [ ] catchLineAddition: 노선 추가 이벤트를 확인, 유효성(중복 여부, 종점역 올바른 입력 여부) 검증
