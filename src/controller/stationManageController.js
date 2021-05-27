@@ -8,5 +8,9 @@ export default class StationManageController {
     document.querySelector("#show").innerHTML += stationManageView.makeHtml(
       storage.getAllStation()
     );
+    let btnAddStation = document.querySelector("#station-add-button");
+    btnAddStation.addEventListener("click", evt => {
+      alert("btnAddStation");
+    });
   }
 }
