@@ -60,7 +60,7 @@ const removeChildAllElements = (element) => {
 
 const renderSelect = (lineName) => {
   let lineStation;
-  removeChildAllElements(elementIds.sectionStationSelector)
+  removeChildAllElements(elementIds.sectionStationSelector);
   addSelectOption(elementIds.sectionStationSelector, [
     ...storage.getLocalStorageMap('subway-station').keys(),
   ]);
