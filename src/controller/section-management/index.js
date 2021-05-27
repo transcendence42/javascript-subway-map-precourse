@@ -1,7 +1,7 @@
 import { addButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 
-function toggleSectionManagement() {
+const toggleSectionManagement = () => {
   elementIds.stationManagement.hidden = true;
   elementIds.lineManagement.hidden = true;
   elementIds.sectionManagement.hidden = !elementIds.sectionManagement.hidden;
@@ -10,6 +10,15 @@ function toggleSectionManagement() {
   }
 }
 
+const selectSectionLineButton = (e) => {
+  const lineName = e.currentTarget.dataset.line;
+  
+  console.log(lineName)
+}
+
 export const controlSectionManagement = () => {
   addButtonEvent(elementIds.sectionManagerButton, toggleSectionManagement);
+  for (let item of elementIds.sectionLineMenuButton) {
+    addButtonEvent(item, selectSectionLineButton);
+  }
 };
