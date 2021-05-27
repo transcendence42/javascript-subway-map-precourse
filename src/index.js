@@ -1,8 +1,8 @@
 import StationManageController from "./controller/stationManageController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  let btnStationManage = document.querySelector("#station-manager-button");
-  btnStationManage.addEventListener("click", evt => {
+  let btnStationManager = document.querySelector("#station-manager-button");
+  btnStationManager.addEventListener("click", evt => {
     new StationManageController().show();
   });
 });
