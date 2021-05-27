@@ -4,6 +4,7 @@ import { storage } from '../../model/index.js';
 import { errorMessage } from '../error-message.js';
 import { renderLine } from '../../view/line-management/index.js';
 import { renderSectionManagement } from '../../view/section-management/index.js';
+import { initSubwayRouteMap } from '../subway-route-map/index.js';
 
 export const rerenderSectionButtons = () => {
   removeChildAllElements(elementIds.sectionButtons);
@@ -20,6 +21,7 @@ const toggleSectionManagement = () => {
   if (elementIds.mapPrintManagement) {
     elementIds.mapPrintManagement.hidden = true;
   }
+  initSubwayRouteMap();
 };
 
 const renderSelectionRegister = (lineName) => {

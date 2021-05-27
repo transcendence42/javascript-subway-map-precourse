@@ -1,7 +1,7 @@
 import { storage } from '../../model/index.js';
 import { elementIds } from '../../utils.js';
 
-const renderMapFrame = () => {
+export const renderMapFrame = () => {
   elementIds.sectionManagement.insertAdjacentHTML(
     'afterend',
     `<div class="map"></div>`,
@@ -23,7 +23,6 @@ const addLineName = (lineName, stationNames) => {
 };
 
 const renderMap = () => {
-  renderMapFrame();
   for (let [lineName, stationNames] of storage.getLocalStorageArray(
     'subway-line',
   )) {

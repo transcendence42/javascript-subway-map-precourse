@@ -2,6 +2,7 @@ import { storage } from '../../model/index.js';
 import { addButtonEvent, removeButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
+import { initSubwayRouteMap } from '../subway-route-map/index.js';
 
 const toggleDisplayStationManagement = () => {
   elementIds.stationManagement.hidden = !elementIds.stationManagement.hidden;
@@ -10,6 +11,7 @@ const toggleDisplayStationManagement = () => {
   if (elementIds.mapPrintManagement) {
     elementIds.mapPrintManagement.hidden = true;
   }
+  initSubwayRouteMap();
 };
 
 const checkValidStationName = (subwayStation, stationNameInput) => {

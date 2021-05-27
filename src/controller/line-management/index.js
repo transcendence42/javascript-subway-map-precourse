@@ -3,6 +3,7 @@ import { storage } from '../../model/index.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
 import { rerenderSectionButtons } from '../section-management/index.js';
+import { initSubwayRouteMap } from '../subway-route-map/index.js';
 
 const toggleDisplayLineManagement = () => {
   elementIds.stationManagement.hidden = true;
@@ -11,6 +12,7 @@ const toggleDisplayLineManagement = () => {
   if (elementIds.mapPrintManagement) {
     elementIds.mapPrintManagement.hidden = true;
   }
+  initSubwayRouteMap();
 };
 
 const addLineLocalStorage = (
