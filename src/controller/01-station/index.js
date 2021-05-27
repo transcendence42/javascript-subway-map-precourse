@@ -1,12 +1,16 @@
 import { ID } from '../../constants/index.js';
 
-const buttonEvent = () => {
-	console.log('hi')
+const toggleStationManager = () => {
+	const self = document.getElementById(ID.STATION_MANAGER);
 
-	document.getElementById(ID.STATION_MANAGER).hidden = false;
+	if (self.hidden === false) {
+		self.hidden = true;
+		return;
+	}
+	self.hidden = false;
 	document.getElementById(ID.LINE_MANAGER).hidden = true;
 }
 
 export const stationManager = () => {
-	document.getElementById(ID.STATION_MANAGER_BUTTON).addEventListener('click', buttonEvent);
+	document.getElementById(ID.STATION_MANAGER_BUTTON).addEventListener('click', toggleStationManager);
 }
