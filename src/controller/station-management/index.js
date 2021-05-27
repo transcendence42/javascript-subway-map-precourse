@@ -48,8 +48,8 @@ const addSelectOption = (element, value) => {
   let option = document.createElement('option');
   option.value = value;
   option.innerHTML = value;
-  element.appendChild(option)    
-}
+  element.appendChild(option);
+};
 
 const addStationButtonEvent = (stationNameInput) => {
   for (let item of document.querySelectorAll(`tbody tr button`)) {
@@ -57,12 +57,12 @@ const addStationButtonEvent = (stationNameInput) => {
       addButtonEvent(item, deleteStation);
     }
   }
-}
+};
 
 const addStation = () => {
   const stationNameInput = elementIds.stationNameInput.value;
   if (!addStationLocalStorage(stationNameInput)) {
-    return ;
+    return;
   }
   renderAddStation(stationNameInput);
   addSelectOption(elementIds.lineStartStationSelector, stationNameInput);
@@ -79,10 +79,20 @@ const deleteSelectOption = (datasetStation) => {
       item.remove();
     }
   }
-}
+};
+
+const isLineList = (datasetStation) => {
+  return storage
+    .getLocalStorageArray('subway-line-list')
+    .includes(datasetStation);
+};
 
 const deleteStation = (e) => {
   const datasetStation = e.currentTarget.dataset.station.slice(0, -7);
+  if (isLineList(datasetStation)) {
+    alert(errorMessage.lineStationForbidden);
+    return;
+  }
   deleteSelectOption(datasetStation);
   for (let item of document.querySelectorAll(`tbody tr`)) {
     if (item.dataset.station === datasetStation) {
