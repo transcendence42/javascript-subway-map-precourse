@@ -1,7 +1,7 @@
 import { addButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 import { storage } from '../../model/index.js';
-import {errorMessage} from '../error-message.js';
+import { errorMessage } from '../error-message.js';
 
 const toggleSectionManagement = () => {
   elementIds.stationManagement.hidden = true;
@@ -30,7 +30,6 @@ const addSelectOption = (element, stations) => {
   });
 };
 
-
 // const addSectionRemoveButtonEvent = (stationNameInput) => {
 //   for (let item of document.querySelectorAll(`tbody tr button`)) {
 //     if (item.dataset.station === `${stationNameInput}-button`) {
@@ -39,7 +38,7 @@ const addSelectOption = (element, stations) => {
 //   }
 // };
 
-const renderAddLineStation = ({index, value}) => {
+const renderAddLineStation = ({ index, value }) => {
   elementIds.sectionTableTbody.insertAdjacentHTML(
     'beforeend',
     `<tr data-line-station=\'${index}\'><td>${index}</td><td>${value}</td><td><button class='section-delete-button' data-line-station=\'${value}-button\'>노선에서 제거</button></td></tr>`,
@@ -47,11 +46,11 @@ const renderAddLineStation = ({index, value}) => {
 };
 
 const renderSectionTable = (lineStation) => {
-  elementIds.sectionTableTbody.innerHTML = ''
+  elementIds.sectionTableTbody.innerHTML = '';
   lineStation.forEach((value, index) => {
-    renderAddLineStation({index, value})
+    renderAddLineStation({ index, value });
   });
-}
+};
 
 const renderSelect = (lineName) => {
   let lineStation;
@@ -75,52 +74,79 @@ const findSubwayLineTag = () => {
     if (item[0] === document.getElementsByTagName('h3')[1].innerHTML) {
       return item;
     }
-  }  
-  return ;
-}
+  }
+  return;
+};
 
 const checkValidInput = (stationLength, sectionOrderInputValue) => {
-  return stationLength >= sectionOrderInputValue && sectionOrderInputValue >= 0
-}
+  return stationLength >= sectionOrderInputValue && sectionOrderInputValue >= 0;
+};
 
 const checkValidOption = (lineStation, sectionStationOption) => {
-  return !lineStation.includes(sectionStationOption)
-}
+  return !lineStation.includes(sectionStationOption);
+};
 
-const checkValidValue = ({lineStation, sectionOrderInputValue, sectionStationOption}) => {
+const checkValidValue = ({
+  lineStation,
+  sectionOrderInputValue,
+  sectionStationOption,
+}) => {
   if (!checkValidInput(lineStation.length, Number(sectionOrderInputValue))) {
-    initSectionInput(errorMessage.sectionInvalidRangeInput)
+    initSectionInput(errorMessage.sectionInvalidRangeInput);
     return false;
   }
   if (!checkValidOption(lineStation, sectionStationOption)) {
-    initSectionInput(errorMessage.sectionInvalidOption)
+    initSectionInput(errorMessage.sectionInvalidOption);
     return false;
   }
   return true;
-}
+};
 
 const initSectionInput = (message) => {
   alert(message);
-  elementIds.sectionOrderInput.value = ''
-  elementIds.sectionOrderInput.focus()
-}
+  elementIds.sectionOrderInput.value = '';
+  elementIds.sectionOrderInput.focus();
+};
 
-const addLineStation = () => {
+const storeLineStation = ({ subwayLines, lineStation }) => {
+  let lineName = document.getElementsByTagName('h3')[1].innerHTML;
+  subwayLines.set(lineName, lineStation);
+  storage.setLocalStorageMap('subway-line', subwayLines);
+};
 
-}
+const addLineStation = ({
+  subwayLine,
+  sectionOrderInputValue,
+  sectionStationOption,
+}) => {
+  const subwayLines = storage.getLocalStorageMap('subway-line');
+  const lineName = document.getElementsByTagName('h3')[1].innerHTML;
+  let lineStation = subwayLines.get(lineName);
+
+  lineStation.splice(sectionOrderInputValue, 0, sectionStationOption);
+  renderSectionTable(lineStation);
+  storeLineStation({ subwayLines, lineStation });
+};
 
 const addSectionLineStation = () => {
   let subwayLine;
-  const sectionOrderInputValue = elementIds.sectionOrderInput.value
-  const sectionStationOption = elementIds.sectionStationSelector.value
+  const sectionOrderInputValue = elementIds.sectionOrderInput.value;
+  const sectionStationOption = elementIds.sectionStationSelector.value;
 
   subwayLine = findSubwayLineTag();
-  if (!checkValidValue({lineStation: subwayLine[1], sectionOrderInputValue, sectionStationOption})) {
-    return ;
+  if (
+    !checkValidValue({
+      lineStation: subwayLine[1],
+      sectionOrderInputValue,
+      sectionStationOption,
+    })
+  ) {
+    return;
   }
+  addLineStation({ subwayLine, sectionOrderInputValue, sectionStationOption });
   // console.log(subwayLine.values())
   // if (subwayLine.values)
-}
+};
 
 export const controlSectionManagement = () => {
   addButtonEvent(elementIds.sectionManagerButton, toggleSectionManagement);
