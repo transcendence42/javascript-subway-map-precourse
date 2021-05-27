@@ -3,16 +3,16 @@ import { elementIds, removeChildAllElements } from '../../utils.js';
 import { storage } from '../../model/index.js';
 import { errorMessage } from '../error-message.js';
 import { renderLine } from '../../view/line-management/index.js';
-import {renderSectionManagement} from '../../view/section-management/index.js';
+import { renderSectionManagement } from '../../view/section-management/index.js';
 
 export const rerenderSectionButtons = () => {
-  console.log(elementIds.sectionButtons)
-  removeChildAllElements(elementIds.sectionButtons)
+  console.log(elementIds.sectionButtons);
+  removeChildAllElements(elementIds.sectionButtons);
   renderSectionManagement();
   for (let item of elementIds.sectionLineMenuButton) {
     addButtonEvent(item, selectSectionLineButton);
   }
-}
+};
 
 const toggleSectionManagement = () => {
   elementIds.stationManagement.hidden = true;
@@ -49,7 +49,7 @@ const renderAddLineStation = ({ index, value }) => {
 };
 
 const deleteLineStation = (e) => {
-  const lineName = document.getElementsByTagName('h3')[1].innerHTML;
+  const lineName = document.getElementsByTagName('h3')[1].innerHTML.slice(0,-3);
   const lineStation = e.currentTarget.dataset.lineStation.slice(0, -7);
   if (!storage.removeSectionStation(lineName, lineStation)) {
     alert('역은 2개 이하로 삭제할 수 없습니다.');
@@ -99,7 +99,7 @@ const selectSectionLineButton = (e) => {
 
 const findSubwayLineTag = () => {
   for (let item of storage.getLocalStorageMap('subway-line')) {
-    if (item[0] === document.getElementsByTagName('h3')[1].innerHTML) {
+    if (item[0] === document.getElementsByTagName('h3')[1].innerHTML.slice(0,-3)) {
       return item;
     }
   }
@@ -137,14 +137,14 @@ const initSectionInput = (message) => {
 };
 
 const storeLineStation = ({ subwayLines, lineStation }) => {
-  let lineName = document.getElementsByTagName('h3')[1].innerHTML;
+  let lineName = document.getElementsByTagName('h3')[1].innerHTML.slice(0,-3);
   subwayLines.set(lineName, lineStation);
   storage.setLocalStorageMap('subway-line', subwayLines);
 };
 
 const addLineStation = ({ sectionOrderInputValue, sectionStationOption }) => {
   const subwayLines = storage.getLocalStorageMap('subway-line');
-  const lineName = document.getElementsByTagName('h3')[1].innerHTML;
+  const lineName = document.getElementsByTagName('h3')[1].innerHTML.slice(0,-3);
   let lineStation = subwayLines.get(lineName);
 
   lineStation.splice(sectionOrderInputValue, 0, sectionStationOption);
