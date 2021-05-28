@@ -1,5 +1,5 @@
-import StationManageController from "./controller/stationManageController.js";
+import SubwayManageController from "./controller/subwayManageController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const stationsManageController = new StationManageController();
+  new SubwayManageController();
 });
