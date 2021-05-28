@@ -2,17 +2,7 @@ import { storage } from '../../model/index.js';
 import { addButtonEvent, removeButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
-import { initSubwayRouteMap } from '../subway-route-map/index.js';
-
-const toggleDisplayStationManagement = () => {
-  elementIds.stationManagement.hidden = !elementIds.stationManagement.hidden;
-  elementIds.lineManagement.hidden = true;
-  elementIds.sectionManagement.hidden = true;
-  if (elementIds.mapPrintManagement) {
-    elementIds.mapPrintManagement.hidden = true;
-  }
-  initSubwayRouteMap();
-};
+import { toggleDisplayStationManagement } from './toggle-display.js';
 
 const checkValidStationName = (subwayStation, stationNameInput) => {
   if (subwayStation.get(stationNameInput)) {

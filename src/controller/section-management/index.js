@@ -4,7 +4,7 @@ import { storage } from '../../model/index.js';
 import { errorMessage } from '../error-message.js';
 import { renderLine } from '../../view/line-management/index.js';
 import { renderSectionManagement } from '../../view/section-management/index.js';
-import { initSubwayRouteMap } from '../subway-route-map/index.js';
+import { toggleSectionManagement } from './toggle-display.js';
 
 export const rerenderSectionButtons = () => {
   removeChildAllElements(elementIds.sectionButtons);
@@ -14,17 +14,7 @@ export const rerenderSectionButtons = () => {
   }
 };
 
-const toggleSectionManagement = () => {
-  elementIds.stationManagement.hidden = true;
-  elementIds.lineManagement.hidden = true;
-  elementIds.sectionManagement.hidden = !elementIds.sectionManagement.hidden;
-  if (elementIds.mapPrintManagement) {
-    elementIds.mapPrintManagement.hidden = true;
-  }
-  initSubwayRouteMap();
-};
-
-const renderSelectionRegister = (lineName) => {
+const renderSelectionRegister = lineName => {
   elementIds.sectionManageText.innerHTML = '';
   elementIds.sectionManageText.insertAdjacentHTML(
     'afterbegin',
@@ -34,7 +24,7 @@ const renderSelectionRegister = (lineName) => {
 };
 
 const addSelectOption = (element, stations) => {
-  stations.forEach((station) => {
+  stations.forEach(station => {
     let option = document.createElement('option');
     option.value = station;
     option.innerHTML = station;
@@ -49,7 +39,7 @@ const renderAddLineStation = ({ index, value }) => {
   );
 };
 
-const deleteLineStation = (e) => {
+const deleteLineStation = e => {
   const lineName = document
     .getElementsByTagName('h3')[1]
     .innerHTML.slice(0, -3);
@@ -72,7 +62,7 @@ const renderLineManagementTable = () => {
   renderLine();
 };
 
-const renderSectionTable = (lineStation) => {
+const renderSectionTable = lineStation => {
   elementIds.sectionTableTbody.innerHTML = '';
   lineStation.forEach((value, index) => {
     renderAddLineStation({ index, value });
@@ -80,7 +70,7 @@ const renderSectionTable = (lineStation) => {
   addDeleteEvent();
 };
 
-const renderSelect = (lineName) => {
+const renderSelect = lineName => {
   let lineStation;
   removeChildAllElements(elementIds.sectionStationSelector);
   addSelectOption(elementIds.sectionStationSelector, [
@@ -94,7 +84,7 @@ const renderSelect = (lineName) => {
   renderSectionTable(lineStation);
 };
 
-const selectSectionLineButton = (e) => {
+const selectSectionLineButton = e => {
   const lineName = e.currentTarget.dataset.line;
   renderSelectionRegister(lineName);
   renderSelect(lineName);
@@ -135,7 +125,7 @@ const checkValidValue = ({
   return true;
 };
 
-const initSectionInput = (message) => {
+const initSectionInput = message => {
   alert(message);
   elementIds.sectionOrderInput.value = '';
   elementIds.sectionOrderInput.focus();

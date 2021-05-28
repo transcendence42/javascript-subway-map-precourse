@@ -3,17 +3,7 @@ import { storage } from '../../model/index.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
 import { rerenderSectionButtons } from '../section-management/index.js';
-import { initSubwayRouteMap } from '../subway-route-map/index.js';
-
-const toggleDisplayLineManagement = () => {
-  elementIds.stationManagement.hidden = true;
-  elementIds.lineManagement.hidden = !elementIds.lineManagement.hidden;
-  elementIds.sectionManagement.hidden = true;
-  if (elementIds.mapPrintManagement) {
-    elementIds.mapPrintManagement.hidden = true;
-  }
-  initSubwayRouteMap();
-};
+import { toggleDisplayLineManagement } from './toggle-display.js';
 
 const addLineLocalStorage = (
   lineStartStationSelectorValue,
@@ -80,7 +70,7 @@ const addLineList = (
   storage.setLocalStorageArray('subway-line-list', lineList);
 };
 
-const addLineButtonEvent = (lineName) => {
+const addLineButtonEvent = lineName => {
   for (let item of document.querySelectorAll(
     `table[id=line-table] tbody tr td button`,
   )) {
@@ -128,7 +118,7 @@ const addLine = () => {
   console.log(storage.getLocalStorageMap('subway-line'));
 };
 
-const addRemoveButton = (e) => {
+const addRemoveButton = e => {
   const dataLine = e.currentTarget.dataset.line.slice(0, -7);
   for (let item of document.querySelectorAll(`table[id=line-table] tbody tr`)) {
     if (item.dataset.line === dataLine) {
