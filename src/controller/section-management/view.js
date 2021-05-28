@@ -12,7 +12,7 @@ const addSelectOption = (element, stations) => {
   });
 };
 
-export const renderSelect = (lineName) => {
+const renderSelect = (lineName) => {
   let lineStation;
   removeChildAllElements(elementIds.sectionStationSelector);
   addSelectOption(elementIds.sectionStationSelector, [
@@ -26,7 +26,7 @@ export const renderSelect = (lineName) => {
   renderSectionTable(lineStation);
 };
 
-export const renderSelectionRegister = (lineName) => {
+const renderSelectionRegister = (lineName) => {
   elementIds.sectionManageText.innerHTML = '';
   elementIds.sectionManageText.insertAdjacentHTML(
     'afterbegin',
@@ -35,7 +35,7 @@ export const renderSelectionRegister = (lineName) => {
   elementIds.sectionRegister.hidden = false;
 };
 
-export const renderLineManagementTable = () => {
+const renderLineManagementTable = () => {
   removeChildAllElements(elementIds.lineTableTbody);
   renderLine();
 };
@@ -47,10 +47,17 @@ const renderAddLineStation = ({ index, value }) => {
   );
 };
 
-export const renderSectionTable = (lineStation) => {
+const renderSectionTable = (lineStation) => {
   elementIds.sectionTableTbody.innerHTML = '';
   lineStation.forEach((value, index) => {
     renderAddLineStation({ index, value });
   });
   addDeleteEvent();
+};
+
+export {
+  renderSelect,
+  renderSelectionRegister,
+  renderLineManagementTable,
+  renderSectionTable,
 };

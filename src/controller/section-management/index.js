@@ -5,7 +5,7 @@ import { toggleSectionManagement } from './toggle-display.js';
 import { selectSectionLineButton } from './select-section.js';
 import { addButtonEvent } from '../utils.js';
 
-export const rerenderSectionButtons = () => {
+const rerenderSectionButtons = () => {
   removeChildAllElements(elementIds.sectionButtons);
   renderSectionManagement();
   for (let item of elementIds.sectionLineMenuButton) {
@@ -13,10 +13,12 @@ export const rerenderSectionButtons = () => {
   }
 };
 
-export const controlSectionManagement = () => {
+const controlSectionManagement = () => {
   addButtonEvent(elementIds.sectionManagerButton, toggleSectionManagement);
   for (let item of elementIds.sectionLineMenuButton) {
     addButtonEvent(item, selectSectionLineButton);
   }
   addButtonEvent(elementIds.sectionAddButton, addSectionLineStation);
 };
+
+export { rerenderSectionButtons, controlSectionManagement };
