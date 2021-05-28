@@ -1,7 +1,7 @@
 export default class StationManageView {
   makeHtml(stations) {
     let ret = `
-        <span><p>역 이름</p></span>
+        <p>역 이름</p>
         <form onsubmit="return false;">
           <input type="text" id="station-name-input">
           <button id="station-add-button">역 추가</button>
