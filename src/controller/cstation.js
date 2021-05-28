@@ -1,6 +1,6 @@
 import { Station as S } from '../constant.js';
 import { addStation, deleteStation } from '../model/station.js';
-import { addStationTable, removeStationTable } from '../view/viewStation.js';
+import { addStationTable, removeStationTable } from '../view/vstation.js';
 
 export function clickAddStation() {
   const newStation = document.getElementById(S.INPUT).value;
@@ -18,11 +18,11 @@ export function clickAddStation() {
 }
 
 export function constructStation() {
+  const stationAddButton = document.getElementById(S.ADDBTN);
+  stationAddButton.addEventListener('click', clickAddStation);
   document.getElementById(S.TABLE).addEventListener('click', function (e) {
     const target = e.target;
     const action = target.dataset.action;
-
-    console.log(target.dataset.id);
 
     if (action === 'deleteStation') {
       removeStationTable(target.closest('tr'));

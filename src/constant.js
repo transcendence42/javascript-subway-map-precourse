@@ -13,6 +13,8 @@ export const Station = {
   ADDBTN: '#station-add-button',
   DELETEBTN: '.station-delete-button',
   TABLE: '#station-table',
+  TH: `<th style="border: 1px solid"><strong>역 이름</strong></th>
+  <th style="border: 1px solid"><strong>설정</strong></th>`,
 };
 
 export const Line = {
@@ -21,4 +23,9 @@ export const Line = {
   START: '#line-start-station-selector',
   END: '#line-end-station-selector',
   ADDBTN: '#line-add-button',
+  TABLE: '#line-table',
+  TH: `<th style="border: 1px solid"><strong>노선 이름</strong></th>
+  <th style="border: 1px solid"><strong>상행 종점역</strong></th>
+  <th style="border: 1px solid"><strong>하행 종점역</strong></th>
+  <th style="border: 1px solid"><strong>설정</strong></th>`,
 };

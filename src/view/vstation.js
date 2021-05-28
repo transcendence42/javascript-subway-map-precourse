@@ -1,4 +1,5 @@
 import { Station } from '../constant.js';
+import { removeAllChildren } from '../utils.js'
 
 export function addStationTable(station) {
   const table = document.getElementById(Station.TABLE);
@@ -23,6 +24,8 @@ export function renderStationTable() {
   const stations = JSON.parse(localStorage.getItem('stations'));
   const table = document.getElementById(Station.TABLE);
   if (stations) {
+    removeAllChildren(table);
+    table.insertAdjacentHTML('afterbegin', Station.TH);
     stations.forEach((station) => {
       table.insertAdjacentHTML(
         'beforeend',

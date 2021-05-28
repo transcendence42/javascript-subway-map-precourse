@@ -1,5 +1,8 @@
 import { MainButtons, Station } from '../constant.js';
-import { clickAddStation, constructStation } from './controllerStation.js';
+import { renderStationTable } from '../view/vstation.js';
+import { renderLineTable } from '../view/vline.js';
+import { constructStation } from './cstation.js';
+import { constructLine } from './cline.js';
 
 function getParts() {
   return {
@@ -28,9 +31,8 @@ function showStationPart() {
   hideElem(Parts.linePart);
   hideElem(Parts.sectionPart);
   hideElem(Parts.mapPart);
-
-  const stationAddButton = document.getElementById(Station.ADDBTN);
-  stationAddButton.addEventListener('click', clickAddStation);
+  renderStationTable();
+  constructStation();
 }
 
 function showLinePart() {
@@ -39,6 +41,8 @@ function showLinePart() {
   showElem(Parts.linePart);
   hideElem(Parts.sectionPart);
   hideElem(Parts.mapPart);
+  renderLineTable();
+  constructLine();
 }
 
 function showSectionPart() {
@@ -75,5 +79,4 @@ function constructor() {
 
 export default function controller() {
   constructor();
-  constructStation();
 }
