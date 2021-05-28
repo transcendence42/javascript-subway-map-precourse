@@ -34,4 +34,9 @@ export default class RouteManageView {
     ret += `</tbody></table>`;
     document.querySelector("#show").innerHTML = ret;
   }
+  addRouteToTable(routeName, upwardEndStation, downwardEndStation) {
+    let tbody = document.querySelector("table>tbody");
+    tbody.innerHTML += `<tr>
+    <td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button>삭제</button></td></tr>`;
+  }
 }
