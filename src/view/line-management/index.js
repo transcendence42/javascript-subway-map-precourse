@@ -1,5 +1,5 @@
-import { elementIds } from '../../utils.js';
 import { storage } from '../../model/index.js';
+import { elementIds } from '../../utils.js';
 
 const addSelectOption = (element, value) => {
   let option = document.createElement('option');
