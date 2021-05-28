@@ -1,3 +1,4 @@
+import { findSubwayLineTag } from './model.js';
 import { errorMessage } from '../error-message.js';
 import { initSectionInput } from './init.js';
 
@@ -10,10 +11,10 @@ const checkValidOption = (lineStation, sectionStationOption) => {
 };
 
 export const checkValidValue = ({
-  lineStation,
   sectionOrderInputValue,
   sectionStationOption,
 }) => {
+  const lineStation = findSubwayLineTag()[1];
   if (!checkValidInput(lineStation.length, Number(sectionOrderInputValue))) {
     initSectionInput(errorMessage.sectionInvalidRangeInput);
     return false;

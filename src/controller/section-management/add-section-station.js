@@ -1,5 +1,5 @@
 import { renderLineManagementTable, renderSectionTable } from './view.js';
-import { findSubwayLineTag, storeLineStation } from './model.js';
+import { storeLineStation } from './model.js';
 import { storage } from '../../model/index.js';
 import { checkValidValue } from './check.js';
 import { elementIds } from '../../utils.js';
@@ -17,12 +17,10 @@ const addLineStation = ({ sectionOrderInputValue, sectionStationOption }) => {
 };
 
 export const addSectionLineStation = () => {
-  const subwayLine = findSubwayLineTag();
   const sectionOrderInputValue = elementIds.sectionOrderInput.value;
   const sectionStationOption = elementIds.sectionStationSelector.value;
   if (
     !checkValidValue({
-      lineStation: subwayLine[1],
       sectionOrderInputValue,
       sectionStationOption,
     })
