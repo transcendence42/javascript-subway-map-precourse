@@ -17,11 +17,9 @@ const addLineStation = ({ sectionOrderInputValue, sectionStationOption }) => {
 };
 
 export const addSectionLineStation = () => {
-  let subwayLine;
+  const subwayLine = findSubwayLineTag();
   const sectionOrderInputValue = elementIds.sectionOrderInput.value;
   const sectionStationOption = elementIds.sectionStationSelector.value;
-
-  subwayLine = findSubwayLineTag();
   if (
     !checkValidValue({
       lineStation: subwayLine[1],

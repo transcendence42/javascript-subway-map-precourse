@@ -1,4 +1,4 @@
-import { initSubwayRouteMap } from './index.js';
+import { initSubwayRouteMap } from './init.js';
 import {
   renderMapFrame,
   renderSubwayRouteMap,

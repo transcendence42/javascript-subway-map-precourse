@@ -12,34 +12,6 @@ const addSelectOption = (element, stations) => {
   });
 };
 
-const renderSelect = (lineName) => {
-  let lineStation;
-  removeChildAllElements(elementIds.sectionStationSelector);
-  addSelectOption(elementIds.sectionStationSelector, [
-    ...storage.getLocalStorageMap('subway-station').keys(),
-  ]);
-  for (const item of storage.getLocalStorageMap('subway-line')) {
-    if (lineName === item[0]) {
-      lineStation = item[1];
-    }
-  }
-  renderSectionTable(lineStation);
-};
-
-const renderSelectionRegister = (lineName) => {
-  elementIds.sectionManageText.innerHTML = '';
-  elementIds.sectionManageText.insertAdjacentHTML(
-    'afterbegin',
-    `<h3>${lineName} 관리</h3>`,
-  );
-  elementIds.sectionRegister.hidden = false;
-};
-
-const renderLineManagementTable = () => {
-  removeChildAllElements(elementIds.lineTableTbody);
-  renderLine();
-};
-
 const renderAddLineStation = ({ index, value }) => {
   elementIds.sectionTableTbody.insertAdjacentHTML(
     'beforeend',
@@ -59,6 +31,34 @@ const renderSectionTable = (lineStation) => {
     renderAddLineStation({ index, value });
   });
   addDeleteEvent();
+};
+
+const renderSelect = (lineName) => {
+  let lineStation;
+  removeChildAllElements(elementIds.sectionStationSelector);
+  addSelectOption(elementIds.sectionStationSelector, [
+    ...storage.getLocalStorageMap('subway-station').keys(),
+  ]);
+  for (const [name, station] of storage.getLocalStorageMap('subway-line')) {
+    if (lineName === name) {
+      lineStation = station;
+    }
+  }
+  renderSectionTable(lineStation);
+};
+
+const renderSelectionRegister = (lineName) => {
+  elementIds.sectionManageText.innerHTML = '';
+  elementIds.sectionManageText.insertAdjacentHTML(
+    'afterbegin',
+    `<h3>${lineName} 관리</h3>`,
+  );
+  elementIds.sectionRegister.hidden = false;
+};
+
+const renderLineManagementTable = () => {
+  removeChildAllElements(elementIds.lineTableTbody);
+  renderLine();
 };
 
 export {

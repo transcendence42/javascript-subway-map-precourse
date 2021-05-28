@@ -11,6 +11,6 @@ export const deleteLine = (e) => {
       item.remove();
     }
   }
-  removeEventListener(e.currentTarget, deleteLine);
+  window.removeEventListener(e.currentTarget, deleteLine);
   rerenderSectionButtons();
 };

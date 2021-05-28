@@ -16,7 +16,7 @@ const addStationName = (stationNames) => {
   return ulTag;
 };
 
-const addLineName = (lineName, stationNames) => {
+const addLineName = (lineName) => {
   const h2Tag = document.createElement('h2');
   h2Tag.innerHTML = lineName;
   return h2Tag;

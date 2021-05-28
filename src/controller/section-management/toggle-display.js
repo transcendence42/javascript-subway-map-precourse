@@ -1,4 +1,4 @@
-import { initSubwayRouteMap } from '../subway-route-map/index.js';
+import { initSubwayRouteMap } from '../subway-route-map/init.js';
 import { elementIds } from '../../utils.js';
 
 export const toggleDisplay = () => {

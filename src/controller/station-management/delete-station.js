@@ -5,7 +5,7 @@ import { storage } from '../../model/index.js';
 const deleteSelectOption = (datasetStation) => {
   const selectOption = document.querySelectorAll('option');
   for (const item of selectOption) {
-    if (item.value == datasetStation) {
+    if (item.value === datasetStation) {
       item.remove();
     }
   }
