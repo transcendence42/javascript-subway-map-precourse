@@ -6,6 +6,7 @@ export const NAME = {
 };
 
 export const ID = {
+  MENU_CONTAINER: 'menu-container',
   STATION_MANAGER_BUTTON: 'station-manager-button',
   LINE_MANAGER_BUTTON: 'line-manager-button',
   SECTION_MANAGER_BUTTON: 'section-manager-button',

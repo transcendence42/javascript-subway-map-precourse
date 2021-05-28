@@ -21,3 +21,12 @@ export const stationListTable = () => {
   </table>
   `;
 };
+
+export const stationListTableTr = (name) => {
+  return `
+    <tr>
+      <td>${name}</td>
+      <td><button id='${ID.STATION_DELETE_BUTTON}'>삭제</td>
+    </tr>
+  `
+}

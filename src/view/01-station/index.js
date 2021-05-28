@@ -1,15 +1,27 @@
 import { ID } from '../../constants/index.js';
-import { stationManagerDiv, stationListTable } from './template.js';
+import {
+  stationManagerDiv,
+  stationListTable,
+  stationListTableTr,
+} from './template.js';
 
-const createStaionListTable = () => {
-  document.getElementById(ID.STATION_MANAGER)
+export const addStationListTableTr = (name) => {
+  document
+    .getElementById(ID.STATION_LIST_TABLE)
+    .insertAdjacentHTML(`beforeend`, stationListTableTr(name));
+};
+
+const createStationListTable = () => {
+  document
+    .getElementById(ID.STATION_MANAGER)
     .insertAdjacentHTML(`beforeend`, stationListTable());
-}
+};
 
 const createStationManager = () => {
-  document.getElementById('app')
+  document
+    .getElementById('app')
     .insertAdjacentHTML(`beforeend`, stationManagerDiv());
-  createStaionListTable();
+  createStationListTable();
 };
 
 export const stationRenderer = () => {

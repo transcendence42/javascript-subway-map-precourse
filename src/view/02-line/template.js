@@ -6,7 +6,6 @@ export const lineManagerDiv = () => {
     <h3>노선 이름</br>
     <input id='${ID.LINE_NAME_INPUT}' placeholder="노선 이름을 입력해주세요." />
     </h3>
-
     <span><strong>상행 종점
     <select id='${ID.LINE_START_STATION_SELECTOR}'></select>
     </strong></span></br>
