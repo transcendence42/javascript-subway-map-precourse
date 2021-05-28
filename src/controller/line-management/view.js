@@ -5,12 +5,12 @@ const addLineTable = ({
   lineStartStationSelectorValue,
   lineEndStationSelectorValue,
 }) => {
-  return `<tr data-line=\'${lineName}\'>
+  return `<tr data-line='${lineName}'>
             <td>${lineName}</td>
             <td>${lineStartStationSelectorValue}</td>
             <td>${lineEndStationSelectorValue}</td>
             <td>
-                <button class='line-delete-button' data-line=\'${lineName}-button\'>삭제</button>
+                <button class='line-delete-button' data-line='${lineName}-button'>삭제</button>
             </td>
         </tr>`;
 };

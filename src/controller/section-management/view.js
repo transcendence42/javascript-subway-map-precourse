@@ -43,7 +43,13 @@ const renderLineManagementTable = () => {
 const renderAddLineStation = ({ index, value }) => {
   elementIds.sectionTableTbody.insertAdjacentHTML(
     'beforeend',
-    `<tr data-line-station=\'${value}\'><td>${index}</td><td>${value}</td><td><button class='section-delete-button' data-line-station=\'${value}-button\'>노선에서 제거</button></td></tr>`,
+    `<tr data-line-station='${value}'>
+      <td>${index}</td>
+      <td>${value}</td>
+      <td>
+        <button class='section-delete-button' data-line-station='${value}-button'>노선에서 제거</button>
+      </td>
+     </tr>`,
   );
 };
 
