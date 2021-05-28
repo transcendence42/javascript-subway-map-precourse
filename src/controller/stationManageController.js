@@ -27,6 +27,7 @@ export default class StationManageController {
   isValidStationName(stationName) {
     if (stationName == null || stationName == "") return false;
     if (stationName.search(/[^가-힣]/g) != -1) return false;
+    if (stationName.length < 2) return false;
     return true;
   }
   showAllStations() {
