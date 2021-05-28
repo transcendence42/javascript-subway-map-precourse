@@ -6,6 +6,6 @@ import { mapPrintManager } from './04-map/index.js';
 export const controller = () => {
 	stationManager();
 	lineManager();
-	sectionManager();
-	mapPrintManager();
+	// sectionManager();
+	// mapPrintManager();
 }
