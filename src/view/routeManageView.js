@@ -26,10 +26,10 @@ export default class RouteManageView {
                   <th>하행 종점역</th>
                   <th>설정</th>
               </tr>`;
-    Object.keys(routes).forEach(key => {
-      let upwardEndStation = routes[key][0];
-      let downwardEndStation = routes[key][1];
-      ret += `<tr><td>${key}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button>삭제</button></td></tr>`;
+    Object.keys(routes).forEach(routeName => {
+      let upwardEndStation = routes[routeName][0];
+      let downwardEndStation = routes[routeName][1];
+      ret += `<tr><td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button class="deleteRouteBtn">삭제</button></td></tr>`;
     });
     ret += `</tbody></table>`;
     document.querySelector("#show").innerHTML = ret;
@@ -37,6 +37,6 @@ export default class RouteManageView {
   addRouteToTable(routeName, upwardEndStation, downwardEndStation) {
     let tbody = document.querySelector("table>tbody");
     tbody.innerHTML += `<tr>
-    <td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button>삭제</button></td></tr>`;
+    <td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button>삭제</button class="deleteRouteBtn"></td></tr>`;
   }
 }
