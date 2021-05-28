@@ -1,7 +1,7 @@
 import { rerenderSectionButtons } from '../section-management/index.js';
 import { addLineLocalStorage, addLineList } from './model.js';
 import { checkValidLineSelector } from './check.js';
-import { removeLine } from './remove-line.js';
+import { deleteLine } from './delete-line.js';
 import { storage } from '../../model/index.js';
 import { addButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
@@ -13,7 +13,7 @@ const addLineButtonEvent = (lineName) => {
     `table[id=line-table] tbody tr td button`,
   )) {
     if (item.dataset.line === `${lineName}-button`) {
-      addButtonEvent(item, removeLine);
+      addButtonEvent(item, deleteLine);
     }
   }
 };

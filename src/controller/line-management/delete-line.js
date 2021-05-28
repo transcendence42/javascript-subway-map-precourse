@@ -1,7 +1,7 @@
 import { rerenderSectionButtons } from '../section-management/index.js';
 import { storage } from '../../model/index.js';
 
-export const removeLine = (e) => {
+export const deleteLine = (e) => {
   const dataLine = e.currentTarget.dataset.line.slice(0, -7);
   for (let item of document.querySelectorAll(`table[id=line-table] tbody tr`)) {
     if (item.dataset.line === dataLine) {
@@ -9,6 +9,6 @@ export const removeLine = (e) => {
       item.remove();
     }
   }
-  removeEventListener(e.currentTarget, removeLine);
+  removeEventListener(e.currentTarget, deleteLine);
   rerenderSectionButtons();
 };
