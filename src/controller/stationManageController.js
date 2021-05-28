@@ -45,7 +45,10 @@ export default class StationManageController {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
         let stationName = tr.firstElementChild.innerText;
-        this.stationDAO.deleteStation(stationName);
+        if (!this.stationDAO.deleteStation(stationName)) {
+          alert(ERROR_CODE_MSG[ERROR_CODE.STATION_IN_ROUTE]);
+          return;
+        }
         tr.remove();
       }
     });

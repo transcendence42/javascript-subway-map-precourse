@@ -1,3 +1,5 @@
+import RouteDAO from "./routeDAO.js";
+
 export default class StationDAO {
   constructor() {
     this.localStorage = window.localStorage;
@@ -13,9 +15,21 @@ export default class StationDAO {
     this.localStorage.setItem("stations", stations.toString());
     return stationName;
   }
+  isStationInRoute(stationName) {
+    let routeDAO = new RouteDAO();
+    let routes = routeDAO.getAllRoutes();
+    let routeArray = Object.keys(routes);
+    let ret = false;
+    routeArray.forEach(route => {
+      if (routes[route].includes(stationName)) ret = true;
+    });
+    return ret;
+  }
   deleteStation(stationName) {
     let stations = this.getAllStations();
+    if (this.isStationInRoute(stationName)) return null;
     stations = stations.filter(item => item != stationName);
     this.localStorage.setItem("stations", stations.toString());
+    return stationName;
   }
 }
