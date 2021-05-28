@@ -2,8 +2,10 @@ export default class StationManageView {
   makeHtml(stations) {
     let ret = `
         <span><p>역 이름</p></span>
-        <input type="text" id="station-name-input">
-        <button id="station-add-button">역 추가</button>
+        <form onsubmit="return false;">
+          <input type="text" id="station-name-input">
+          <button id="station-add-button">역 추가</button>
+        </form>
         <h2>지하철 역 목록</h2>
         <table>
           <tbody>
