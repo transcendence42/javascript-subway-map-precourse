@@ -5,7 +5,32 @@ export default class SectionManageView {
     routeList.forEach(routeName => {
       ret += `<li><button class="section-route-btn">${routeName}</button></li>`;
     });
-    ret += `</ul>`;
+    ret += `</ul><div id="manage-section"></div>`;
     document.querySelector("#show").innerHTML = ret;
+  }
+  showManageSection(routeName, stationsList) {
+    let ret = `<h2>${routeName} 관리</h2>
+      <h3>구간 등록</h3>
+      <p>
+        <select>`;
+    stationsList.forEach(stationName => {
+      ret += `<option>${stationName}</option>`;
+    });
+    ret += `</select>
+        <input type="number">
+        <button>등록</button>
+      </p>
+      <table>
+          <tbody>
+              <tr>
+                  <th>순서</th>
+                  <th>이름</th>
+                  <th>설정</th>
+              </tr>`;
+    stationsList.forEach((stationName, idx) => {
+      ret += `<tr><td>${idx}</td><td>${stationName}</td><td><button>노선에서 제거</button></td></tr>`;
+    });
+    ret += `</tbody></table>`;
+    document.querySelector("#manage-section").innerHTML = ret;
   }
 }

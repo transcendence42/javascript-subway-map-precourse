@@ -4,14 +4,14 @@ export default class RouteManageView {
     let ret = `<p><span>노선 이름</span></p>
       <p><input id="route-name" type="text" placeholder="노선 이름을 입력해주세요"></p>
       <p><span>상행 종점</span>
-      <select name="upward-end-station">`;
+      <select name="upward-end-station" class="manage-route-page">`;
     stations.forEach(item => {
       ret += `<option>${item}</option>`;
     });
     ret += `</select>
       </p>
       <p><span>하행 종점</span>
-      <select name="downward-end-station">`;
+      <select name="downward-end-station" class="manage-route-page">`;
     stations.forEach(item => {
       ret += `<option>${item}</option>`;
     });

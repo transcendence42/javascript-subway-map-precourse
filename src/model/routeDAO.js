@@ -18,4 +18,12 @@ export default class RouteDAO {
     delete routes[routeName];
     this.localStorage.setItem("routes", JSON.stringify(routes));
   }
+  getStationsList(routeName) {
+    let routes = this.getAllRoutes();
+    let stationsList = routes[routeName];
+    if (stationsList == null) {
+      alert("잘못된 경로입니다.");
+    }
+    return stationsList;
+  }
 }
