@@ -9,7 +9,7 @@ import { initLineInput } from './init.js';
 import { renderLine } from './view.js';
 
 const addLineButtonEvent = (lineName) => {
-  for (let item of document.querySelectorAll(
+  for (const item of document.querySelectorAll(
     `table[id=line-table] tbody tr td button`,
   )) {
     if (item.dataset.line === `${lineName}-button`) {

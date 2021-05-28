@@ -9,7 +9,7 @@ const addLineList = (
   if (!storage.getLocalStorage('subway-line-list')) {
     storage.setLocalStorageArray('subway-line-list', []);
   }
-  let lineList = storage.getLocalStorageArray('subway-line-list');
+  const lineList = storage.getLocalStorageArray('subway-line-list');
   lineList.push(lineStartStationSelectorValue, lineEndStationSelectorValue);
   storage.setLocalStorageArray('subway-line-list', lineList);
 };

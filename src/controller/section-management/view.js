@@ -5,7 +5,7 @@ import { storage } from '../../model/index.js';
 
 const addSelectOption = (element, stations) => {
   stations.forEach((station) => {
-    let option = document.createElement('option');
+    const option = document.createElement('option');
     option.value = station;
     option.innerHTML = station;
     element.appendChild(option);
@@ -18,7 +18,7 @@ const renderSelect = (lineName) => {
   addSelectOption(elementIds.sectionStationSelector, [
     ...storage.getLocalStorageMap('subway-station').keys(),
   ]);
-  for (let item of storage.getLocalStorageMap('subway-line')) {
+  for (const item of storage.getLocalStorageMap('subway-line')) {
     if (lineName === item[0]) {
       lineStation = item[1];
     }

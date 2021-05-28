@@ -4,7 +4,7 @@ import { storage } from '../../model/index.js';
 
 const deleteSelectOption = (datasetStation) => {
   const selectOption = document.querySelectorAll('option');
-  for (let item of selectOption) {
+  for (const item of selectOption) {
     if (item.value == datasetStation) {
       item.remove();
     }
@@ -24,7 +24,7 @@ export const deleteStation = (e) => {
     return;
   }
   deleteSelectOption(datasetStation);
-  for (let item of document.querySelectorAll(`tbody tr`)) {
+  for (const item of document.querySelectorAll(`tbody tr`)) {
     if (item.dataset.station === datasetStation) {
       storage.removeLocalStorage('subway-station', item.dataset.station);
       item.remove();

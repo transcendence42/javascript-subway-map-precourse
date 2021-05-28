@@ -26,7 +26,7 @@ export const storage = {
     const subwayStation = new Map(
       JSON.parse(localStorage.getItem('subway-line')),
     );
-    let lineStations = subwayStation.get(lineName);
+    const lineStations = subwayStation.get(lineName);
     if (lineStations.length <= 2) {
       return false;
     }

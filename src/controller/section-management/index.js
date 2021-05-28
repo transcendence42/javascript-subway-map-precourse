@@ -8,14 +8,14 @@ import { addButtonEvent } from '../utils.js';
 const rerenderSectionButtons = () => {
   removeChildAllElements(elementIds.sectionButtons);
   renderSectionManagement();
-  for (let item of elementIds.sectionLineMenuButton) {
+  for (const item of elementIds.sectionLineMenuButton) {
     addButtonEvent(item, selectSectionLineButton);
   }
 };
 
 const controlSectionManagement = () => {
   addButtonEvent(elementIds.sectionManagerButton, toggleDisplay);
-  for (let item of elementIds.sectionLineMenuButton) {
+  for (const item of elementIds.sectionLineMenuButton) {
     addButtonEvent(item, selectSectionLineButton);
   }
   addButtonEvent(elementIds.sectionAddButton, addSectionLineStation);

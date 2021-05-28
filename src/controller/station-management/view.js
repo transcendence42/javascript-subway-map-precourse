@@ -1,7 +1,7 @@
 import { elementIds } from '../../utils.js';
 
 const addSelectOption = (element, value) => {
-  let option = document.createElement('option');
+  const option = document.createElement('option');
   option.value = value;
   option.innerHTML = value;
   element.appendChild(option);

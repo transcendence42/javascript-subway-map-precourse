@@ -7,7 +7,7 @@ import { addLine } from './add-line.js';
 export const controlLineManagement = () => {
   addButtonEvent(elementIds.lineManagerButton, toggleDisplay);
   addButtonEvent(elementIds.lineAddButton, addLine);
-  for (let item of document.querySelectorAll(
+  for (const item of document.querySelectorAll(
     `table[id=line-table] tbody tr button`,
   )) {
     addButtonEvent(item, deleteLine);

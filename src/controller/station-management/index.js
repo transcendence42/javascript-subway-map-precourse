@@ -5,12 +5,9 @@ import { addButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 
 export const controlStationManagement = () => {
-  addButtonEvent(
-    elementIds.stationManagerButton,
-    toggleDisplay,
-  );
+  addButtonEvent(elementIds.stationManagerButton, toggleDisplay);
   addButtonEvent(elementIds.stationAddButton, addStation);
-  for (let button of elementIds.stationDeleteButton) {
+  for (const button of elementIds.stationDeleteButton) {
     addButtonEvent(button, deleteStation);
   }
 };

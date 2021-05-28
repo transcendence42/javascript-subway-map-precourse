@@ -3,7 +3,7 @@ import { elementIds } from '../../utils.js';
 
 const renderLineButtons = () => {
   let result = '';
-  for (let item of storage.getLocalStorageMap('subway-line').keys()) {
+  for (const item of storage.getLocalStorageMap('subway-line').keys()) {
     result += `<button class="section-line-menu-button" data-line='${item}'>${item}</button> `;
   }
   elementIds.sectionButtons.insertAdjacentHTML('afterbegin', result);

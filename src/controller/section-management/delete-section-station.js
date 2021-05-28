@@ -16,7 +16,7 @@ const deleteLineStation = (e) => {
 };
 
 export const addDeleteEvent = () => {
-  for (let button of elementIds.sectionDeleteButton) {
+  for (const button of elementIds.sectionDeleteButton) {
     addButtonEvent(button, deleteLineStation);
   }
 };

@@ -5,7 +5,7 @@ import { addButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 
 const addStationButtonEvent = (stationNameInput) => {
-  for (let item of document.querySelectorAll(`tbody tr button`)) {
+  for (const item of document.querySelectorAll(`tbody tr button`)) {
     if (item.dataset.station === `${stationNameInput}-button`) {
       addButtonEvent(item, deleteStation);
     }

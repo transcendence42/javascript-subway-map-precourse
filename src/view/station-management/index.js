@@ -8,7 +8,7 @@ const makeStationTable = (station) => {
 const renderStation = () => {
   const subwayStation = storage.getLocalStorageMap('subway-station');
   let result = '';
-  for (let station of [...subwayStation.keys()]) {
+  for (const station of [...subwayStation.keys()]) {
     result += makeStationTable(station);
   }
   elementIds.stationTableTbody.insertAdjacentHTML('afterbegin', result);

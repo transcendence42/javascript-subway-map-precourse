@@ -9,21 +9,21 @@ export const renderMapFrame = () => {
 };
 
 const addStationName = (stationNames) => {
-  let ulTag = document.createElement('ul');
-  for (let stationName of stationNames) {
+  const ulTag = document.createElement('ul');
+  for (const stationName of stationNames) {
     ulTag.innerHTML += `<li>${stationName}</li>`;
   }
   return ulTag;
 };
 
 const addLineName = (lineName, stationNames) => {
-  let h2Tag = document.createElement('h2');
+  const h2Tag = document.createElement('h2');
   h2Tag.innerHTML = lineName;
   return h2Tag;
 };
 
 const renderMap = () => {
-  for (let [lineName, stationNames] of storage.getLocalStorageArray(
+  for (const [lineName, stationNames] of storage.getLocalStorageArray(
     'subway-line',
   )) {
     document

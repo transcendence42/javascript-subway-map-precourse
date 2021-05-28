@@ -9,7 +9,7 @@ const addLineStation = ({ sectionOrderInputValue, sectionStationOption }) => {
   const lineName = document
     .getElementsByTagName('h3')[1]
     .innerHTML.slice(0, -3);
-  let lineStation = subwayLines.get(lineName);
+  const lineStation = subwayLines.get(lineName);
 
   lineStation.splice(sectionOrderInputValue, 0, sectionStationOption);
   renderSectionTable(lineStation);
