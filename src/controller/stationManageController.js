@@ -31,7 +31,7 @@ export default class StationManageController {
     return true;
   }
   showAllStations() {
-    this.stationManageView.makeHtml(this.stationDAO.getAllStation());
+    this.stationManageView.makeHtml(this.stationDAO.getAllStations());
     this.addEventAboutAddStation();
     this.addEventAboutDeleteStation();
   }
