@@ -16,7 +16,6 @@ export function addStationTable(station) {
 
 export function removeStationTable(tr) {
   const parent = tr.parentNode;
-
   parent.removeChild(tr);
 }
 

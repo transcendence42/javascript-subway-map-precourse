@@ -6,14 +6,19 @@ export function addLineTable(newLine, start, end) {
   table.insertAdjacentHTML(
     'beforeend',
     `<tr>
-        <td style="border:1px solid;">${newLine}</td>
-        <td style="border:1px solid;">${start}</td>
-        <td style="border:1px solid;">${end}</td>
-        <td style="border:1px solid;">
-        <button data-id="${newLine}" data-action="deleteLine">삭제</button>
-        </td>
-        </tr>`,
+    <td style="border:1px solid;">${newLine}</td>
+    <td style="border:1px solid;">${start}</td>
+    <td style="border:1px solid;">${end}</td>
+    <td style="border:1px solid;">
+    <button data-id="${newLine}" data-action="deleteLine">삭제</button>
+    </td>
+    </tr>`,
   );
+}
+
+export function removeLineTable(tr) {
+  const parent = tr.parentNode;
+  parent.removeChild(tr);
 }
 
 export function renderLineTable() {

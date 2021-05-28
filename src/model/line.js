@@ -18,3 +18,9 @@ export function addLine(newLineName, start, end) {
         return false;
     }
 }
+
+export function deleteLine(line) {
+    let oldLines = JSON.parse(localStorage.getItem('lines'));
+    const lines = oldLines.filter((element) => element.name != line);
+    localStorage.setItem('lines', JSON.stringify(lines));
+}
