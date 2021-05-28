@@ -1,10 +1,32 @@
 export default class StationManageView {
   makeHtml(stations) {
-    let ret = `    <span><p>역 이름</p></span>\n    <input type="text" id="station-name-input"><button id="station-add-button">역 추가</button>\n    <h2>지하철 역 목록</h2>\n    <table>      <tr>\n        <th>역 이름</th>\n        <th>설정</th>\n      </tr>`;
+    let ret = `
+        <span><p>역 이름</p></span>
+        <input type="text" id="station-name-input">
+        <button id="station-add-button">역 추가</button>
+        <h2>지하철 역 목록</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>역 이름</th>
+              <th>설정</th>
+            </tr>`;
     stations.forEach((item, idx) => {
-      ret += `\n      <tr>\n        <td>${item}</td>\n        <td><button data-number=${idx}>삭제</button></td>\n      </tr>`;
+      ret += `
+      <tr>
+        <td class="station">${item}</td>
+        <td><button>삭제</button></td>
+      </tr>`;
     });
-    ret += `\n    </table>`;
-    return ret;
+    ret += `</tbody></table>`;
+    document.getElementById("show").innerHTML = ret;
+  }
+  addStationToTable(station) {
+    let tbody = document.querySelector("table>tbody");
+    tbody.innerHTML += `
+    <tr>
+      <td class="station">${station}</td>
+      <td><button>삭제</button></td>
+    </tr>`;
   }
 }

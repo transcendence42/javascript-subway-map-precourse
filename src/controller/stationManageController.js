@@ -2,15 +2,38 @@ import StationManageView from "../view/stationManageView.js";
 import Storage from "../model/storage.js";
 
 export default class StationManageController {
+  constructor() {
+    this.stationManageView = new StationManageView();
+    this.storage = new Storage();
+    this.addShowAllStationsEvent();
+  }
+  addShowAllStationsEvent() {
+    document
+      .querySelector("#station-manager-button")
+      .addEventListener("click", () => this.showAllStations());
+  }
+  addStationAddEvent() {
+    document
+      .querySelector("#station-add-button")
+      .addEventListener("click", () => {
+        let stationName = document.querySelector("#station-name-input").value;
+        if (stationName == null || stationName == "") {
+          alert("역 이름을 입력하세요.");
+          document.querySelector("#station-name-input").value = "";
+          return;
+        }
+        this.appendStation(this.storage.addStation(stationName));
+      });
+  }
   showAllStations() {
-    let stationManageView = new StationManageView();
-    let storage = new Storage();
-    document.querySelector("#show").innerHTML += stationManageView.makeHtml(
-      storage.getAllStation()
-    );
-    let btnAddStation = document.querySelector("#station-add-button");
-    btnAddStation.addEventListener("click", evt => {
-      alert("btnAddStation");
-    });
+    this.stationManageView.makeHtml(this.storage.getAllStation());
+    this.addStationAddEvent();
+  }
+  appendStation(station) {
+    if (station == null || station == "") {
+      alert("duplicate");
+    } else {
+      this.stationManageView.addStationToTable(station);
+    }
   }
 }

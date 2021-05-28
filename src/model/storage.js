@@ -1,17 +1,16 @@
 export default class Storage {
   constructor() {
     this.localStorage = window.localStorage;
-    this.localStorage.clear();
+    this.stations = this.getAllStation();
   }
   getAllStation() {
     if (!this.localStorage.getItem("stations")) return [];
     return this.localStorage.getItem("stations").split(",");
   }
-  addStation(newStation) {
-    let stations = this.getAllStation();
-    if (stations.indexOf(newStation) != -1) return null;
-    stations.push(newStation);
-    this.localStorage.setItem("stations", stations.toString());
-    return newStation;
+  addStation(stationName) {
+    if (this.stations.indexOf(stationName) != -1) return null;
+    this.stations.push(stationName);
+    this.localStorage.setItem("stations", this.stations.toString());
+    return stationName;
   }
 }
