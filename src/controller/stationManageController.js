@@ -1,5 +1,6 @@
 import StationManageView from "../view/stationManageView.js";
 import StationDAO from "../model/stationDAO.js";
+import { ERROR_CODE, ERROR_CODE_MSG } from "./stationManageControllerError.js";
 
 export default class StationManageController {
   constructor() {
@@ -17,18 +18,21 @@ export default class StationManageController {
       .querySelector("#station-add-button")
       .addEventListener("click", () => {
         let stationName = document.querySelector("#station-name-input").value;
-        if (!this.isValidStationName(stationName)) {
-          alert("역 이름이 잘못되었습니다.");
+        let errCode = this.isValidStationName(stationName);
+        if (errCode != ERROR_CODE.SUCCESS) {
+          alert(ERROR_CODE_MSG[errCode]);
           return;
         }
         this.appendStation(this.stationDAO.addStation(stationName));
       });
   }
   isValidStationName(stationName) {
-    if (stationName == null || stationName == "") return false;
-    if (stationName.search(/[^가-힣]/g) != -1) return false;
-    if (stationName.length < 2) return false;
-    return true;
+    if (stationName == null || stationName == "")
+      return ERROR_CODE.EMPTY_STATION_NAME;
+    if (stationName.search(/[^가-힣]/g) != -1)
+      return ERROR_CODE.WRONG_STATION_NAME;
+    if (stationName.length < 2) return ERROR_CODE.WRONG_STATION_NAME;
+    return ERROR_CODE.SUCCESS;
   }
   showAllStations() {
     this.stationManageView.makeHtml(this.stationDAO.getAllStations());
@@ -47,8 +51,8 @@ export default class StationManageController {
     });
   }
   appendStation(station) {
-    if (station == null || station == "") {
-      alert("역 이름이 중복됩니다.");
+    if (station == null) {
+      alert(ERROR_CODE_MSG[ERROR_CODE.STATION_NAME_DUP]);
     } else {
       this.stationManageView.addStationToTable(station);
       document.querySelector("#station-name-input").value = "";
