@@ -15,10 +15,10 @@ export default class SectionManageController {
         let routes = this.routeDAO.getAllRoutes();
         let routeList = Object.keys(routes);
         this.sectionManageView.showAllRoutes(routeList);
-        this.addEventAboutRoutes();
+        this.addEventAboutRouteButtons();
       });
   }
-  addEventAboutRoutes() {
+  addEventAboutRouteButtons() {
     document.querySelector("ul.section-page").addEventListener("click", evt => {
       if (evt.target.className == "section-route-btn") {
         let stationDAO = new StationDAO();
