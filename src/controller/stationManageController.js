@@ -17,12 +17,17 @@ export default class StationManageController {
       .querySelector("#station-add-button")
       .addEventListener("click", () => {
         let stationName = document.querySelector("#station-name-input").value;
-        if (stationName == null || stationName == "") {
-          alert("역 이름을 입력하세요.");
+        if (!this.isValidStationName(stationName)) {
+          alert("역 이름이 잘못되었습니다.");
           return;
         }
         this.appendStation(this.storage.addStation(stationName));
       });
+  }
+  isValidStationName(stationName) {
+    if (stationName == null || stationName == "") return false;
+    if (stationName.search(/[^가-힣]/g) != -1) return false;
+    return true;
   }
   showAllStations() {
     this.stationManageView.makeHtml(this.storage.getAllStation());
