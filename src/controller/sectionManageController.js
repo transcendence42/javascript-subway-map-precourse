@@ -1,5 +1,6 @@
 import SectionManageView from "../view/sectionManageView.js";
 import RouteDAO from "../model/routeDAO.js";
+import StationDAO from "../model/stationDAO.js";
 
 export default class SectionManageController {
   constructor() {
@@ -20,9 +21,18 @@ export default class SectionManageController {
   addEventAboutRoutes() {
     document.querySelector("ul.section-page").addEventListener("click", evt => {
       if (evt.target.className == "section-route-btn") {
+        let stationDAO = new StationDAO();
+        let allStations = stationDAO.getAllStations();
         let routeName = evt.target.innerText;
-        let stationsList = this.routeDAO.getStationsList(routeName);
-        this.sectionManageView.showManageSection(routeName, stationsList);
+        let routeStations = this.routeDAO.getStationsList(routeName);
+        let stationsExceptRouteStations = allStations.filter(item => {
+          return !routeStations.includes(item);
+        });
+        this.sectionManageView.showManageSection(
+          routeName,
+          routeStations,
+          stationsExceptRouteStations
+        );
       }
     });
   }

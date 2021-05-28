@@ -8,16 +8,16 @@ export default class SectionManageView {
     ret += `</ul><div id="manage-section"></div>`;
     document.querySelector("#show").innerHTML = ret;
   }
-  showManageSection(routeName, stationsList) {
+  showManageSection(routeName, routeStations, stationsExceptRouteStations) {
     let ret = `<h2>${routeName} 관리</h2>
       <h3>구간 등록</h3>
       <p>
         <select>`;
-    stationsList.forEach(stationName => {
+    stationsExceptRouteStations.forEach(stationName => {
       ret += `<option>${stationName}</option>`;
     });
     ret += `</select>
-        <input type="number">
+        <input type="number" min="0" max="${routeStations.length}">
         <button>등록</button>
       </p>
       <table>
@@ -27,7 +27,7 @@ export default class SectionManageView {
                   <th>이름</th>
                   <th>설정</th>
               </tr>`;
-    stationsList.forEach((stationName, idx) => {
+    routeStations.forEach((stationName, idx) => {
       ret += `<tr><td>${idx}</td><td>${stationName}</td><td><button>노선에서 제거</button></td></tr>`;
     });
     ret += `</tbody></table>`;
