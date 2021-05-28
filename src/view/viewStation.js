@@ -22,17 +22,13 @@ export function removeStationTable(tr) {
 export function renderStationTable() {
   const stations = JSON.parse(localStorage.getItem('stations'));
   const table = document.getElementById(Station.TABLE);
-  let trs = document.body.getElementsByTagName('tr');
-
   if (stations) {
     stations.forEach((station) => {
       table.insertAdjacentHTML(
         'beforeend',
         `<tr>
         <td style="border:1px solid;">${station}</td>
-        <td style="border:1px solid;">
-        <button data-id="${station}" data-action="deleteStation">삭제</button>
-        </td>
+        <td style="border:1px solid;"><button data-id="${station}" data-action="deleteStation">삭제</button></td>
         </tr>`,
       );
     });

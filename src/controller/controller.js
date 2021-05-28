@@ -1,5 +1,5 @@
 import { MainButtons, Station } from '../constant.js';
-import { clickAddStation, constructStation } from './controllerStation.js'
+import { clickAddStation, constructStation } from './controllerStation.js';
 
 function getParts() {
   return {
@@ -30,7 +30,7 @@ function showStationPart() {
   hideElem(Parts.mapPart);
 
   const stationAddButton = document.getElementById(Station.ADDBTN);
-  stationAddButton.addEventListener('click', clickAddStation); 
+  stationAddButton.addEventListener('click', clickAddStation);
 }
 
 function showLinePart() {
@@ -61,14 +61,13 @@ function constructor() {
   document
     .getElementById('#menu-buttons')
     .addEventListener('click', function (e) {
-      let target = e.target;
-      if (target.id === MainButtons.STATION) {
+      if (e.target.id === MainButtons.STATION) {
         showStationPart();
-      } else if (target.id === MainButtons.LINE) {
+      } else if (e.target.id === MainButtons.LINE) {
         showLinePart();
-      } else if (target.id === MainButtons.SECTION) {
+      } else if (e.target.id === MainButtons.SECTION) {
         showSectionPart();
-      } else if (target.id === MainButtons.MAP) {
+      } else if (e.target.id === MainButtons.MAP) {
         showMapPart();
       }
     });

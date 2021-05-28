@@ -1,8 +1,7 @@
 export function addStation(newStation) {
   let oldStations = localStorage.getItem('stations');
   if (oldStations === null) {
-    let stations = [newStation];
-    localStorage.setItem('stations', JSON.stringify(stations));
+    localStorage.setItem('stations', JSON.stringify([newStation]));
     return true;
   } else {
     let stations = JSON.parse(oldStations);
@@ -10,14 +9,13 @@ export function addStation(newStation) {
       stations.push(newStation);
       localStorage.setItem('stations', JSON.stringify(stations));
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 }
 
 export function deleteStation(station) {
   let oldStations = JSON.parse(localStorage.getItem('stations'));
-  const stations = oldStations.filter(element => element != station);
+  const stations = oldStations.filter((element) => element != station);
   localStorage.setItem('stations', JSON.stringify(stations));
 }
