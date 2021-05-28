@@ -1,10 +1,10 @@
 import StationManageView from "../view/stationManageView.js";
-import Storage from "../model/storage.js";
+import StationDAO from "../model/stationDAO.js";
 
 export default class StationManageController {
   constructor() {
     this.stationManageView = new StationManageView();
-    this.storage = new Storage();
+    this.stationDAO = new StationDAO();
     this.addEventAboutShowAllStations();
   }
   addEventAboutShowAllStations() {
@@ -21,7 +21,7 @@ export default class StationManageController {
           alert("역 이름이 잘못되었습니다.");
           return;
         }
-        this.appendStation(this.storage.addStation(stationName));
+        this.appendStation(this.stationDAO.addStation(stationName));
       });
   }
   isValidStationName(stationName) {
@@ -31,7 +31,7 @@ export default class StationManageController {
     return true;
   }
   showAllStations() {
-    this.stationManageView.makeHtml(this.storage.getAllStation());
+    this.stationManageView.makeHtml(this.stationDAO.getAllStation());
     this.addEventAboutAddStation();
     this.addEventAboutDeleteStation();
   }
@@ -41,7 +41,7 @@ export default class StationManageController {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
         let stationName = tr.firstElementChild.innerText;
-        this.storage.deleteStation(stationName);
+        this.stationDAO.deleteStation(stationName);
         tr.remove();
       }
     });

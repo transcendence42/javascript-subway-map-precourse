@@ -1,4 +1,4 @@
-export default class Storage {
+export default class StationDAO {
   constructor() {
     this.localStorage = window.localStorage;
   }
