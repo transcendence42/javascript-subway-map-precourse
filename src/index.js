@@ -1,5 +1,5 @@
-import view from './view.js';
-import controller from './controller.js';
+import view from './view/view.js';
+import controller from './controller/controller.js';
 
 export default function stationMap() {
   view();
