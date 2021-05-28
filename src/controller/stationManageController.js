@@ -28,6 +28,16 @@ export default class StationManageController {
   showAllStations() {
     this.stationManageView.makeHtml(this.storage.getAllStation());
     this.addStationAddEvent();
+    this.addDeleteStationEvent();
+  }
+  addDeleteStationEvent() {
+    document.querySelector("table").addEventListener("click", evt => {
+      if (evt.target.className == "deleteStationBtn") {
+        let tr = evt.target.parentElement.parentElement;
+        this.storage.deleteStation(tr.firstElementChild.innerText);
+        tr.remove();
+      }
+    });
   }
   appendStation(station) {
     if (station == null || station == "") {

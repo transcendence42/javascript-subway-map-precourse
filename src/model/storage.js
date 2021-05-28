@@ -13,4 +13,8 @@ export default class Storage {
     this.localStorage.setItem("stations", this.stations.toString());
     return stationName;
   }
+  deleteStation(stationName) {
+    this.stations = this.stations.filter(item => item != stationName);
+    this.localStorage.setItem("stations", this.stations.toString());
+  }
 }
