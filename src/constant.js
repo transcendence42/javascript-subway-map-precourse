@@ -29,3 +29,17 @@ export const Line = {
   <th style="border: 1px solid"><strong>하행 종점역</strong></th>
   <th style="border: 1px solid"><strong>설정</strong></th>`,
 };
+
+export const Section = {
+  DIV: '#sectionPart',
+  BTNS: '#line-buttons',
+  MANAGER: '#section-manager',
+  SELECT: '#station-select-button',
+  INPUT: '#station-order',
+  REGISTER: '#section-register',
+  TABLE: '#section-table',
+  DELETEBTIN: '.section-delete-button',
+  TH: `<th style="border: 1px solid"><strong>순서</strong></th>
+  <th style="border: 1px solid"><strong>이름</strong></th>
+  <th style="border: 1px solid"><strong>설정</strong></th>`,
+};
