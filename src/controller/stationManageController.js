@@ -31,6 +31,7 @@ export default class StationManageController {
     return true;
   }
   showAllStations() {
+    document.querySelector("#show").innerHTML = "";
     this.stationManageView.makeHtml(this.storage.getAllStation());
     this.addEventAboutAddStation();
     this.addEventAboutDeleteStation();
