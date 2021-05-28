@@ -19,6 +19,7 @@ module.exports = {
     'max-depth': ['error', 2],
     'max-lines-per-function': ['error', 15],
     'import/extensions': ['off'],
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
   },
 };
