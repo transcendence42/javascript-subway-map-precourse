@@ -12,10 +12,10 @@ export const toggleDisplay = () => {
   if (elementIds.mapPrintManagement) {
     elementIds.mapPrintManagement.hidden = true;
   }
-  if (document.getElementsByClassName('map').length == 1) {
+  if (document.getElementsByClassName('map').length === 1) {
     initSubwayRouteMap();
     renderSubwayRouteMap();
-  } else if (document.getElementsByClassName('map').length == 0) {
+  } else if (document.getElementsByClassName('map').length === 0) {
     renderMapFrame();
     renderSubwayRouteMap();
   }
