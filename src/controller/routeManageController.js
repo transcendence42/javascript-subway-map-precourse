@@ -1,4 +1,5 @@
 import RouteManageView from "../view/routeManageView.js";
+import StationDAO from "../model/stationDAO.js";
 import RouteDAO from "../model/routeDAO.js";
 
 export default class RouteManageController {
@@ -11,7 +12,11 @@ export default class RouteManageController {
     document
       .querySelector("#line-manager-button")
       .addEventListener("click", () => {
-        this.routeManageView.showAllRoutes();
+        let stations = new StationDAO().getAllStations();
+        this.routeManageView.showAllRoutes(
+          stations,
+          this.routeDAO.getAllRoutes()
+        );
         this.addEventAboutAddRoute();
       });
   }
@@ -23,7 +28,6 @@ export default class RouteManageController {
       let downwardEndStation = document.querySelector(
         "[name=downward-end-station]"
       ).value;
-      console.log(this.routeDAO.getAllRoutes());
       //console.log(routeName, upwardEndStation, downwardEndStation);
     });
   }
