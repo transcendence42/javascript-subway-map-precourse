@@ -1,6 +1,6 @@
 import { Station } from '../constant.js';
 
-export function addStationTable(type, station) {
+export function addStationTable(station) {
   const table = document.getElementById(Station.TABLE);
   table.insertAdjacentHTML(
     'beforeend',
