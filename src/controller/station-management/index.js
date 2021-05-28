@@ -1,8 +1,9 @@
 import { storage } from '../../model/index.js';
-import { addButtonEvent, removeButtonEvent } from '../utils.js';
+import { addButtonEvent } from '../utils.js';
 import { elementIds } from '../../utils.js';
 import { errorMessage } from '../error-message.js';
 import { toggleDisplayStationManagement } from './toggle-display.js';
+import {deleteStation} from './delete-station.js'
 
 const checkValidStationName = (subwayStation, stationNameInput) => {
   if (subwayStation.get(stationNameInput)) {
@@ -62,37 +63,6 @@ const addStation = () => {
   elementIds.stationNameInput.value = '';
   elementIds.stationNameInput.focus();
   addStationButtonEvent(stationNameInput);
-};
-
-const deleteSelectOption = (datasetStation) => {
-  const selectOption = document.querySelectorAll('option');
-  for (let item of selectOption) {
-    if (item.value == datasetStation) {
-      item.remove();
-    }
-  }
-};
-
-const isLineList = (datasetStation) => {
-  return storage
-    .getLocalStorageArray('subway-line-list')
-    .includes(datasetStation);
-};
-
-const deleteStation = (e) => {
-  const datasetStation = e.currentTarget.dataset.station.slice(0, -7);
-  if (isLineList(datasetStation)) {
-    alert(errorMessage.lineStationForbidden);
-    return;
-  }
-  deleteSelectOption(datasetStation);
-  for (let item of document.querySelectorAll(`tbody tr`)) {
-    if (item.dataset.station === datasetStation) {
-      storage.removeLocalStorage('subway-station', item.dataset.station);
-      item.remove();
-    }
-  }
-  removeButtonEvent(e.currentTarget, deleteStation);
 };
 
 export const controlStationManagement = () => {
