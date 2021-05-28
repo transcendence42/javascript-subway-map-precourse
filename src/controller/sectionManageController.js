@@ -14,6 +14,14 @@ export default class SectionManageController {
         let routes = routeDAO.getAllRoutes();
         let routeList = Object.keys(routes);
         this.sectionManageView.showAllRoutes(routeList);
+        this.addEventAboutRoutes();
       });
+  }
+  addEventAboutRoutes() {
+    document.querySelector("ul.section-page").addEventListener("click", evt => {
+      if (evt.target.className == "section-route-btn") {
+        alert(evt.target.innerText);
+      }
+    });
   }
 }
