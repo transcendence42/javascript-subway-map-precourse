@@ -1,7 +1,7 @@
 import { initSubwayRouteMap } from '../subway-route-map/index.js';
 import { elementIds } from '../../utils.js';
 
-export const toggleSectionManagement = () => {
+export const toggleDisplay = () => {
   elementIds.stationManagement.hidden = true;
   elementIds.lineManagement.hidden = true;
   elementIds.sectionManagement.hidden = !elementIds.sectionManagement.hidden;
