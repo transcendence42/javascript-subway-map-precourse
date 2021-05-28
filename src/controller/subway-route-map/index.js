@@ -6,7 +6,7 @@ import { addButtonEvent } from '../utils.js';
 import { elementIds, removeChildAllElements } from '../../utils.js';
 
 export const initSubwayRouteMap = () => {
-  removeChildAllElements(document.getElementsByClassName('map')[0]);
+  document.getElementsByClassName('map').length ? removeChildAllElements(document.getElementsByClassName('map')[0]) : '';
 };
 
 const toggleDisplaySubwayRouteMap = () => {
