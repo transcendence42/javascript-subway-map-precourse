@@ -5,14 +5,14 @@ export default class StationManageController {
   constructor() {
     this.stationManageView = new StationManageView();
     this.storage = new Storage();
-    this.addShowAllStationsEvent();
+    this.addEventAboutShowAllStations();
   }
-  addShowAllStationsEvent() {
+  addEventAboutShowAllStations() {
     document
       .querySelector("#station-manager-button")
       .addEventListener("click", () => this.showAllStations());
   }
-  addStationAddEvent() {
+  addEventAboutAddStation() {
     document
       .querySelector("#station-add-button")
       .addEventListener("click", () => {
@@ -32,10 +32,10 @@ export default class StationManageController {
   }
   showAllStations() {
     this.stationManageView.makeHtml(this.storage.getAllStation());
-    this.addStationAddEvent();
-    this.addDeleteStationEvent();
+    this.addEventAboutAddStation();
+    this.addEventAboutDeleteStation();
   }
-  addDeleteStationEvent() {
+  addEventAboutDeleteStation() {
     document.querySelector("table").addEventListener("click", evt => {
       if (evt.target.className == "deleteStationBtn") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
