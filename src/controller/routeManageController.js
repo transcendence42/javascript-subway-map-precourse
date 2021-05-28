@@ -70,8 +70,9 @@ export default class RouteManageController {
       alert(ERROR_CODE_MSG[ERROR_CODE.ROUTE_NAME_DUP]);
     } else {
       let route = this.routeDAO.getAllRoutes();
-      let upwardEndStation = route[routeName][0];
-      let downwardEndStation = route[routeName][1];
+      let stationsList = route[routeName];
+      let upwardEndStation = stationsList[0];
+      let downwardEndStation = stationsList[stationsList.length - 1];
       this.routeManageView.addRouteToTable(
         routeName,
         upwardEndStation,
