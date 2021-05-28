@@ -2,8 +2,7 @@ export function addLine(newLineName, start, end) {
   let oldLines = localStorage.getItem('lines');
   const newLine = {
     name: newLineName,
-    start: start,
-    end: end,
+    stations: [start, end],
   };
   if (oldLines === null) {
     localStorage.setItem('lines', JSON.stringify([newLine]));

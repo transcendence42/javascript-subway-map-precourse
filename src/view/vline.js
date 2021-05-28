@@ -33,8 +33,11 @@ export function renderLineTable() {
       table.insertAdjacentHTML(
         'beforeend',
         `<tr>
-        <td style="border:1px solid;">${line.name}</td><td style="border:1px solid;">${line.start}</td>
-        <td style="border:1px solid;">${line.end}</td>
+        <td style="border:1px solid;">${line.name}</td>
+        <td style="border:1px solid;">${line.stations[0]}</td>
+        <td style="border:1px solid;">${
+          line.stations[line.stations.length - 1]
+        }</td>
         <td style="border:1px solid;">
         <button data-id="${line.name}" data-action="deleteLine">삭제</button>
         </td>

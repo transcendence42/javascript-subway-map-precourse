@@ -23,10 +23,13 @@ export function constructStation() {
   document.getElementById(S.TABLE).addEventListener('click', function (e) {
     const target = e.target;
     const action = target.dataset.action;
-
     if (action === 'deleteStation') {
-      removeStationTable(target.closest('tr'));
-      deleteStation(target.dataset.id);
+      if (deleteStation(target.dataset.id) === false) {
+        alert('노선에 포함된 역은 삭제할 수 없습니다.');
+        document.getElementById(S.INPUT).value = '';
+      } else {
+        removeStationTable(target.closest('tr'));
+      }
     }
   });
 }

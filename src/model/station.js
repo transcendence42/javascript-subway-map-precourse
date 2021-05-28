@@ -14,8 +14,30 @@ export function addStation(newStation) {
   }
 }
 
+function checkLineIncludedStation(lines, station) {
+  let ret = lines.every((line) => {
+    console.log(line);
+    if (
+      line.stations.filter((item) => item !== station).length !=
+      line.stations.length
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  return ret;
+}
+
 export function deleteStation(station) {
   let oldStations = JSON.parse(localStorage.getItem('stations'));
-  const stations = oldStations.filter((element) => element != station);
-  localStorage.setItem('stations', JSON.stringify(stations));
+  let lines = JSON.parse(localStorage.getItem('lines'));
+
+  if (checkLineIncludedStation(lines, station) === false) {
+    return false;
+  } else {
+    const stations = oldStations.filter((element) => element != station);
+    localStorage.setItem('stations', JSON.stringify(stations));
+    return true;
+  }
 }
