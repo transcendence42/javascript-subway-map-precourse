@@ -29,7 +29,7 @@ export default class RouteManageView {
     Object.keys(routes).forEach(routeName => {
       let upwardEndStation = routes[routeName][0];
       let downwardEndStation = routes[routeName][1];
-      ret += `<tr><td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button class="deleteRouteBtn">삭제</button></td></tr>`;
+      ret += `<tr><td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button class="delete-route-btn">삭제</button></td></tr>`;
     });
     ret += `</tbody></table>`;
     document.querySelector("#show").innerHTML = ret;
@@ -37,6 +37,6 @@ export default class RouteManageView {
   addRouteToTable(routeName, upwardEndStation, downwardEndStation) {
     let tbody = document.querySelector("table>tbody");
     tbody.innerHTML += `<tr>
-    <td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button class="deleteRouteBtn">삭제</button></td></tr>`;
+    <td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button class="delete-route-btn">삭제</button></td></tr>`;
   }
 }

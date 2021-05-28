@@ -25,7 +25,7 @@ export default class RouteManageController {
   }
   addEventAboutDeleteRoute() {
     document.querySelector("table").addEventListener("click", evt => {
-      if (evt.target.className == "deleteRouteBtn") {
+      if (evt.target.className == "delete-route-btn") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
         let routeName = tr.firstElementChild.innerText;
