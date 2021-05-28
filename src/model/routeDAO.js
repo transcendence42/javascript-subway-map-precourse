@@ -13,4 +13,9 @@ export default class RouteDAO {
     this.localStorage.setItem("routes", JSON.stringify(routes));
     return routeName;
   }
+  deleteRoute(routeName) {
+    let routes = this.getAllRoutes();
+    delete routes[routeName];
+    this.localStorage.setItem("routes", JSON.stringify(routes));
+  }
 }

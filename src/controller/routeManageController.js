@@ -20,7 +20,18 @@ export default class RouteManageController {
           this.routeDAO.getAllRoutes()
         );
         this.addEventAboutAddRoute();
+        this.addEventAboutDeleteRoute();
       });
+  }
+  addEventAboutDeleteRoute() {
+    document.querySelector("table").addEventListener("click", evt => {
+      if (evt.target.className == "deleteRouteBtn") {
+        let tr = evt.target.parentElement.parentElement;
+        let routeName = tr.firstElementChild.innerText;
+        this.routeDAO.deleteRoute(routeName);
+        tr.remove();
+      }
+    });
   }
   addEventAboutAddRoute() {
     document.querySelector("#add-route").addEventListener("click", () => {
