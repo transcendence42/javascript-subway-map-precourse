@@ -18,12 +18,12 @@ const renderSelect = () => {
 };
 
 const addLineTable = ({ lineName, value }) => {
-  return `<tr data-line=\'${lineName}\'>
+  return `<tr data-line='${lineName}'>
             <td>${lineName}</td>
             <td>${value[0]}</td>
             <td>${value[value.length - 1]}</td>
             <td>
-              <button class='line-delete-button' data-line=\'${lineName}-button\'>삭제</button>
+              <button class='line-delete-button' data-line='${lineName}-button'>삭제</button>
             </td>
            </tr>`;
 };
