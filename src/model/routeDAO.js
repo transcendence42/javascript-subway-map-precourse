@@ -26,4 +26,9 @@ export default class RouteDAO {
     }
     return stationsList;
   }
+  addStationInRoute(routeName, stationName, idx) {
+    let routes = this.getAllRoutes();
+    routes[routeName].splice(idx, 0, stationName);
+    this.localStorage.setItem("routes", JSON.stringify(routes));
+  }
 }

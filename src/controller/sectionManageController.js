@@ -33,7 +33,21 @@ export default class SectionManageController {
           routeStations,
           stationsExceptRouteStations
         );
+        this.addEventAboutRegisterButton(routeName);
       }
     });
+  }
+  addEventAboutRegisterButton(routeName) {
+    document
+      .querySelector("button.register-section-button")
+      .addEventListener("click", evt => {
+        let stationName =
+          evt.target.previousElementSibling.previousElementSibling.value;
+        let idx = evt.target.previousElementSibling.value;
+        this.routeDAO.addStationInRoute(routeName, stationName, idx);
+        /* TODO: delete station name from select */
+        /* TODO: increase num input */
+        /* TODO: add tr */
+      });
   }
 }
