@@ -2,16 +2,16 @@ export default class RouteManageView {
   constructor() {}
   showAllRoutes() {
     let template = `<p><span>노선 이름</span></p>
-      <p><input type="text" placeholder="노선 이름을 입력해주세요"></p>
-      <p><span>상행 종점</span><select name="upward-last-station">
+      <p><input id="route-name" type="text" placeholder="노선 이름을 입력해주세요"></p>
+      <p><span>상행 종점</span><select name="upward-end-station">
       <option>인천</option>
       <option>소요산</option>
           </select></p>
-      <p><span>하행 종점</span><select name="downward-last-station">
+      <p><span>하행 종점</span><select name="downward-end-station">
       <option>인천</option>
       <option>소요산</option>
           </select></p>
-      <button>노선 추가</button>
+      <button id="add-route">노선 추가</button>
       <h2>지하철 노선 목록</h2>
       <table>
           <tbody>
