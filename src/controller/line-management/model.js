@@ -2,7 +2,7 @@ import { errorMessage } from '../error-message.js';
 import { storage } from '../../model/index.js';
 import { elementIds } from '../../utils.js';
 
-export const addLineList = (
+const addLineList = (
   lineStartStationSelectorValue,
   lineEndStationSelectorValue,
 ) => {
@@ -14,7 +14,7 @@ export const addLineList = (
   storage.setLocalStorageArray('subway-line-list', lineList);
 };
 
-export const addLineLocalStorage = (
+const addLineLocalStorage = (
   lineStartStationSelectorValue,
   lineEndStationSelectorValue,
 ) => {
@@ -33,3 +33,5 @@ export const addLineLocalStorage = (
   storage.setLocalStorageMap('subway-line', subwayLine);
   return true;
 };
+
+export { addLineList, addLineLocalStorage };

@@ -5,8 +5,10 @@ import {
 import { addButtonEvent } from '../utils.js';
 import { elementIds, removeChildAllElements } from '../../utils.js';
 
-export const initSubwayRouteMap = () => {
-  document.getElementsByClassName('map').length ? removeChildAllElements(document.getElementsByClassName('map')[0]) : '';
+const initSubwayRouteMap = () => {
+  document.getElementsByClassName('map').length
+    ? removeChildAllElements(document.getElementsByClassName('map')[0])
+    : '';
 };
 
 const toggleDisplaySubwayRouteMap = () => {
@@ -25,6 +27,8 @@ const toggleDisplaySubwayRouteMap = () => {
   }
 };
 
-export const controlSubwayRouteMap = () => {
+const controlSubwayRouteMap = () => {
   addButtonEvent(elementIds.mapPrintManagerButton, toggleDisplaySubwayRouteMap);
 };
+
+export { initSubwayRouteMap, controlSubwayRouteMap };
