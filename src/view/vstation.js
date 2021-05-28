@@ -1,5 +1,5 @@
 import { Station } from '../constant.js';
-import { removeAllChildren } from '../utils.js'
+import { removeAllChildren } from '../utils.js';
 
 export function addStationTable(station) {
   const table = document.getElementById(Station.TABLE);
@@ -28,10 +28,8 @@ export function renderStationTable() {
     stations.forEach((station) => {
       table.insertAdjacentHTML(
         'beforeend',
-        `<tr>
-        <td style="border:1px solid;">${station}</td>
-        <td style="border:1px solid;"><button data-id="${station}" data-action="deleteStation">삭제</button></td>
-        </tr>`,
+        `<tr><td style="border:1px solid;">${station}</td>
+        <td style="border:1px solid;"><button data-id="${station}" data-action="deleteStation">삭제</button></td></tr>`,
       );
     });
   }

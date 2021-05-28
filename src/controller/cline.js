@@ -16,32 +16,40 @@ function clickAddLine() {
   }
 }
 
-export function constructLine() {
+function activateTableListener() {
+  document.getElementById(Line.TABLE).addEventListener('click', function (e) {
+    const target = e.target;
+    const action = target.dataset.action;
+
+    if (action === 'deleteLine') {
+      removeLineTable(target.closest('tr'));
+      console.log(target.dataset.id);
+      deleteLine(target.dataset.id);
+    }
+  });
+}
+
+function renderStationOptions(stations) {
   const start = document.getElementById(Line.START);
   const end = document.getElementById(Line.END);
+  stations.forEach((station) => {
+    start.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${station}">${station}</option>`,
+    );
+    end.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${station}">${station}</option>`,
+    );
+  });
+}
+
+export function constructLine() {
   const stations = JSON.parse(localStorage.getItem('stations'));
   const lineAddButton = document.getElementById(Line.ADDBTN);
   lineAddButton.addEventListener('click', clickAddLine);
-  if (stations){
-    stations.forEach((station) => {
-        start.insertAdjacentHTML(
-        'beforeend',
-        `<option value="${station}">${station}</option>`,
-        );
-        end.insertAdjacentHTML(
-        'beforeend',
-        `<option value="${station}">${station}</option>`,
-        );
-    });
-    document.getElementById(Line.TABLE).addEventListener('click', function (e) {
-        const target = e.target;
-        const action = target.dataset.action;
-
-        if (action === 'deleteLine') {
-            removeLineTable(target.closest('tr'));
-            console.log(target.dataset.id);
-            deleteLine(target.dataset.id);
-        }
-    });
-    }
+  if (stations) {
+    renderStationOptions(stations);
+    activateTableListener();
+  }
 }
