@@ -19,7 +19,6 @@ export default class StationManageController {
         let stationName = document.querySelector("#station-name-input").value;
         if (stationName == null || stationName == "") {
           alert("역 이름을 입력하세요.");
-          document.querySelector("#station-name-input").value = "";
           return;
         }
         this.appendStation(this.storage.addStation(stationName));
@@ -41,9 +40,10 @@ export default class StationManageController {
   }
   appendStation(station) {
     if (station == null || station == "") {
-      alert("duplicate");
+      alert("역 이름이 중복됩니다.");
     } else {
       this.stationManageView.addStationToTable(station);
+      document.querySelector("#station-name-input").value = "";
     }
   }
 }
