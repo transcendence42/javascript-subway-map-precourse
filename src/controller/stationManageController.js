@@ -41,7 +41,8 @@ export default class StationManageController {
       if (evt.target.className == "deleteStationBtn") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
-        this.storage.deleteStation(tr.firstElementChild.innerText);
+        let stationName = tr.firstElementChild.innerText;
+        this.storage.deleteStation(stationName);
         tr.remove();
       }
     });
