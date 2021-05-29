@@ -18,12 +18,12 @@ function clickAddLine() {
 }
 
 function activateTableListener() {
-  document.getElementById(Line.TABLE).addEventListener('click', function (e) {
+  document.getElementById(Line.TABLE).addEventListener('click', (e) => {
     const target = e.target;
     const action = target.dataset.action;
 
     if (action === 'deleteLine') {
-      removeLineTable(target.closest('tr'));
+      removeLineTable(target.closest('tbody'));
       deleteLine(target.dataset.id);
     }
   });

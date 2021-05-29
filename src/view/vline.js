@@ -16,9 +16,9 @@ export function addLineTable(newLine, start, end) {
   );
 }
 
-export function removeLineTable(tr) {
-  const parent = tr.parentNode;
-  parent.removeChild(tr);
+export function removeLineTable(tbody) {
+  const parent = tbody.parentNode;
+  parent.removeChild(tbody);
 }
 
 export function renderLineTable() {
