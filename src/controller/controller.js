@@ -1,7 +1,7 @@
 import { MainButtons, Station } from '../constant.js';
 import { renderStationTable } from '../view/vstation.js';
 import { renderLineTable } from '../view/vline.js';
-import { renderLineButtons } from '../view/vsection.js'
+import { renderLineButtons } from '../view/vsection.js';
 import { constructStation } from './cstation.js';
 import { constructLine } from './cline.js';
 import { constructSection } from './csection.js';

@@ -12,15 +12,12 @@ export function renderLineButtons() {
         `<button data-id="${line.name}" data-action="showSectionManager">${line.name}</button> `,
       ),
     );
+    div.insertAdjacentHTML(
+      'afterbegin',
+      '<h3>구간을 수정할 노선을 선택해주세요.</h3>',
+    );
   }
-  div.insertAdjacentHTML(
-    'afterbegin',
-    '<h2>구간을 수정할 노선을 선택해주세요.</h2>'
-  );
-  div.insertAdjacentHTML(
-    'beforeend',
-    '<div id="#section-manager"></div>'
-  );
+  div.insertAdjacentHTML('beforeend', '<div id="#section-manager"></div>');
 }
 
 function renderStationOptions() {
@@ -28,28 +25,34 @@ function renderStationOptions() {
   const stations = JSON.parse(localStorage.getItem('stations'));
 
   if (stations === null) {
-    return ;
+    return;
   }
-  stations.forEach(station => {
-    sectionSelector.insertAdjacentHTML('beforeend', `<option>${station}</option>`)
-  })
+  stations.forEach((station) => {
+    sectionSelector.insertAdjacentHTML(
+      'beforeend',
+      `<option>${station}</option>`,
+    );
+  });
 }
 
-function renderSectionTable(line) {
+export function renderSectionTable(line) {
   const lines = JSON.parse(localStorage.getItem('lines'));
-  const stations = lines.filter(item => item.name === line)[0].stations;
+  const stations = lines.filter((item) => item.name === line)[0].stations;
   const table = document.getElementById(Section.TABLE);
   console.log(table);
   if (stations) {
     removeAllChildren(table);
-    stations.forEach((station, index) => table.insertAdjacentHTML(
-      'beforeend', 
-      `<tr>
+    stations.forEach((station, index) =>
+      table.insertAdjacentHTML(
+        'beforeend',
+        `<tr>
       <td style="border:1px solid;">${index}</td>
       <td style="border:1px solid;">${station}</td>
       <td style="border:1px solid;">
       <button data-line="${line}" data-value="${station}">노선에서 제거</button>
-      </td>`))
+      </td>`,
+      ),
+    );
   }
   table.insertAdjacentHTML('afterbegin', Section.TH);
   console.log(stations);

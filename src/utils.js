@@ -1,5 +1,5 @@
 export function removeAllChildren(elem) {
-  if (elem.hasChildNodes() === false){
+  if (elem.hasChildNodes() === false) {
     return;
   }
   while (elem.hasChildNodes()) {

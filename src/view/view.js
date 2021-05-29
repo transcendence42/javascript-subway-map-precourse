@@ -48,7 +48,6 @@ function getLinePart() {
 
 function getSectionPart() {
   return `<div id="#sectionPart" style="display:none;">
-  <h3>구간을 수정할 노선을 선택해주세요</h3>
   <div id="#line-buttons"></div>
   <div id="#section-manager"></div>
   </div>
