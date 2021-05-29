@@ -1,6 +1,7 @@
 import SectionManageView from "../view/sectionManageView.js";
 import RouteDAO from "../model/routeDAO.js";
 import StationDAO from "../model/stationDAO.js";
+import { ERROR_CODE, ERROR_CODE_MSG } from "./sectionManageControllerError.js";
 
 export default class SectionManageController {
   constructor() {
@@ -39,7 +40,7 @@ export default class SectionManageController {
     document.querySelector("table").addEventListener("click", evt => {
       if (evt.target.className == "delete-route-station") {
         if (document.querySelectorAll("tr").length <= 3) {
-          alert("더 이상 지울 수 없습니다.");
+          alert(ERROR_CODE_MSG[ERROR_CODE.LESS_THAN_TWO]);
           return;
         }
         let tr = evt.target.parentElement.parentElement;
@@ -61,7 +62,7 @@ export default class SectionManageController {
         if (
           this.routeDAO.addStationInRoute(routeName, stationName, idx) == null
         ) {
-          alert("해당 역이 노선에 이미 존재합니다.");
+          alert(ERROR_CODE_MSG[ERROR_CODE.ALREADY_EXIST_IN_SECTION]);
           return;
         }
         this.sectionManageView.appendStationToTable(stationName, idx);
