@@ -17,7 +17,7 @@ export default class StationManagerView {
       ret += `
       <tr>
         <td class="station">${item}</td>
-        <td><button class="delete-station-btn">삭제</button></td>
+        <td><button class="station-delete-button">삭제</button></td>
       </tr>`;
     });
     ret += `</tbody></table>`;
@@ -28,7 +28,7 @@ export default class StationManagerView {
     tbody.innerHTML += `
     <tr>
       <td class="station">${station}</td>
-      <td><button class="delete-station-btn">삭제</button></td>
+      <td><button class="station-delete-button">삭제</button></td>
     </tr>`;
   }
 }

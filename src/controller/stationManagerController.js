@@ -41,7 +41,7 @@ export default class StationManagerController {
   }
   addEventAboutDeleteStation() {
     document.querySelector("table").addEventListener("click", evt => {
-      if (evt.target.className == "delete-station-btn") {
+      if (evt.target.className == "station-delete-button") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
         let stationName = tr.firstElementChild.innerText;
