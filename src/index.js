@@ -1,5 +1,5 @@
-import SubwayManageController from "./controller/subwayManageController.js";
+import SubwayManagerController from "./controller/subwayManagerController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  new SubwayManageController();
+  const subwayManagerController = new SubwayManagerController();
 });

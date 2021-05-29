@@ -1,4 +1,4 @@
-export default class SectionManageView {
+export default class SectionManagerView {
   constructor() {}
   showAllRoutes(routeList) {
     let ret = `   <h2>구간을 선택할 노선을 선택해주세요.</h2><ul class="section-page">`;

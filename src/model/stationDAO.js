@@ -1,4 +1,4 @@
-import RouteDAO from "./routeDAO.js";
+import LineDAO from "./lineDAO.js";
 
 export default class StationDAO {
   constructor() {
@@ -16,8 +16,8 @@ export default class StationDAO {
     return stationName;
   }
   isStationInRoute(stationName) {
-    let routeDAO = new RouteDAO();
-    let routes = routeDAO.getAllRoutes();
+    let lineDAO = new LineDAO();
+    let routes = lineDAO.getAllRoutes();
     let routeArray = Object.keys(routes);
     let ret = false;
     routeArray.forEach(route => {

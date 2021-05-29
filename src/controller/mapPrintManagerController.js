@@ -1,9 +1,9 @@
-import RouteDAO from "../model/routeDAO.js";
-import MapView from "../view/mapView.js";
+import LineDAO from "../model/lineDAO.js";
+import MapView from "../view/mapPrintManagerView.js";
 
-export default class MapController {
+export default class MapPrintManagerController {
   constructor() {
-    this.routeDAO = new RouteDAO();
+    this.lineDAO = new LineDAO();
     this.mapView = new MapView();
     this.addEventAboutShowMap();
   }
@@ -13,7 +13,7 @@ export default class MapController {
       .addEventListener("click", () => this.showMap());
   }
   showMap() {
-    let routes = this.routeDAO.getAllRoutes();
+    let routes = this.lineDAO.getAllRoutes();
     this.mapView.showMap(routes);
   }
 }

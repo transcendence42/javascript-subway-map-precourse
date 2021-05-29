@@ -1,12 +1,12 @@
-import RouteManageView from "../view/routeManageView.js";
+import LineManageView from "../view/lineManageView.js";
 import StationDAO from "../model/stationDAO.js";
-import RouteDAO from "../model/routeDAO.js";
-import { ERROR_CODE, ERROR_CODE_MSG } from "./routeManageControllerError.js";
+import LineDAO from "../model/lineDAO.js";
+import { ERROR_CODE, ERROR_CODE_MSG } from "./lineManagerControllerError.js";
 
-export default class RouteManageController {
+export default class LineManagerController {
   constructor() {
-    this.routeManageView = new RouteManageView();
-    this.routeDAO = new RouteDAO();
+    this.lineManageView = new LineManageView();
+    this.lineDAO = new LineDAO();
     this.stationDAO = new StationDAO();
     this.addEventAboutShowAllRoutes();
   }
@@ -15,9 +15,9 @@ export default class RouteManageController {
       .querySelector("#line-manager-button")
       .addEventListener("click", () => {
         let stations = this.stationDAO.getAllStations();
-        this.routeManageView.showAllRoutes(
+        this.lineManageView.showAllRoutes(
           stations,
-          this.routeDAO.getAllRoutes()
+          this.lineDAO.getAllRoutes()
         );
         this.addEventAboutAddRoute();
         this.addEventAboutDeleteRoute();
@@ -29,7 +29,7 @@ export default class RouteManageController {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
         let routeName = tr.firstElementChild.innerText;
-        this.routeDAO.deleteRoute(routeName);
+        this.lineDAO.deleteRoute(routeName);
         tr.remove();
       }
     });
@@ -52,7 +52,7 @@ export default class RouteManageController {
         return;
       }
       this.appendRouteToTable(
-        this.routeDAO.addRoute(routeName, upwardEndStation, downwardEndStation)
+        this.lineDAO.addRoute(routeName, upwardEndStation, downwardEndStation)
       );
     });
   }
@@ -69,11 +69,11 @@ export default class RouteManageController {
     if (routeName == null) {
       alert(ERROR_CODE_MSG[ERROR_CODE.ROUTE_NAME_DUP]);
     } else {
-      let route = this.routeDAO.getAllRoutes();
+      let route = this.lineDAO.getAllRoutes();
       let stationsList = route[routeName];
       let upwardEndStation = stationsList[0];
       let downwardEndStation = stationsList[stationsList.length - 1];
-      this.routeManageView.addRouteToTable(
+      this.lineManageView.addRouteToTable(
         routeName,
         upwardEndStation,
         downwardEndStation

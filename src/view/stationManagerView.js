@@ -1,4 +1,4 @@
-export default class StationManageView {
+export default class StationManagerView {
   makeHtml(stations) {
     let ret = `
         <p>역 이름</p>

@@ -1,21 +1,21 @@
-import SectionManageView from "../view/sectionManageView.js";
-import RouteDAO from "../model/routeDAO.js";
+import SectionManagerView from "../view/sectionManagerView.js";
+import LineDAO from "../model/lineDAO.js";
 import StationDAO from "../model/stationDAO.js";
-import { ERROR_CODE, ERROR_CODE_MSG } from "./sectionManageControllerError.js";
+import { ERROR_CODE, ERROR_CODE_MSG } from "./sectionManagerControllerError.js";
 
-export default class SectionManageController {
+export default class SectionManagerController {
   constructor() {
-    this.routeDAO = new RouteDAO();
-    this.sectionManageView = new SectionManageView();
+    this.lineDAO = new LineDAO();
+    this.sectionManagerView = new SectionManagerView();
     this.addEventAboutShowSectionPage();
   }
   addEventAboutShowSectionPage() {
     document
       .querySelector("#section-manager-button")
       .addEventListener("click", () => {
-        let routes = this.routeDAO.getAllRoutes();
+        let routes = this.lineDAO.getAllRoutes();
         let routeList = Object.keys(routes);
-        this.sectionManageView.showAllRoutes(routeList);
+        this.sectionManagerView.showAllRoutes(routeList);
         this.addEventAboutRouteButtons();
       });
   }
@@ -25,8 +25,8 @@ export default class SectionManageController {
         let stationDAO = new StationDAO();
         let allStations = stationDAO.getAllStations();
         let routeName = evt.target.innerText;
-        let routeStations = this.routeDAO.getStationsList(routeName);
-        this.sectionManageView.showManageSection(
+        let routeStations = this.lineDAO.getStationsList(routeName);
+        this.sectionManagerView.showManageSection(
           routeName,
           routeStations,
           allStations
@@ -46,10 +46,10 @@ export default class SectionManageController {
         }
         let tr = evt.target.parentElement.parentElement;
         let stationName = tr.children[1].innerText;
-        this.routeDAO.deleteStationInRoute(routeName, stationName);
+        this.lineDAO.deleteStationInRoute(routeName, stationName);
         tr.remove();
-        this.sectionManageView.changeStationsOrder();
-        this.sectionManageView.decreaseMaxNumInInput();
+        this.sectionManagerView.changeStationsOrder();
+        this.sectionManagerView.decreaseMaxNumInInput();
       }
     });
   }
@@ -61,13 +61,13 @@ export default class SectionManageController {
           evt.target.previousElementSibling.previousElementSibling.value;
         let idx = evt.target.previousElementSibling.value;
         if (
-          this.routeDAO.addStationInRoute(routeName, stationName, idx) == null
+          this.lineDAO.addStationInRoute(routeName, stationName, idx) == null
         ) {
           alert(ERROR_CODE_MSG[ERROR_CODE.ALREADY_EXIST_IN_SECTION]);
           return;
         }
-        this.sectionManageView.appendStationToTable(stationName, idx);
-        this.sectionManageView.increaseMaxNumInInput();
+        this.sectionManagerView.appendStationToTable(stationName, idx);
+        this.sectionManagerView.increaseMaxNumInInput();
       });
   }
 }

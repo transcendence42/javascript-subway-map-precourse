@@ -1,4 +1,4 @@
-export default class RouteDAO {
+export default class LineDAO {
   constructor() {
     this.localStorage = window.localStorage;
   }

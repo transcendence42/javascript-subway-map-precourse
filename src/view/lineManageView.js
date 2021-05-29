@@ -1,4 +1,4 @@
-export default class RouteManageView {
+export default class LineManageView {
   constructor() {}
   showAllRoutes(stations, routes) {
     let ret = `<p><span>노선 이름</span></p>

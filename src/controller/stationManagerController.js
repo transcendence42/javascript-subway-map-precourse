@@ -1,10 +1,10 @@
-import StationManageView from "../view/stationManageView.js";
+import StationManagerView from "../view/stationManagerView.js";
 import StationDAO from "../model/stationDAO.js";
-import { ERROR_CODE, ERROR_CODE_MSG } from "./stationManageControllerError.js";
+import { ERROR_CODE, ERROR_CODE_MSG } from "./stationManagerControllerError.js";
 
-export default class StationManageController {
+export default class StationManagerController {
   constructor() {
-    this.stationManageView = new StationManageView();
+    this.stationManagerView = new StationManagerView();
     this.stationDAO = new StationDAO();
     this.addEventAboutShowAllStations();
   }
@@ -35,7 +35,7 @@ export default class StationManageController {
     return ERROR_CODE.SUCCESS;
   }
   showAllStations() {
-    this.stationManageView.makeHtml(this.stationDAO.getAllStations());
+    this.stationManagerView.makeHtml(this.stationDAO.getAllStations());
     this.addEventAboutAddStation();
     this.addEventAboutDeleteStation();
   }
@@ -57,7 +57,7 @@ export default class StationManageController {
     if (station == null) {
       alert(ERROR_CODE_MSG[ERROR_CODE.STATION_NAME_DUP]);
     } else {
-      this.stationManageView.addStationToTable(station);
+      this.stationManagerView.addStationToTable(station);
       document.querySelector("#station-name-input").value = "";
     }
   }
