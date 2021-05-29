@@ -29,7 +29,7 @@ export default class SectionManagerView {
                   <th>설정</th>
               </tr>`;
     lineStations.forEach((stationName, idx) => {
-      ret += `<tr><td>${idx}</td><td>${stationName}</td><td><button class="section-delete-button">노선에서 제거</button></td></tr>`;
+      ret += `<tr><td>${idx}</td><td>${stationName}</td><td><button class="section-delete-button" data-station-name="${stationName}">노선에서 제거</button></td></tr>`;
     });
     ret += `</tbody></table>`;
     document.querySelector("#manage-section").innerHTML = ret;
@@ -49,7 +49,7 @@ export default class SectionManagerView {
       .querySelector(`tr:nth-child(${Number(idx) + 1})`)
       .insertAdjacentHTML(
         "afterend",
-        `<tr><td>${idx}</td><td>${stationName}</td><td><button class="section-delete-button">노선에서 제거</button></td></tr>`
+        `<tr><td>${idx}</td><td>${stationName}</td><td><button class="section-delete-button" data-station-name="${stationName}">노선에서 제거</button></td></tr>`
       );
     this.changeStationsOrder();
   }

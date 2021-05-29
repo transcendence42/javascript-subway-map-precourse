@@ -45,7 +45,7 @@ export default class SectionManagerController {
           return;
         }
         let tr = evt.target.parentElement.parentElement;
-        let stationName = tr.children[1].innerText;
+        let stationName = evt.target.dataset.stationName;
         this.lineDAO.deleteStationInLine(lineName, stationName);
         tr.remove();
         this.sectionManagerView.changeStationsOrder();
