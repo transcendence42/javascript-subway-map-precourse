@@ -1,9 +1,9 @@
-import { handleStationManagerButton } from './handle-manager.js';
-import { handleStationAddButton } from './handle-add.js';
-import { handleStationDeleteButton } from './handle-delete.js';
+import { handleStationManager } from './handle-manager.js';
+import { handleStationAdd } from './handle-add.js';
+import { handleStationDelete } from './handle-delete.js';
 
 export const stationManager = () => {
-  handleStationManagerButton();
-  handleStationAddButton();
-  // handleStationDeleteButton();
+  handleStationManager();
+  handleStationAdd();
+  handleStationDelete();
 };

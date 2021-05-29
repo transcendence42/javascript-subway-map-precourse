@@ -11,6 +11,11 @@ export const addStationListTableTr = (name) => {
     .insertAdjacentHTML(`beforeend`, stationListTableTr(name));
 };
 
+export const deleteStationListTableTbody = (line) => {
+  const target = line.closest('tbody');
+  target.remove();
+};
+
 const createStationListTable = () => {
   document
     .getElementById(ID.STATION_MANAGER)

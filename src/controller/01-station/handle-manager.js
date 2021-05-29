@@ -26,9 +26,9 @@ const setStationList = () => {
   }
 };
 
-export const handleStationManagerButton = () => {
+export const handleStationManager = () => {
   document
     .getElementById(ID.STATION_MANAGER_BUTTON)
-    .addEventListener('click', toggleStationManagerButton);
+    .addEventListener('click', () => toggleStationManagerButton());
   setStationList();
 };

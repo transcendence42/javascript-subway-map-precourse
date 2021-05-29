@@ -1,7 +1,21 @@
+import { ALERT } from '../../constants/index.js';
+import { loadStationLocalStorage } from '../../model/01-station/index.js';
+
+const checkStationNameLengthValid = (stationName) => {
+  return stationName.length < 2;
+};
+
+const checkStationDoubleValid = (stationName, stationNameArray) => {
+  return stationNameArray.some((x) => x.name === stationName)
+};
+
 export const checkStationNameValid = (stationName) => {
-	if (stationName.length < 2) {
-	  alert('역 이름을 2글자 이상 입력하세요');
-	  return false;
-	}
-	return true;
-  };
+  if (checkStationNameLengthValid(stationName)) {
+    alert(ALERT.STATION_NAME_LENGTH);
+    return false;
+  } else if (checkStationDoubleValid(stationName, loadStationLocalStorage())) {
+    alert(ALERT.STATION_NAME_DOUBLE);
+    return false;
+  }
+  return true;
+};

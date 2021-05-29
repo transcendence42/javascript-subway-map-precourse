@@ -1,4 +1,4 @@
-export const inputClear = (element) => {
+export const clearInput = (element) => {
   element.value = '';
   element.focus();
 };
