@@ -32,12 +32,12 @@
     - [x] showMap: 지하철 노선도 화면 만들기
 - [x] Controller: 이벤트 관련
     - [x] constructor: 4개의 버튼에 대한 이벤트를 확인
-    - [x] catchStationAddition: 역추가 이벤트를 확인
-    - [x] catchStationDeletion: 역삭제 이벤트를 확인
-    - [x] catchLineAddition: 노선 추가 이벤트를 확인
-    - [x] catchLineDeletion: 노선 삭제 이벤트를 확인
-    - [x] catchSectionAddition: 구간 추가 이벤트를 확인
-    - [x] catchSectionDeletion: 구간 삭제 이벤트를 확인
+    - [x] 역추가 이벤트를 확인
+    - [x] 역삭제 이벤트를 확인
+    - [x] 노선 추가 이벤트를 확인
+    - [x] 노선 삭제 이벤트를 확인
+    - [x] 구간 추가 이벤트를 확인
+    - [x] 구간 삭제 이벤트를 확인
 - [x] Model: Local Storage와 소통
     - [x] addStation: 유효성(2글자 이상, 중복 여부)을 검증, 역추가
     - [x] deleteStation: 유효성(노선 등록 여부) 검증, 역삭제 
