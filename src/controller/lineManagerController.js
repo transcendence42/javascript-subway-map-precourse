@@ -8,42 +8,39 @@ export default class LineManagerController {
     this.lineManageView = new LineManageView();
     this.lineDAO = new LineDAO();
     this.stationDAO = new StationDAO();
-    this.addEventAboutShowAllRoutes();
+    this.addEventAboutShowAllLines();
   }
-  addEventAboutShowAllRoutes() {
+  addEventAboutShowAllLines() {
     document
       .querySelector("#line-manager-button")
       .addEventListener("click", () => {
         let stations = this.stationDAO.getAllStations();
-        this.lineManageView.showAllRoutes(
-          stations,
-          this.lineDAO.getAllRoutes()
-        );
-        this.addEventAboutAddRoute();
-        this.addEventAboutDeleteRoute();
+        this.lineManageView.showAllLines(stations, this.lineDAO.getAllLines());
+        this.addEventAboutAddLine();
+        this.addEventAboutDeleteLine();
       });
   }
-  addEventAboutDeleteRoute() {
+  addEventAboutDeleteLine() {
     document.querySelector("table").addEventListener("click", evt => {
       if (evt.target.className == "line-delete-button") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
-        let routeName = tr.firstElementChild.innerText;
-        this.lineDAO.deleteRoute(routeName);
+        let lineName = tr.firstElementChild.innerText;
+        this.lineDAO.deleteLine(lineName);
         tr.remove();
       }
     });
   }
-  addEventAboutAddRoute() {
+  addEventAboutAddLine() {
     document.querySelector("#line-add-button").addEventListener("click", () => {
-      let routeName = document.querySelector("#line-name-input").value;
+      let lineName = document.querySelector("#line-name-input").value;
       let lineStartStation = document.querySelector(
         "#line-start-station-selector"
       ).value;
       let lineEndStation = document.querySelector("#line-end-station-selector")
         .value;
-      let errCode = this.isValidForAddingRoute(
-        routeName,
+      let errCode = this.isValidForAddingLine(
+        lineName,
         lineStartStation,
         lineEndStation
       );
@@ -51,30 +48,29 @@ export default class LineManagerController {
         alert(ERROR_CODE_MSG[errCode]);
         return;
       }
-      this.appendRouteToTable(
-        this.lineDAO.addRoute(routeName, lineStartStation, lineEndStation)
+      this.appendLineToTable(
+        this.lineDAO.addLine(lineName, lineStartStation, lineEndStation)
       );
     });
   }
-  isValidForAddingRoute(routeName, lineStartStation, lineEndStation) {
-    if (routeName == null || routeName == "")
-      return ERROR_CODE.EMPTY_ROUTE_NAME;
-    if (routeName.search(/[^가-힣0-9]/g) != -1)
-      return ERROR_CODE.WRONG_ROUTE_NAME;
+  isValidForAddingLine(lineName, lineStartStation, lineEndStation) {
+    if (lineName == null || lineName == "") return ERROR_CODE.EMPTY_LINE_NAME;
+    if (lineName.search(/[^가-힣0-9]/g) != -1)
+      return ERROR_CODE.WRONG_LINE_NAME;
     if (lineStartStation == lineEndStation)
       return ERROR_CODE.EQUAL_UPWARD_AND_DOWNWARD;
     return ERROR_CODE.SUCCESS;
   }
-  appendRouteToTable(routeName) {
-    if (routeName == null) {
-      alert(ERROR_CODE_MSG[ERROR_CODE.ROUTE_NAME_DUP]);
+  appendLineToTable(lineName) {
+    if (lineName == null) {
+      alert(ERROR_CODE_MSG[ERROR_CODE.LINE_NAME_DUP]);
     } else {
-      let route = this.lineDAO.getAllRoutes();
-      let stationsList = route[routeName];
+      let line = this.lineDAO.getAllLines();
+      let stationsList = line[lineName];
       let lineStartStation = stationsList[0];
       let lineEndStation = stationsList[stationsList.length - 1];
-      this.lineManageView.addRouteToTable(
-        routeName,
+      this.lineManageView.addLineToTable(
+        lineName,
         lineStartStation,
         lineEndStation
       );

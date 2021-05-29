@@ -13,7 +13,7 @@ export default class MapPrintManagerController {
       .addEventListener("click", () => this.showMap());
   }
   showMap() {
-    let routes = this.lineDAO.getAllRoutes();
-    this.mapView.showMap(routes);
+    let lines = this.lineDAO.getAllLines();
+    this.mapView.showMap(lines);
   }
 }

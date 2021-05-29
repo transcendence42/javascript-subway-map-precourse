@@ -1,10 +1,10 @@
 export default class MapView {
   constructor() {}
-  showMap(routes) {
+  showMap(lines) {
     let ret = `<div class="map"><ul>`;
-    Object.keys(routes).forEach(key => {
+    Object.keys(lines).forEach(key => {
       ret += `<li>${key}</li><ul>`;
-      routes[key].forEach(item => {
+      lines[key].forEach(item => {
         ret += `<li>${item}</li>`;
       });
       ret += `</ul>`;

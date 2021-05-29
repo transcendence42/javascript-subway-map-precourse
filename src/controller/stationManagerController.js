@@ -54,7 +54,7 @@ export default class StationManagerController {
         let tr = evt.target.parentElement.parentElement;
         let stationName = evt.target.dataset.stationName;
         if (!this.stationDAO.deleteStation(stationName)) {
-          alert(ERROR_CODE_MSG[ERROR_CODE.STATION_IN_ROUTE]);
+          alert(ERROR_CODE_MSG[ERROR_CODE.STATION_IN_LINE]);
           return;
         }
         tr.remove();

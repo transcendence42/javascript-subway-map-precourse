@@ -2,42 +2,42 @@ export default class LineDAO {
   constructor() {
     this.localStorage = window.localStorage;
   }
-  getAllRoutes() {
-    if (!this.localStorage.getItem("routes")) return {};
-    return JSON.parse(this.localStorage.getItem("routes"));
+  getAllLines() {
+    if (!this.localStorage.getItem("lines")) return {};
+    return JSON.parse(this.localStorage.getItem("lines"));
   }
-  addRoute(routeName, lineStartStation, lineEndStation) {
-    let routes = this.getAllRoutes();
-    if (Object.keys(routes).indexOf(routeName) != -1) return null;
-    routes[routeName] = [lineStartStation, lineEndStation];
-    this.localStorage.setItem("routes", JSON.stringify(routes));
-    return routeName;
+  addLine(lineName, lineStartStation, lineEndStation) {
+    let lines = this.getAllLines();
+    if (Object.keys(lines).indexOf(lineName) != -1) return null;
+    lines[lineName] = [lineStartStation, lineEndStation];
+    this.localStorage.setItem("lines", JSON.stringify(lines));
+    return lineName;
   }
-  deleteRoute(routeName) {
-    let routes = this.getAllRoutes();
-    delete routes[routeName];
-    this.localStorage.setItem("routes", JSON.stringify(routes));
+  deleteLine(lineName) {
+    let lines = this.getAllLines();
+    delete lines[lineName];
+    this.localStorage.setItem("lines", JSON.stringify(lines));
   }
-  getStationsList(routeName) {
-    let routes = this.getAllRoutes();
-    let stationsList = routes[routeName];
+  getStationsList(lineName) {
+    let lines = this.getAllLines();
+    let stationsList = lines[lineName];
     if (stationsList == null) {
       alert("잘못된 경로입니다.");
     }
     return stationsList;
   }
-  addStationInRoute(routeName, stationName, idx) {
-    let routes = this.getAllRoutes();
-    if (routes[routeName].includes(stationName)) return null;
-    routes[routeName].splice(idx, 0, stationName);
-    this.localStorage.setItem("routes", JSON.stringify(routes));
+  addStationInLine(lineName, stationName, idx) {
+    let lines = this.getAllLines();
+    if (lines[lineName].includes(stationName)) return null;
+    lines[lineName].splice(idx, 0, stationName);
+    this.localStorage.setItem("lines", JSON.stringify(lines));
     return stationName;
   }
-  deleteStationInRoute(routeName, stationName) {
-    let routes = this.getAllRoutes();
-    routes[routeName] = routes[routeName].filter(item => {
+  deleteStationInLine(lineName, stationName) {
+    let lines = this.getAllLines();
+    lines[lineName] = lines[lineName].filter(item => {
       return item != stationName;
     });
-    this.localStorage.setItem("routes", JSON.stringify(routes));
+    this.localStorage.setItem("lines", JSON.stringify(lines));
   }
 }

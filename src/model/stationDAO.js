@@ -15,19 +15,19 @@ export default class StationDAO {
     this.localStorage.setItem("stations", stations.toString());
     return stationName;
   }
-  isStationInRoute(stationName) {
+  isStationInLine(stationName) {
     let lineDAO = new LineDAO();
-    let routes = lineDAO.getAllRoutes();
-    let routeArray = Object.keys(routes);
+    let lines = lineDAO.getAllLines();
+    let lineArray = Object.keys(lines);
     let ret = false;
-    routeArray.forEach(route => {
-      if (routes[route].includes(stationName)) ret = true;
+    lineArray.forEach(line => {
+      if (lines[line].includes(stationName)) ret = true;
     });
     return ret;
   }
   deleteStation(stationName) {
     let stations = this.getAllStations();
-    if (this.isStationInRoute(stationName)) return null;
+    if (this.isStationInLine(stationName)) return null;
     stations = stations.filter(item => item != stationName);
     this.localStorage.setItem("stations", stations.toString());
     return stationName;
