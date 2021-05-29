@@ -15,9 +15,9 @@ export function addStationTable(station) {
   );
 }
 
-export function removeStationTable(tr) {
-  const parent = tr.parentNode;
-  parent.removeChild(tr);
+export function removeStationTable(tbody) {
+  const parent = tbody.parentNode;
+  parent.removeChild(tbody);
 }
 
 export function renderStationTable() {
