@@ -20,7 +20,7 @@ export function clickAddStation() {
 export function constructStation() {
   const stationAddButton = document.getElementById(S.ADDBTN);
   stationAddButton.addEventListener('click', clickAddStation);
-  document.getElementById(S.TABLE).addEventListener('click', function (e) {
+  document.getElementById(S.TABLE).addEventListener('click', (e) => {
     const target = e.target;
     const action = target.dataset.action;
     if (action === 'deleteStation') {
