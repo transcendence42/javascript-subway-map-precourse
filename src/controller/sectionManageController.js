@@ -39,6 +39,7 @@ export default class SectionManageController {
   addEventAboutDeleteButtons(routeName) {
     document.querySelector("table").addEventListener("click", evt => {
       if (evt.target.className == "delete-route-station") {
+        if (!confirm("정말로 삭제하시겠습니까?")) return;
         if (document.querySelectorAll("tr").length <= 3) {
           alert(ERROR_CODE_MSG[ERROR_CODE.LESS_THAN_TWO]);
           return;
