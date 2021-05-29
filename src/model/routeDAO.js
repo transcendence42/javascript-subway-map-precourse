@@ -31,4 +31,11 @@ export default class RouteDAO {
     routes[routeName].splice(idx, 0, stationName);
     this.localStorage.setItem("routes", JSON.stringify(routes));
   }
+  deleteStationInRoute(routeName, stationName) {
+    let routes = this.getAllRoutes();
+    routes[routeName] = routes[routeName].filter(item => {
+      return item != stationName;
+    });
+    this.localStorage.setItem("routes", JSON.stringify(routes));
+  }
 }

@@ -25,15 +25,29 @@ export default class SectionManageController {
         let allStations = stationDAO.getAllStations();
         let routeName = evt.target.innerText;
         let routeStations = this.routeDAO.getStationsList(routeName);
-        let stationsExceptRouteStations = allStations.filter(item => {
-          return !routeStations.includes(item);
-        });
         this.sectionManageView.showManageSection(
           routeName,
           routeStations,
-          stationsExceptRouteStations
+          allStations
         );
         this.addEventAboutRegisterButton(routeName);
+        this.addEventAboutDeleteButtons(routeName);
+      }
+    });
+  }
+  addEventAboutDeleteButtons(routeName) {
+    document.querySelector("table").addEventListener("click", evt => {
+      if (evt.target.className == "delete-route-station") {
+        if (document.querySelectorAll("tr").length <= 3) {
+          alert("더 이상 지울 수 없습니다.");
+          return;
+        }
+        let tr = evt.target.parentElement.parentElement;
+        let stationName = tr.children[1].innerText;
+        this.routeDAO.deleteStationInRoute(routeName, stationName);
+        tr.remove();
+        this.sectionManageView.changeStationsOrder();
+        this.sectionManageView.decreaseMaxNumInInput();
       }
     });
   }

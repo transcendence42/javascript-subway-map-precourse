@@ -8,19 +8,19 @@ export default class SectionManageView {
     ret += `</ul><div id="manage-section"></div>`;
     document.querySelector("#show").innerHTML = ret;
   }
-  showManageSection(routeName, routeStations, stationsExceptRouteStations) {
+  showManageSection(routeName, routeStations, allStations) {
     let ret = `<h2>${routeName} 관리</h2>
       <h3>구간 등록</h3>
       <p>
         <select class="manage-section">`;
-    stationsExceptRouteStations.forEach(stationName => {
+    allStations.forEach(stationName => {
       ret += `<option>${stationName}</option>`;
     });
 
     ret += `</select>
-        <input type="number" min="0" max="${routeStations.length}">
+        <input type="number" value="0" min="0" max="${routeStations.length}">
         <button class="register-section-button">등록</button>
-      </p>
+        </p>
       <table>
           <tbody>
               <tr>
@@ -33,5 +33,15 @@ export default class SectionManageView {
     });
     ret += `</tbody></table>`;
     document.querySelector("#manage-section").innerHTML = ret;
+  }
+  changeStationsOrder() {
+    let stationsIndex = document.querySelectorAll(`tr>td:first-child`);
+    stationsIndex.forEach((item, idx) => {
+      item.innerText = idx;
+    });
+  }
+  decreaseMaxNumInInput() {
+    let input = document.querySelector("input");
+    input.max = Number(input.max) - 1;
   }
 }
