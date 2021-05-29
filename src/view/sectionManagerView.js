@@ -53,7 +53,6 @@ export default class SectionManagerView {
       );
     this.changeStationsOrder();
   }
-  change;
   increaseMaxNumInInput() {
     let input = document.querySelector("input");
     input.max = Number(input.max) + 1;
