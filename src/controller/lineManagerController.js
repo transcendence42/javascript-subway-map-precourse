@@ -24,10 +24,9 @@ export default class LineManagerController {
     document.querySelector("table").addEventListener("click", evt => {
       if (evt.target.className == "line-delete-button") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
-        let tr = evt.target.parentElement.parentElement;
         let lineName = evt.target.dataset.lineName;
         this.lineDAO.deleteLine(lineName);
-        tr.remove();
+        this.lineManageView.deleteLineFromTable(lineName);
       }
     });
   }

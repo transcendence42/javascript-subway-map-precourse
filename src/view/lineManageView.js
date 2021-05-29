@@ -37,7 +37,11 @@ export default class LineManageView {
   }
   addLineToTable(lineName, lineStartStation, lineEndStation) {
     let tbody = document.querySelector("table>tbody");
-    tbody.innerHTML += `<tr>
-    <td>${lineName}</td><td>${lineStartStation}</td><td>${lineEndStation}</td><td><button class="line-delete-button" data-line-name="${lineName}">삭제</button></td></tr>`;
+    tbody.innerHTML += `<tr><td>${lineName}</td><td>${lineStartStation}</td><td>${lineEndStation}</td><td><button class="line-delete-button" data-line-name="${lineName}">삭제</button></td></tr>`;
+  }
+  deleteLineFromTable(lineName) {
+    let tr = document.querySelector(`[data-line-name="${lineName}"]`)
+      .parentElement.parentElement;
+    tr.remove();
   }
 }
