@@ -44,10 +44,9 @@ export default class SectionManagerController {
           alert(ERROR_CODE_MSG[ERROR_CODE.LESS_THAN_TWO]);
           return;
         }
-        let tr = evt.target.parentElement.parentElement;
         let stationName = evt.target.dataset.stationName;
         this.lineDAO.deleteStationInLine(lineName, stationName);
-        tr.remove();
+        this.sectionManagerView.deleteTrFromTable(stationName);
         this.sectionManagerView.changeStationsOrder();
         this.sectionManagerView.decreaseMaxNumInInput();
       }

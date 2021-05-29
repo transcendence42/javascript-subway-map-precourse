@@ -58,4 +58,9 @@ export default class SectionManagerView {
     let input = document.querySelector("input");
     input.max = Number(input.max) + 1;
   }
+  deleteTrFromTable(stationName) {
+    let tr = document.querySelector(`[data-station-name="${stationName}"`)
+      .parentElement.parentElement;
+    tr.remove();
+  }
 }
