@@ -30,7 +30,7 @@ export default class LineManageView {
       let lineStartStation = lines[lineName][0];
       let numberOfStationsInLine = lines[lineName].length;
       let lineEndStation = lines[lineName][numberOfStationsInLine - 1];
-      ret += `<tr><td>${lineName}</td><td>${lineStartStation}</td><td>${lineEndStation}</td><td><button class="line-delete-button">삭제</button></td></tr>`;
+      ret += `<tr><td>${lineName}</td><td>${lineStartStation}</td><td>${lineEndStation}</td><td><button class="line-delete-button" data-line-name="${lineName}">삭제</button></td></tr>`;
     });
     ret += `</tbody></table>`;
     document.querySelector("#show").innerHTML = ret;
@@ -38,6 +38,6 @@ export default class LineManageView {
   addLineToTable(lineName, lineStartStation, lineEndStation) {
     let tbody = document.querySelector("table>tbody");
     tbody.innerHTML += `<tr>
-    <td>${lineName}</td><td>${lineStartStation}</td><td>${lineEndStation}</td><td><button class="line-delete-button">삭제</button></td></tr>`;
+    <td>${lineName}</td><td>${lineStartStation}</td><td>${lineEndStation}</td><td><button class="line-delete-button" data-line-name="${lineName}">삭제</button></td></tr>`;
   }
 }

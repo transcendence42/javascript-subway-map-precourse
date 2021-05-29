@@ -25,7 +25,7 @@ export default class LineManagerController {
       if (evt.target.className == "line-delete-button") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
-        let lineName = tr.firstElementChild.innerText;
+        let lineName = evt.target.dataset.lineName;
         this.lineDAO.deleteLine(lineName);
         tr.remove();
       }
