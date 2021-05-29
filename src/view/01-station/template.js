@@ -1,4 +1,4 @@
-import { ID, NAME } from '../../constants/index.js';
+import { ID, NAME, CLASS } from '../../constants/index.js';
 
 export const stationManagerDiv = () => {
   return `
@@ -14,19 +14,28 @@ export const stationManagerDiv = () => {
 export const stationListTable = () => {
   return `
   <table border='1' id='${ID.STATION_LIST_TABLE}'>
-    <tr>
-      <th>${NAME.STATION_LIST_NAME}</th>
-      <th>${NAME.STATION_LIST_SETTING}</th>
-    </tr>
   </table>
   `;
 };
 
-export const stationListTableTr = (name) => {
+export const stationListTableThead = () => {
   return `
+    <thead>
+      <tr>
+        <th>${NAME.STATION_LIST_NAME}</th>
+        <th>${NAME.STATION_LIST_SETTING}</th>
+      </tr>
+    </thead>
+  `
+}
+
+export const stationListTableTbody = (name) => {
+  return `
+  <tbody>
     <tr>
       <td>${name}</td>
-      <td><button class='${ID.STATION_DELETE_BUTTON}'>${NAME.STATION_LIST_DELETE}</td>
+      <td><button class='${CLASS.STATION_DELETE_BUTTON}'>${NAME.STATION_LIST_DELETE}</td>
     </tr>
+  </tbody>
   `
 }

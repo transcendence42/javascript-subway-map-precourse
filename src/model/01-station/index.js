@@ -1,6 +1,6 @@
 import {
   storeLocalStorage,
-  loadLocalStorage
+  loadLocalStorage,
 } from '../utils/handle-storage.js';
 
 export const loadStationLocalStorage = () => {
@@ -11,12 +11,12 @@ export const loadStationLocalStorage = () => {
   return loadLocalStorage('stations');
 };
 
-export const addStationLocalStorage = (stationName) => {
+export const addStationLocalStorage = (stationName, lineName) => {
   let stations = loadStationLocalStorage();
   if (stations === null) {
     stations = [];
   }
-  stations.push({ name: stationName, line: 0 });
+  stations.push({ name: stationName, line: lineName });
   storeLocalStorage('stations', stations);
 };
 
@@ -27,5 +27,10 @@ export const deleteStationLocalStorage = (stationName) => {
   });
   stations.splice(stations.indexOf(target), 1);
   localStorage.removeItem('stations');
-  storeLocalStorage('stations', stations)
+  storeLocalStorage('stations', stations);
 };
+
+export const addLineLocalStorage = (stationName, lineName) => {
+  let stations = loadStationLocalStorage();
+  // stations.fineIndex
+}

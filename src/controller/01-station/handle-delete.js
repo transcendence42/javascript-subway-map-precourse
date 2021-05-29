@@ -22,7 +22,7 @@ export const deleteStation = (line) => {
 };
 
 export const handleStationDelete = () => {
-  for (let line of document.getElementsByClassName(ID.STATION_DELETE_BUTTON)) {
+  for (const line of document.getElementsByClassName(ID.STATION_DELETE_BUTTON)) {
     line.addEventListener('click', () => deleteStation(line));
   }
 };

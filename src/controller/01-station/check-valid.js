@@ -5,15 +5,16 @@ const checkStationNameLengthValid = (stationName) => {
   return stationName.length < 2;
 };
 
-const checkStationDoubleValid = (stationName, stationNameArray) => {
-  return stationNameArray.some((x) => x.name === stationName)
+const checkStationNameDoubleValid = (stationName, stations) => {
+  return stations.some((x) => x.name === stationName)
 };
 
-export const checkStationNameValid = (stationName) => {
+export const checkStationValid = (stationName) => {
   if (checkStationNameLengthValid(stationName)) {
     alert(ALERT.STATION_NAME_LENGTH);
     return false;
-  } else if (checkStationDoubleValid(stationName, loadStationLocalStorage())) {
+  }
+  if (checkStationNameDoubleValid(stationName, loadStationLocalStorage())) {
     alert(ALERT.STATION_NAME_DOUBLE);
     return false;
   }

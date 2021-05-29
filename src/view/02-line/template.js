@@ -1,37 +1,47 @@
-import { ID } from '../../constants/index.js';
+import { ID, NAME, CLASS } from '../../constants/index.js';
 
 export const lineManagerDiv = () => {
   return `
   <div id='${ID.LINE_MANAGER}' hidden>
-    <h3>노선 이름</br>
-    <input id='${ID.LINE_NAME_INPUT}' placeholder="노선 이름을 입력해주세요." />
+    <h3>${NAME.LINE_NAME}</br>
+    <input id='${ID.LINE_NAME_INPUT}' placeholder='${NAME.LINE_NAME_INPUT}' />
     </h3>
-    <span><strong>상행 종점
+    <span><strong>${NAME.LINE_START_STATION}
     <select id='${ID.LINE_START_STATION_SELECTOR}'></select>
     </strong></span></br>
-    <span><strong>하행 종점
+    <span><strong>${NAME.LINE_END_STATION}
     <select id='${ID.LINE_END_STATION_SELECTOR}'></select>
     </strong></span></br></br>
-    <button id='${ID.LINE_ADD_BUTTON}'>노선 추가</button>
-    <h2>🚉 지하철 노선 목록</h2>
+    <button id='${ID.LINE_ADD_BUTTON}'>${NAME.LINE_ADD}</button>
+    <h2>${NAME.LINE_LIST}</h2>
   </div>
   `;
 };
 
 export const lineTable = () => {
   return `
-  <div id='${ID.LINE_TABLE}'>
-    <table border='1'>
-      <thead>
-        <tr>
-        <th>노선 이름</th>
-        <th>상행 종점역</th>
-        <th>하행 종점역</th>
-        <th>설정</th>
+  <table border='1' id='${ID.LINE_TABLE}'>
+    <thead>
+      <tr>
+        <th>${NAME.LINE_LIST_NAME}</th>
+        <th>${NAME.LINE_LIST_START_STATION}</th>
+        <th>${NAME.LINE_LIST_END_STATION}</th>
+        <th>${NAME.LINE_LIST_SETTING}</th>
       </tr>
     </thead>
-    <tbody></tbody>
   </table>
-</div>
   `;
 };
+
+export const lineListTableTbody = (lineName, startStation, endStation) => {
+  return `
+  <tbody>
+    <tr>
+      <td>${lineName}</td>
+      <td>${startStation}</td>
+      <td>${endStation}</td>
+      <td><button class='${CLASS.LINE_DELETE_BUTTON}'>${NAME.LINE_LIST_DELETE}</td>
+    </tr>
+  </tbody>
+  `
+}

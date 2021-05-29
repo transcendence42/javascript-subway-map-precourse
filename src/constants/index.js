@@ -11,6 +11,18 @@ export const NAME = {
   STATION_LIST_NAME: '역 이름',
   STATION_LIST_SETTING: '설정',
   STATION_LIST_DELETE: '삭제',
+
+  LINE_NAME: '노선 이름',
+  LINE_NAME_INPUT: '노선 이름을 입력해주세요',
+  LINE_START_STATION: '상행 종점',
+  LINE_END_STATION: '하행 종점',
+  LINE_ADD: '노선 추가',
+  LINE_LIST: '🚉 지하철 노선 목록',
+  LINE_LIST_NAME: '노선 이름',
+  LINE_LIST_START_STATION: '상행 종점역',
+  LINE_LIST_END_STATION: '하행 종점역',
+  LINE_LIST_SETTING: '설정',
+  LINE_LIST_DELETE: '삭제',
 };
 
 export const CLASS = {
@@ -41,6 +53,10 @@ export const ID = {
 };
 
 export const ALERT = {
-  STATION_NAME_LENGTH: '역 이름을 2글자 이상 입력하세요',
+  STATION_NAME_LENGTH: '역 이름을 두 글자 이상 입력해주세요',
   STATION_NAME_DOUBLE: '이미 존재하는 역 이름입니다',
+
+  LINE_NAME_LENGTH: '노선 이름을 입력해주세요',
+  LINE_NAME_DOUBLE: '이미 존재하는 노선 이름입니다',
+  LINE_STATION_DOUBLE: '상행 종점과 하행 종점은 중복될 수 없습니다',
 };
