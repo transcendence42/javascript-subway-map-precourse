@@ -58,10 +58,14 @@ export default class SectionManageController {
         let stationName =
           evt.target.previousElementSibling.previousElementSibling.value;
         let idx = evt.target.previousElementSibling.value;
-        this.routeDAO.addStationInRoute(routeName, stationName, idx);
-        /* TODO: delete station name from select */
-        /* TODO: increase num input */
-        /* TODO: add tr */
+        if (
+          this.routeDAO.addStationInRoute(routeName, stationName, idx) == null
+        ) {
+          alert("해당 역이 노선에 이미 존재합니다.");
+          return;
+        }
+        this.sectionManageView.appendStationToTable(stationName, idx);
+        this.sectionManageView.increaseMaxNumInInput();
       });
   }
 }

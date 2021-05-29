@@ -28,8 +28,10 @@ export default class RouteDAO {
   }
   addStationInRoute(routeName, stationName, idx) {
     let routes = this.getAllRoutes();
+    if (routes[routeName].includes(stationName)) return null;
     routes[routeName].splice(idx, 0, stationName);
     this.localStorage.setItem("routes", JSON.stringify(routes));
+    return stationName;
   }
   deleteStationInRoute(routeName, stationName) {
     let routes = this.getAllRoutes();

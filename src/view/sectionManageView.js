@@ -44,4 +44,18 @@ export default class SectionManageView {
     let input = document.querySelector("input");
     input.max = Number(input.max) - 1;
   }
+  appendStationToTable(stationName, idx) {
+    document
+      .querySelector(`tr:nth-child(${Number(idx) + 1})`)
+      .insertAdjacentHTML(
+        "afterend",
+        `<tr><td>${idx}</td><td>${stationName}</td><td><button class="delete-route-station">노선에서 제거</button></td></tr>`
+      );
+    this.changeStationsOrder();
+  }
+  change;
+  increaseMaxNumInInput() {
+    let input = document.querySelector("input");
+    input.max = Number(input.max) + 1;
+  }
 }
