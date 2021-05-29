@@ -21,7 +21,7 @@ export default class SectionManagerController {
   }
   addEventAboutRouteButtons() {
     document.querySelector("ul.section-page").addEventListener("click", evt => {
-      if (evt.target.className == "section-route-btn") {
+      if (evt.target.className == "section-line-menu-button") {
         let stationDAO = new StationDAO();
         let allStations = stationDAO.getAllStations();
         let routeName = evt.target.innerText;
@@ -38,7 +38,7 @@ export default class SectionManagerController {
   }
   addEventAboutDeleteButtons(routeName) {
     document.querySelector("table").addEventListener("click", evt => {
-      if (evt.target.className == "delete-route-station") {
+      if (evt.target.className == "section-delete-button") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         if (document.querySelectorAll("tr").length <= 3) {
           alert(ERROR_CODE_MSG[ERROR_CODE.LESS_THAN_TWO]);
@@ -55,11 +55,11 @@ export default class SectionManagerController {
   }
   addEventAboutRegisterButton(routeName) {
     document
-      .querySelector("button.register-section-button")
+      .querySelector("#section-add-button")
       .addEventListener("click", evt => {
-        let stationName =
-          evt.target.previousElementSibling.previousElementSibling.value;
-        let idx = evt.target.previousElementSibling.value;
+        let stationName = document.querySelector("#section-station-selector")
+          .value;
+        let idx = document.querySelector("#section-order-input").value;
         if (
           this.lineDAO.addStationInRoute(routeName, stationName, idx) == null
         ) {

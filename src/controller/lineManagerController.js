@@ -25,7 +25,7 @@ export default class LineManagerController {
   }
   addEventAboutDeleteRoute() {
     document.querySelector("table").addEventListener("click", evt => {
-      if (evt.target.className == "delete-route-btn") {
+      if (evt.target.className == "line-delete-button") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
         let tr = evt.target.parentElement.parentElement;
         let routeName = tr.firstElementChild.innerText;
@@ -35,33 +35,33 @@ export default class LineManagerController {
     });
   }
   addEventAboutAddRoute() {
-    document.querySelector("#add-route").addEventListener("click", () => {
-      let routeName = document.querySelector("#route-name").value;
-      let upwardEndStation = document.querySelector("[name=upward-end-station]")
-        .value;
-      let downwardEndStation = document.querySelector(
-        "[name=downward-end-station]"
+    document.querySelector("#line-add-button").addEventListener("click", () => {
+      let routeName = document.querySelector("#line-name-input").value;
+      let lineStartStation = document.querySelector(
+        "#line-start-station-selector"
       ).value;
+      let lineEndStation = document.querySelector("#line-end-station-selector")
+        .value;
       let errCode = this.isValidForAddingRoute(
         routeName,
-        upwardEndStation,
-        downwardEndStation
+        lineStartStation,
+        lineEndStation
       );
       if (errCode != ERROR_CODE.SUCCESS) {
         alert(ERROR_CODE_MSG[errCode]);
         return;
       }
       this.appendRouteToTable(
-        this.lineDAO.addRoute(routeName, upwardEndStation, downwardEndStation)
+        this.lineDAO.addRoute(routeName, lineStartStation, lineEndStation)
       );
     });
   }
-  isValidForAddingRoute(routeName, upwardEndStation, downwardEndStation) {
+  isValidForAddingRoute(routeName, lineStartStation, lineEndStation) {
     if (routeName == null || routeName == "")
       return ERROR_CODE.EMPTY_ROUTE_NAME;
     if (routeName.search(/[^가-힣0-9]/g) != -1)
       return ERROR_CODE.WRONG_ROUTE_NAME;
-    if (upwardEndStation == downwardEndStation)
+    if (lineStartStation == lineEndStation)
       return ERROR_CODE.EQUAL_UPWARD_AND_DOWNWARD;
     return ERROR_CODE.SUCCESS;
   }
@@ -71,12 +71,12 @@ export default class LineManagerController {
     } else {
       let route = this.lineDAO.getAllRoutes();
       let stationsList = route[routeName];
-      let upwardEndStation = stationsList[0];
-      let downwardEndStation = stationsList[stationsList.length - 1];
+      let lineStartStation = stationsList[0];
+      let lineEndStation = stationsList[stationsList.length - 1];
       this.lineManageView.addRouteToTable(
         routeName,
-        upwardEndStation,
-        downwardEndStation
+        lineStartStation,
+        lineEndStation
       );
     }
   }

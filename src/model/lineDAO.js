@@ -6,10 +6,10 @@ export default class LineDAO {
     if (!this.localStorage.getItem("routes")) return {};
     return JSON.parse(this.localStorage.getItem("routes"));
   }
-  addRoute(routeName, upwardEndStation, downwardEndStation) {
+  addRoute(routeName, lineStartStation, lineEndStation) {
     let routes = this.getAllRoutes();
     if (Object.keys(routes).indexOf(routeName) != -1) return null;
-    routes[routeName] = [upwardEndStation, downwardEndStation];
+    routes[routeName] = [lineStartStation, lineEndStation];
     this.localStorage.setItem("routes", JSON.stringify(routes));
     return routeName;
   }
