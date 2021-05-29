@@ -38,7 +38,7 @@ export function constructSection() {
   if (lines === null) {
     return;
   }
-  document.getElementById(Section.DIV).addEventListener('click', function (e) {
+  document.getElementById(Section.DIV).addEventListener('click', (e) => {
     const target = e.target;
     const action = target.dataset.action;
     if (action === 'showSectionManager') {

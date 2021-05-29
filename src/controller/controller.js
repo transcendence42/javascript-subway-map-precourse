@@ -2,10 +2,11 @@ import { MainButtons, Station } from '../constant.js';
 import { renderStationTable } from '../view/vstation.js';
 import { renderLineTable } from '../view/vline.js';
 import { renderLineButtons } from '../view/vsection.js';
+import { renderMap } from '../view/vmap.js';
 import { constructStation } from './cstation.js';
 import { constructLine } from './cline.js';
 import { constructSection } from './csection.js';
-import { renderMap } from '../view/vmap.js';
+
 
 function getParts() {
   return {
@@ -35,7 +36,6 @@ function showStationPart() {
   hideElem(Parts.sectionPart);
   hideElem(Parts.mapPart);
   renderStationTable();
-  constructStation();
 }
 
 function showLinePart() {
@@ -44,8 +44,7 @@ function showLinePart() {
   showElem(Parts.linePart);
   hideElem(Parts.sectionPart);
   hideElem(Parts.mapPart);
-  renderLineTable();
-  constructLine();
+  renderLineTable();  
 }
 
 function showSectionPart() {
@@ -55,7 +54,6 @@ function showSectionPart() {
   showElem(Parts.sectionPart);
   hideElem(Parts.mapPart);
   renderLineButtons();
-  constructSection();
 }
 
 function showMapPart() {
@@ -70,7 +68,7 @@ function showMapPart() {
 function constructor() {
   document
     .getElementById('#menu-buttons')
-    .addEventListener('click', function (e) {
+    .addEventListener('click', (e) => {
       if (e.target.id === MainButtons.STATION) {
         showStationPart();
       } else if (e.target.id === MainButtons.LINE) {
@@ -85,4 +83,7 @@ function constructor() {
 
 export default function controller() {
   constructor();
+  constructStation();
+  constructLine();
+  constructSection();
 }

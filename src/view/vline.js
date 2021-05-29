@@ -18,7 +18,25 @@ export function addLineTable(newLine, start, end) {
 
 export function removeLineTable(tbody) {
   const parent = tbody.parentNode;
+  console.log(parent);
+  console.log(tbody);
   parent.removeChild(tbody);
+}
+
+function renderStationOptions() {
+  const stations = JSON.parse(localStorage.getItem('stations'));
+  const start = document.getElementById(Line.START);
+  const end = document.getElementById(Line.END);
+  stations.forEach((station) => {
+    start.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${station}">${station}</option>`,
+    );
+    end.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${station}">${station}</option>`,
+    );
+  });
 }
 
 export function renderLineTable() {
@@ -28,6 +46,7 @@ export function renderLineTable() {
     removeAllChildren(table);
     removeAllChildren(document.getElementById(Line.START));
     removeAllChildren(document.getElementById(Line.END));
+    renderStationOptions()
     table.insertAdjacentHTML('afterbegin', Line.TH);
     lines.forEach((line) => {
       table.insertAdjacentHTML(

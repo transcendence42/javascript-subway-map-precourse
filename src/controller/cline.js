@@ -29,27 +29,11 @@ function activateTableListener() {
   });
 }
 
-function renderStationOptions(stations) {
-  const start = document.getElementById(Line.START);
-  const end = document.getElementById(Line.END);
-  stations.forEach((station) => {
-    start.insertAdjacentHTML(
-      'beforeend',
-      `<option value="${station}">${station}</option>`,
-    );
-    end.insertAdjacentHTML(
-      'beforeend',
-      `<option value="${station}">${station}</option>`,
-    );
-  });
-}
-
 export function constructLine() {
   const stations = JSON.parse(localStorage.getItem('stations'));
   const lineAddButton = document.getElementById(Line.ADDBTN);
-  lineAddButton.addEventListener('click', clickAddLine);
+  lineAddButton.addEventListener('click', () => clickAddLine());
   if (stations) {
-    renderStationOptions(stations);
     activateTableListener();
   }
 }

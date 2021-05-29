@@ -1,4 +1,8 @@
 import { MainButtons, Station, Line } from '../constant.js';
+import { renderStationTable } from '../view/vstation.js';
+import { renderLineTable } from '../view/vline.js';
+import { renderLineButtons } from '../view/vsection.js';
+import { renderMap } from '../view/vmap.js';
 
 function getBtns() {
   return `<div id='#menu-buttons'>
@@ -70,4 +74,8 @@ function constructor() {
 
 export default function view() {
   constructor();
+  renderStationTable();
+  renderLineTable();
+  renderLineButtons();
+  renderMap();
 }
