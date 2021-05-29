@@ -1,6 +1,6 @@
 import { Section } from '../constant.js';
 import { renderSectionManager, renderSectionTable } from '../view/vsection.js';
-import { addSection } from '../model/section.js';
+import { addSection, deleteSection } from '../model/section.js';
 
 function clickRegisterBtn() {
   const input = document.getElementById(Section.INPUT);
@@ -19,6 +19,20 @@ function clickRegisterBtn() {
   }
 }
 
+function clickDeleteBtn(e) {
+  const target = e.target;
+  const line = e.target.dataset.line;
+  const station = e.target.dataset.value;
+
+  if (target.className === Section.DELETEBTN) {
+    if (deleteSection(line, station) === false) {
+      alert('노선 내 역은 두개 이상이어야 합니다.');
+    } else {
+      renderSectionTable(document.getElementById(Section.MANAGER).dataset.line);
+    }
+  }
+}
+
 export function constructSection() {
   const lines = localStorage.getItem('lines');
   if (lines === null) {
@@ -29,9 +43,12 @@ export function constructSection() {
     const action = target.dataset.action;
     if (action === 'showSectionManager') {
       renderSectionManager(target.dataset.id);
-      const registerBtn = document.getElementById(Section.REGISTER);
-      console.log(registerBtn);
-      registerBtn.addEventListener('click', () => clickRegisterBtn());
+      document
+        .getElementById(Section.REGISTER)
+        .addEventListener('click', () => clickRegisterBtn());
+      document
+        .getElementById(Section.TABLE)
+        .addEventListener('click', (e) => clickDeleteBtn(e));
     }
   });
 }

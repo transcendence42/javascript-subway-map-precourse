@@ -39,7 +39,6 @@ export function renderSectionTable(line) {
   const lines = JSON.parse(localStorage.getItem('lines'));
   const stations = lines.filter((item) => item.name === line)[0].stations;
   const table = document.getElementById(Section.TABLE);
-  console.log(table);
   if (stations) {
     removeAllChildren(table);
     stations.forEach((station, index) =>
@@ -49,13 +48,12 @@ export function renderSectionTable(line) {
       <td style="border:1px solid;">${index}</td>
       <td style="border:1px solid;">${station}</td>
       <td style="border:1px solid;">
-      <button data-line="${line}" data-value="${station}">노선에서 제거</button>
+      <button class="${Section.DELETEBTN}" data-line="${line}" data-value="${station}">노선에서 제거</button>
       </td>`,
       ),
     );
   }
   table.insertAdjacentHTML('afterbegin', Section.TH);
-  console.log(stations);
 }
 
 export function renderSectionManager(line) {

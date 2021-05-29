@@ -16,7 +16,6 @@ export function addStation(newStation) {
 
 function checkLineIncludedStation(lines, station) {
   let ret = lines.every((line) => {
-    console.log(line);
     if (
       line.stations.filter((item) => item !== station).length !=
       line.stations.length

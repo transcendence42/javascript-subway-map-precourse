@@ -13,6 +13,7 @@ function clickAddLine() {
     alert('중복된 지하철 노선 이름은 등록할 수 없습니다.');
   } else {
     addLineTable(newLine, start, end);
+    document.getElementById(Line.INPUT).value = '';
   }
 }
 
@@ -23,7 +24,6 @@ function activateTableListener() {
 
     if (action === 'deleteLine') {
       removeLineTable(target.closest('tr'));
-      console.log(target.dataset.id);
       deleteLine(target.dataset.id);
     }
   });

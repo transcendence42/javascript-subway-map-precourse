@@ -38,7 +38,7 @@ export const Section = {
   INPUT: '#station-order',
   REGISTER: '#section-register',
   TABLE: '#section-table',
-  DELETEBTIN: '.section-delete-button',
+  DELETEBTN: 'section-delete-button',
   TH: `<th style="border: 1px solid"><strong>순서</strong></th>
   <th style="border: 1px solid"><strong>이름</strong></th>
   <th style="border: 1px solid"><strong>설정</strong></th>`,

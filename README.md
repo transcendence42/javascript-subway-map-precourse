@@ -24,29 +24,29 @@
 
 
 ### to do
-- [ ] View  
+- [ ] View: 화면에 보여줌  
     - [x] constructor : 4개의 버튼 만들기
     - [x] showStation: 역관리 화면 만들기
-    - [ ] showLine: 노선 관리 화면 만들기
-    - [ ] showSection: 구간 관리 화면 만들기 
+    - [x] showLine: 노선 관리 화면 만들기
+    - [x] showSection: 구간 관리 화면 만들기 
     - [ ] showMap: 지하철 노선도 화면 만들기
-- [ ] Controller
+- [ ] Controller: 이벤트 관련
     - [x] constructor: 4개의 버튼에 대한 이벤트를 확인
-    - [ ] catchStationAddition: 역추가 이벤트를 확인, 유효성(2글자 이상, 중복 여부)을 검증
-    - [ ] catchStationDeletion: 역삭제 이벤트를 확인, 유효성(노선 등록 여부) 검증
-    - [ ] catchLineAddition: 노선 추가 이벤트를 확인, 유효성(중복 여부, 종점역 올바른 입력 여부) 검증
-    - [ ] catchLineDeletion: 노선 삭제 이벤트를 확인
+    - [x] catchStationAddition: 역추가 이벤트를 확인
+    - [x] catchStationDeletion: 역삭제 이벤트를 확인
+    - [x] catchLineAddition: 노선 추가 이벤트를 확인
+    - [x] catchLineDeletion: 노선 삭제 이벤트를 확인
     - [ ] catchSectionAddition: 구간 추가 이벤트를 확인
-    - [ ] catchSectionDeletion: 구간 삭제 이벤트를 확인, 유효성(노선 포함 역 두개 초과 여부) 검증
-- [ ] Model
-    - [ ] addStation: 역추가
-    - [ ] deleteStation: 역삭제 
+    - [ ] catchSectionDeletion: 구간 삭제 이벤트를 확인
+- [ ] Model: Local Storage와 소통
+    - [x] addStation: 유효성(2글자 이상, 중복 여부)을 검증, 역추가
+    - [x] deleteStation: 유효성(노선 등록 여부) 검증, 역삭제 
     - [ ] getStations: 전체 역 반환
-    - [ ] addLine: 노선 추가
-    - [ ] deleteLine: 노선 삭제
+    - [x] addLine: 유효성(중복 여부, 종점역 올바른 입력 여부) 검증, 노선 추가
+    - [x] deleteLine: 노선 삭제
     - [ ] getLines: 전체 노선 반환
-    - [ ] addSection: 구간 추가
-    - [ ] deleteSection: 구간 삭제
+    - [x] addSection: 유효성(역 중복 여부) 검증, 구간 추가
+    - [x] deleteSection: 유효성(노선 포함 역 두개 초과 여부) 검증, 구간 삭제
     - [ ] getSections: 노선 별 구간 반환
 
 ## 🚀 기능 요구사항

@@ -13,3 +13,17 @@ export function addSection(input, choice) {
   localStorage.setItem('lines', JSON.stringify(linesObj));
   return true;
 }
+
+export function deleteSection(line, station) {
+  let linesObj = JSON.parse(localStorage.getItem('lines'));
+  let obj = linesObj.filter((item) => item.name === line)[0].stations;
+
+  if (obj.length <= 2) {
+    return false;
+  }
+  obj = obj.filter((item) => item != station);
+  linesObj = linesObj.filter((item) => item.name !== line);
+  linesObj.push({ name: line, stations: obj });
+  localStorage.setItem('lines', JSON.stringify(linesObj));
+  return true;
+}
