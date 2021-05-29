@@ -32,7 +32,7 @@ export default class StationManagerView {
     </tr>`;
   }
   deleteStationFromTable(stationName) {
-    let tr = document.querySelector(`[data-station-name=${stationName}`)
+    let tr = document.querySelector(`[data-station-name="${stationName}"`)
       .parentElement.parentElement;
     tr.remove();
   }
