@@ -31,4 +31,9 @@ export default class StationManagerView {
       <td><button class="station-delete-button" data-station-name="${station}">삭제</button></td>
     </tr>`;
   }
+  deleteStationFromTable(stationName) {
+    let tr = document.querySelector(`[data-station-name=${stationName}`)
+      .parentElement.parentElement;
+    tr.remove();
+  }
 }

@@ -51,13 +51,12 @@ export default class StationManagerController {
     document.querySelector("table").addEventListener("click", evt => {
       if (evt.target.className == "station-delete-button") {
         if (!confirm("정말로 삭제하시겠습니까?")) return;
-        let tr = evt.target.parentElement.parentElement;
         let stationName = evt.target.dataset.stationName;
         if (!this.stationDAO.deleteStation(stationName)) {
           alert(ERROR_CODE_MSG[ERROR_CODE.STATION_IN_LINE]);
           return;
         }
-        tr.remove();
+        this.stationManagerView.deleteStationFromTable(stationName);
       }
     });
   }
