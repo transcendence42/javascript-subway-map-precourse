@@ -1,5 +1,6 @@
 import { Station } from '../constant.js';
 import { removeAllChildren } from '../utils.js';
+import { getStations } from '../model/station.js';
 
 export function addStationTable(station) {
   const table = document.getElementById(Station.TABLE);
@@ -20,7 +21,7 @@ export function removeStationTable(tr) {
 }
 
 export function renderStationTable() {
-  const stations = JSON.parse(localStorage.getItem('stations'));
+  const stations = getStations();
   const table = document.getElementById(Station.TABLE);
   if (stations) {
     removeAllChildren(table);

@@ -5,6 +5,7 @@ import { renderLineButtons } from '../view/vsection.js';
 import { constructStation } from './cstation.js';
 import { constructLine } from './cline.js';
 import { constructSection } from './csection.js';
+import { renderMap } from '../view/vmap.js';
 
 function getParts() {
   return {
@@ -63,6 +64,7 @@ function showMapPart() {
   hideElem(Parts.linePart);
   hideElem(Parts.sectionPart);
   showElem(Parts.mapPart);
+  renderMap();
 }
 
 function constructor() {

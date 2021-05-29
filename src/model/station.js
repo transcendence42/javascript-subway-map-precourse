@@ -1,3 +1,7 @@
+export function getStations() {
+  return JSON.parse(localStorage.getItem('stations'));
+}
+
 export function addStation(newStation) {
   let oldStations = localStorage.getItem('stations');
   if (oldStations === null) {

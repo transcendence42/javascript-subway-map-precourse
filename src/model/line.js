@@ -1,3 +1,7 @@
+export function getLines() {
+  return JSON.parse(localStorage.getItem('lines'));
+}
+
 export function addLine(newLineName, start, end) {
   let oldLines = localStorage.getItem('lines');
   const newLine = {
