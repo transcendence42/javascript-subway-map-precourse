@@ -28,7 +28,8 @@ export default class RouteManageView {
               </tr>`;
     Object.keys(routes).forEach(routeName => {
       let upwardEndStation = routes[routeName][0];
-      let downwardEndStation = routes[routeName][1];
+      let numberOfStationsInRoute = routes[routeName].length;
+      let downwardEndStation = routes[routeName][numberOfStationsInRoute - 1];
       ret += `<tr><td>${routeName}</td><td>${upwardEndStation}</td><td>${downwardEndStation}</td><td><button class="delete-route-btn">삭제</button></td></tr>`;
     });
     ret += `</tbody></table>`;
