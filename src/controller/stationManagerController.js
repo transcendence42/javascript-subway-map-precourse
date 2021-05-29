@@ -13,6 +13,11 @@ export default class StationManagerController {
       .querySelector("#station-manager-button")
       .addEventListener("click", () => this.showAllStations());
   }
+  showAllStations() {
+    this.stationManagerView.makeHtml(this.stationDAO.getAllStations());
+    this.addEventAboutAddStation();
+    this.addEventAboutDeleteStation();
+  }
   addEventAboutAddStation() {
     document
       .querySelector("#station-add-button")
@@ -34,25 +39,6 @@ export default class StationManagerController {
     if (stationName.length < 2) return ERROR_CODE.WRONG_STATION_NAME;
     return ERROR_CODE.SUCCESS;
   }
-  showAllStations() {
-    this.stationManagerView.makeHtml(this.stationDAO.getAllStations());
-    this.addEventAboutAddStation();
-    this.addEventAboutDeleteStation();
-  }
-  addEventAboutDeleteStation() {
-    document.querySelector("table").addEventListener("click", evt => {
-      if (evt.target.className == "station-delete-button") {
-        if (!confirm("정말로 삭제하시겠습니까?")) return;
-        let tr = evt.target.parentElement.parentElement;
-        let stationName = tr.firstElementChild.innerText;
-        if (!this.stationDAO.deleteStation(stationName)) {
-          alert(ERROR_CODE_MSG[ERROR_CODE.STATION_IN_ROUTE]);
-          return;
-        }
-        tr.remove();
-      }
-    });
-  }
   appendStation(station) {
     if (station == null) {
       alert(ERROR_CODE_MSG[ERROR_CODE.STATION_NAME_DUP]);
@@ -60,5 +46,19 @@ export default class StationManagerController {
       this.stationManagerView.addStationToTable(station);
       document.querySelector("#station-name-input").value = "";
     }
+  }
+  addEventAboutDeleteStation() {
+    document.querySelector("table").addEventListener("click", evt => {
+      if (evt.target.className == "station-delete-button") {
+        if (!confirm("정말로 삭제하시겠습니까?")) return;
+        let tr = evt.target.parentElement.parentElement;
+        let stationName = evt.target.dataset.stationName;
+        if (!this.stationDAO.deleteStation(stationName)) {
+          alert(ERROR_CODE_MSG[ERROR_CODE.STATION_IN_ROUTE]);
+          return;
+        }
+        tr.remove();
+      }
+    });
   }
 }
