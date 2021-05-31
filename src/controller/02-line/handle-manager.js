@@ -1,9 +1,12 @@
 import { ID } from '../../constants/index.js';
-import { lineRenderer } from '../../view/02-line/index.js';
+import {
+  addLineSelectOption,
+  renderLineListTableTbodys,
+} from '../../view/02-line/index.js';
 import { loadStationLocalStorage } from '../../model/01-station/index.js';
+import { handleLineDelete } from './handle-delete.js';
 
-const toggleLineManagerButton = () => {
-  const self = document.getElementById(ID.LINE_MANAGER);
+const toggleLineManagerButton = (self) => {
   if (self.hidden === false) {
     self.hidden = true;
     return;
@@ -13,32 +16,28 @@ const toggleLineManagerButton = () => {
   document.getElementById(ID.STATION_MANAGER).hidden = true;
   // document.getElementById(ID.SECTION_MANAGER).hidden = true;
   // document.getElementById(ID.MAP_PRINT_MANAGER).hidden = true;
-};
-
-export const addLineSelectOption = (element, value) => {
-  const option = document.createElement('option');
-  option.value = value;
-  option.innerHTML = value;
-  element.appendChild(option);
+  renderLineListTableTbodys();
+  handleLineDelete();
 };
 
 const setLineStationSelector = () => {
-  for (const name of loadStationLocalStorage().map((x) => {
-    return x.name;
-  })) {
+  loadStationLocalStorage().forEach((stationName) => {
     addLineSelectOption(
       document.getElementById(ID.LINE_START_STATION_SELECTOR),
-      name,
+      stationName,
     );
     addLineSelectOption(
       document.getElementById(ID.LINE_END_STATION_SELECTOR),
-      name,
+      stationName,
     );
-  }
+  });
 };
 
 export const handleLineManager = () => {
   setLineStationSelector();
-  const lineManagerButton = document.getElementById(ID.LINE_MANAGER_BUTTON);
-  lineManagerButton.addEventListener('click', toggleLineManagerButton);
+  document
+    .getElementById(ID.LINE_MANAGER_BUTTON)
+    .addEventListener('click', () =>
+      toggleLineManagerButton(document.getElementById(ID.LINE_MANAGER)),
+    );
 };

@@ -26,13 +26,14 @@ export const NAME = {
 };
 
 export const CLASS = {
+  MENU_CONTAINER: 'menu-container',
+
   STATION_DELETE_BUTTON: 'station-delete-button',
   LINE_DELETE_BUTTON: 'line-delete-button',
   SECTION_DELETE_BUTTON: 'section-delete-button',
 };
 
 export const ID = {
-  MENU_CONTAINER: 'menu-container',
   STATION_MANAGER_BUTTON: 'station-manager-button',
   LINE_MANAGER_BUTTON: 'line-manager-button',
   SECTION_MANAGER_BUTTON: 'section-manager-button',
@@ -54,9 +55,13 @@ export const ID = {
 
 export const ALERT = {
   STATION_NAME_LENGTH: '역 이름을 두 글자 이상 입력해주세요',
-  STATION_NAME_DOUBLE: '이미 존재하는 역 이름입니다',
+  STATION_NAME_REGEXP: '역 이름은 한글만 입력 가능합니다',
+  STATION_NAME_EXIST: '이미 존재하는 역 이름입니다',
+  STATION_NAME_REGISTERED_LINE: '노선에 등록되어 있어서 삭제할 수 없습니다',
 
   LINE_NAME_LENGTH: '노선 이름을 입력해주세요',
+  LINE_NAME_REGEXP: '노선 이름은 숫자와 한글만 입력 가능합니다',
   LINE_NAME_DOUBLE: '이미 존재하는 노선 이름입니다',
   LINE_STATION_DOUBLE: '상행 종점과 하행 종점은 중복될 수 없습니다',
+  LINE_DELETE_CHECK: '정말로 삭제하시겠습니까?'
 };

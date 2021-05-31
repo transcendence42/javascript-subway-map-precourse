@@ -16,16 +16,16 @@ import {
 	if (lines === null) {
 		lines = [];
 	}
-	lines.push(lineName);
+	lines.push({ line: lineName, stations: [startStation, endStation]});
 	storeLocalStorage('lines', lines);
   };
 
   export const deleteLineLocalStorage = (lineName) => {
 	let lines = loadLineLocalStorage();
-	const target = stations.find((station) => {
-	  return station.name === lineName;
+	const target = lines.find((item) => {
+	  return item.line === lineName;
 	});
 	lines.splice(lines.indexOf(target), 1);
 	localStorage.removeItem('lines');
-	storeLocalStorage('lines', stations)
+	storeLocalStorage('lines', lines)
   };

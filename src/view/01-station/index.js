@@ -32,9 +32,8 @@ export const addStationListTableTbody = (name) => {
     .insertAdjacentHTML(`beforeend`, stationListTableTbody(name));
 };
 
-export const deleteStationListTableTbody = (line) => {
-  const target = line.closest('tbody');
-  target.remove();
+export const deleteStationListTableTbody = (target) => {
+  target.closest('tbody').remove();
 };
 
 export const renderStationListTableTbodys = () => {
@@ -45,14 +44,6 @@ export const renderStationListTableTbodys = () => {
   if (!stationListTableId.hasChildNodes()) {
     renderStationListTableThead();
   }
-  // const stationNameArray = loadStationLocalStorage().map((x) => {
-  //   return x.name;
-  // });
-  // if (stationNameArray !== null) {
-  //   stationNameArray.forEach((x) => {
-  //     addStationListTableTbody(x);
-  //   });
-  // }
   const stations = loadStationLocalStorage();
   if (stations !== null) {
     stations.forEach((stationName) => {
