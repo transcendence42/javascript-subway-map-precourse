@@ -11,7 +11,7 @@ import {
 	return loadLocalStorage('lines');
   };
 
-  export const addLineLocalStorage = (lineName) => {
+  export const addLineLocalStorage = (lineName, startStation, endStation) => {
 	let lines = loadLineLocalStorage();
 	if (lines === null) {
 		lines = [];

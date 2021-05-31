@@ -8,6 +8,24 @@ import {
 import { loadStationLocalStorage } from '../../model/01-station/index.js';
 import { removeChildNodes } from '../utils.js';
 
+const renderStationManagerDiv = () => {
+  document
+    .getElementById('app')
+    .insertAdjacentHTML(`beforeend`, stationManagerDiv());
+};
+
+const renderStationListTable = () => {
+  document
+    .getElementById(ID.STATION_MANAGER)
+    .insertAdjacentHTML(`beforeend`, stationListTable());
+};
+
+const renderStationListTableThead = () => {
+  document
+    .getElementById(ID.STATION_LIST_TABLE)
+    .insertAdjacentHTML(`afterbegin`, stationListTableThead());
+};
+
 export const addStationListTableTbody = (name) => {
   document
     .getElementById(ID.STATION_LIST_TABLE)
@@ -19,43 +37,33 @@ export const deleteStationListTableTbody = (line) => {
   target.remove();
 };
 
-const createStationListTableThead = () => {
-  document
-    .getElementById(ID.STATION_LIST_TABLE)
-    .insertAdjacentHTML(`afterbegin`, stationListTableThead());
-};
-
-const createStationListTable = () => {
-  document
-    .getElementById(ID.STATION_MANAGER)
-    .insertAdjacentHTML(`beforeend`, stationListTable());
-  createStationListTableThead();
-};
-
-const createStationManagerDiv = () => {
-  document
-    .getElementById('app')
-    .insertAdjacentHTML(`beforeend`, stationManagerDiv());
-  createStationListTable();
-};
-
-export const createStationList = () => {
+export const renderStationListTableTbodys = () => {
   const stationListTableId = document.getElementById(ID.STATION_LIST_TABLE);
-  removeChildNodes(stationListTableId);
-  if (!stationListTableId.hasChildNodes()) {
-    createStationListTableThead();
+  if (stationListTableId.hasChildNodes()) {
+    removeChildNodes(stationListTableId);
   }
-  const stationNameArray = loadStationLocalStorage().map((x) => {
-    return x.name;
-  });
-  if (stationNameArray !== null) {
-    stationNameArray.forEach((x) => {
-      addStationListTableTbody(x);
+  if (!stationListTableId.hasChildNodes()) {
+    renderStationListTableThead();
+  }
+  // const stationNameArray = loadStationLocalStorage().map((x) => {
+  //   return x.name;
+  // });
+  // if (stationNameArray !== null) {
+  //   stationNameArray.forEach((x) => {
+  //     addStationListTableTbody(x);
+  //   });
+  // }
+  const stations = loadStationLocalStorage();
+  if (stations !== null) {
+    stations.forEach((stationName) => {
+      addStationListTableTbody(stationName);
     });
   }
 };
 
 export const stationRenderer = () => {
-  createStationManagerDiv();
-  createStationList();
+  renderStationManagerDiv();
+  renderStationListTable();
+  renderStationListTableThead();
+  renderStationListTableTbodys();
 };

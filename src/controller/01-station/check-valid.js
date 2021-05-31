@@ -6,7 +6,7 @@ const checkStationNameLengthValid = (stationName) => {
 };
 
 const checkStationNameDoubleValid = (stationName, stations) => {
-  return stations.some((x) => x.name === stationName)
+  return stations.some((x) => x === stationName)
 };
 
 export const checkStationValid = (stationName) => {

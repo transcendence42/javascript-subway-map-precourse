@@ -1,28 +1,46 @@
 import { ID } from '../../constants/index.js';
-import { lineManagerDiv, lineTable, lineListTableTbody } from './template.js';
+import { removeChildNodes } from '../utils.js';
+import { lineManagerDiv, lineListTable, lineListTableTbody, lineListTableThead } from './template.js';
 
-const createLineTable = () => {
-  document
-    .getElementById(ID.LINE_MANAGER)
-    .insertAdjacentHTML(`beforeend`, lineTable());
-};
-
-const createLineManager = () => {
+const renderLineManagerDiv = () => {
   document
     .getElementById('app')
     .insertAdjacentHTML(`beforeend`, lineManagerDiv());
-  createLineTable();
 };
+
+const renderLineListTable = () => {
+  document
+    .getElementById(ID.LINE_MANAGER)
+    .insertAdjacentHTML(`beforeend`, lineListTable());
+};
+
+const renderLineListTableThead = () => {
+  document
+    .getElementById(ID.LINE_LIST_TABLE)
+    .insertAdjacentHTML(`afterbegin`, lineListTableThead())
+}
 
 export const addLineListTableTbody = (lineName, startStation, endStation) => {
   document
-    .getElementById(ID.LINE_TABLE)
+    .getElementById(ID.LINE_LIST_TABLE)
     .insertAdjacentHTML(
       `beforeend`,
       lineListTableTbody(lineName, startStation, endStation),
     );
 };
 
+export const renderLineListTableTbodys = () => {
+  const lineListTableId = document.getElementById(ID.LINE_LIST_TABLE);
+  if (lineListTableId.hasChildNodes()) {
+    removeChildNodes(lineListTableId);
+  }
+  if (!lineListTableId.hasChildNodes()) {
+    renderLineListTableThead();
+  }
+}
+
 export const lineRenderer = () => {
-  createLineManager();
+  renderLineManagerDiv();
+  renderLineListTable();
+  renderLineListTableThead();
 };

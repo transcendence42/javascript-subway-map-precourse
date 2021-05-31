@@ -12,17 +12,17 @@ export const setEventStationDeleteButton = () => {
   );
 };
 
-export const deleteStation = (line) => {
-  const stationName = line
+export const deleteStation = (target) => {
+  const stationName = target
     .closest('tr')
     .getElementsByTagName('td')[0].innerText;
 
-  deleteStationListTableTbody(line);
+  deleteStationListTableTbody(target);
   deleteStationLocalStorage(stationName);
 };
 
 export const handleStationDelete = () => {
-  for (const line of document.getElementsByClassName(ID.STATION_DELETE_BUTTON)) {
-    line.addEventListener('click', () => deleteStation(line));
+  for (const target of document.getElementsByClassName(ID.STATION_DELETE_BUTTON)) {
+    target.addEventListener('click', () => deleteStation(target));
   }
 };

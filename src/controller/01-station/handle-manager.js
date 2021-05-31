@@ -1,5 +1,6 @@
 import { ID } from '../../constants/index.js';
-import { createStationList } from '../../view/01-station/index.js';
+import { renderStationListTableTbodys } from '../../view/01-station/index.js';
+import { handleStationDelete } from './handle-delete.js';
 
 const toggleStationManagerButton = () => {
   const mySelf = document.getElementById(ID.STATION_MANAGER);
@@ -8,7 +9,8 @@ const toggleStationManagerButton = () => {
     return;
   }
   mySelf.hidden = false;
-  createStationList();
+  renderStationListTableTbodys();
+  handleStationDelete();
   document.getElementById(ID.STATION_NAME_INPUT).focus();
   document.getElementById(ID.LINE_MANAGER).hidden = true;
 };

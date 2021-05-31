@@ -45,7 +45,7 @@ export const ID = {
   STATION_DELETE_BUTTON: 'station-delete-button',
 
   LINE_MANAGER: 'line-manager',
-  LINE_TABLE: 'line-table',
+  LINE_LIST_TABLE: 'line-list-table',
   LINE_NAME_INPUT: 'line-name-input',
   LINE_START_STATION_SELECTOR: 'line-start-station-selector',
   LINE_END_STATION_SELECTOR: 'line-end-station-selector',

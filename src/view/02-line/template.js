@@ -18,20 +18,25 @@ export const lineManagerDiv = () => {
   `;
 };
 
-export const lineTable = () => {
+export const lineListTable = () => {
   return `
-  <table border='1' id='${ID.LINE_TABLE}'>
-    <thead>
-      <tr>
-        <th>${NAME.LINE_LIST_NAME}</th>
-        <th>${NAME.LINE_LIST_START_STATION}</th>
-        <th>${NAME.LINE_LIST_END_STATION}</th>
-        <th>${NAME.LINE_LIST_SETTING}</th>
-      </tr>
-    </thead>
+  <table border='1' id='${ID.LINE_LIST_TABLE}'>
   </table>
   `;
 };
+
+export const lineListTableThead = () => {
+  return `
+  <thead>
+    <tr>
+      <th>${NAME.LINE_LIST_NAME}</th>
+      <th>${NAME.LINE_LIST_START_STATION}</th>
+      <th>${NAME.LINE_LIST_END_STATION}</th>
+      <th>${NAME.LINE_LIST_SETTING}</th>
+    </tr>
+  </thead>
+  `
+}
 
 export const lineListTableTbody = (lineName, startStation, endStation) => {
   return `
