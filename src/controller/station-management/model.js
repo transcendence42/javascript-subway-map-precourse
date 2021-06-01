@@ -3,7 +3,7 @@ import { storage } from '../../model/index.js';
 
 export const addStationLocalStorage = (stationNameInput) => {
   if (!storage.getLocalStorage('subway-station')) {
-    storage.setLocalStorageMap(new Map());
+    storage.setLocalStorageMap('subway-station', new Map());
   }
   const subwayStation = storage.getLocalStorageMap('subway-station');
   if (!checkValidStationName(subwayStation, stationNameInput)) {

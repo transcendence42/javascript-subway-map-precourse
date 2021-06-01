@@ -2,7 +2,7 @@ import { errorMessage } from '../error-message.js';
 import { removeButtonEvent } from '../utils.js';
 import { storage } from '../../model/index.js';
 
-const deleteSelectOption = (datasetStation) => {
+const deleteSelectOption = datasetStation => {
   const selectOption = document.querySelectorAll('option');
   for (const item of selectOption) {
     if (item.value === datasetStation) {
@@ -11,13 +11,12 @@ const deleteSelectOption = (datasetStation) => {
   }
 };
 
-const includeLineList = (datasetStation) => {
-  return storage
-    .getLocalStorageArray('subway-line-list')
-    .includes(datasetStation);
+const includeLineList = datasetStation => {
+  let ret = storage.getLocalStorageArray('subway-line-list');
+  return ret === null ? false : ret.includes(datasetStation);
 };
 
-export const deleteStation = (e) => {
+export const deleteStation = e => {
   const datasetStation = e.currentTarget.dataset.station.slice(0, -7);
   if (includeLineList(datasetStation)) {
     alert(errorMessage.lineStationForbidden);
