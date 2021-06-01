@@ -28,18 +28,18 @@ function renderStationOptions() {
   const start = document.getElementById(Line.START);
   const end = document.getElementById(Line.END);
 
-  console.log("hahahaha");
-  
-  stations.forEach((station) => {
-    start.insertAdjacentHTML(
-      'beforeend',
-      `<option value="${station}">${station}</option>`,
-    );
-    end.insertAdjacentHTML(
-      'beforeend',
-      `<option value="${station}">${station}</option>`,
-    );
-  });
+  if (stations) {
+    stations.forEach((station) => {
+      start.insertAdjacentHTML(
+        'beforeend',
+        `<option value="${station}">${station}</option>`,
+      );
+      end.insertAdjacentHTML(
+        'beforeend',
+        `<option value="${station}">${station}</option>`,
+      );
+    });
+  }
 }
 
 export function renderLineTable() {
@@ -49,7 +49,7 @@ export function renderLineTable() {
     removeAllChildren(table);
     removeAllChildren(document.getElementById(Line.START));
     removeAllChildren(document.getElementById(Line.END));
-    renderStationOptions()
+    renderStationOptions();
     table.insertAdjacentHTML('afterbegin', Line.TH);
     lines.forEach((line) => {
       table.insertAdjacentHTML(
@@ -67,6 +67,6 @@ export function renderLineTable() {
       );
     });
   } else {
-    renderStationOptions()
+    renderStationOptions();
   }
 }
