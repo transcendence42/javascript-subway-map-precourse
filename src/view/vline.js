@@ -27,6 +27,9 @@ function renderStationOptions() {
   const stations = JSON.parse(localStorage.getItem('stations'));
   const start = document.getElementById(Line.START);
   const end = document.getElementById(Line.END);
+
+  console.log("hahahaha");
+  
   stations.forEach((station) => {
     start.insertAdjacentHTML(
       'beforeend',
@@ -63,5 +66,7 @@ export function renderLineTable() {
         </tr>`,
       );
     });
+  } else {
+    renderStationOptions()
   }
 }

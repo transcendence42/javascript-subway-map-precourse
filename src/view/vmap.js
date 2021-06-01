@@ -11,11 +11,11 @@ export function getStationListsHtml(stations) {
 }
 
 export function renderMap() {
-  const lines = getLines();
+  let lines = getLines();
   const mapPart = document.getElementById('#mapPart');
 
   if (!lines) {
-    return;
+    return ;
   }
   removeAllChildren(mapPart);
   lines.map(function (line) {
