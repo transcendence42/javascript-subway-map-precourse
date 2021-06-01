@@ -14,6 +14,9 @@ export function renderMap() {
   const lines = getLines();
   const mapPart = document.getElementById('#mapPart');
 
+  if (!lines) {
+    return;
+  }
   removeAllChildren(mapPart);
   lines.map(function (line) {
     let content = `<h3 data-line="${line.name}">${line.name}</h3>`;
